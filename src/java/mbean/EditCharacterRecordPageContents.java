@@ -147,7 +147,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     @PostConstruct
-    public void prerender() {
+    public void init() {
         int exp = 0;
         int nextLv;
         

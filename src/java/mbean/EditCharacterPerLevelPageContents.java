@@ -60,7 +60,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
 
     @PostConstruct
     @Override
-    public void prerender() {
+    public void init() {
         
         setCharacterRecord( getSessionBean().getCharacterRecord());
         

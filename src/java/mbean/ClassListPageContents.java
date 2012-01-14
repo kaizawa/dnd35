@@ -10,6 +10,7 @@ import ejb.ClassMasterFacade;
 import ejb.ClassSkillMasterFacade;
 import entity.ClassMaster;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
@@ -29,12 +30,11 @@ import javax.faces.component.html.HtmlDataTable;
 @ManagedBean
 @RequestScoped
 public class ClassListPageContents extends BaseBean {
-    /*
-    @EJB
-    private ClassSkillMasterFacade classSkillMasterFacade;
+
     @EJB
     private ClassMasterFacade classMasterFacade;
-*/
+
+    
 
     private HtmlDataTable classTable = new HtmlDataTable();
 
@@ -61,7 +61,12 @@ public class ClassListPageContents extends BaseBean {
     public ClassListPageContents() {
     }
 
-
+    @PostConstruct
+    public void init() {
+        List<ClassMaster> classmasterlist = classMasterFacade.findAll();
+        getApplicationBean().setClassMasterList(classmasterlist);
+    }
+    
     public String editClassLink_action() {
         int classid = classTable.getRowIndex();
 

@@ -5,21 +5,11 @@
  */
 package mbean;
 
-import ejb.RaceMasterFacade;
-import ejb.AbilityMasterFacade;
-import ejb.SizeMasterFacade;
-import ejb.ClassMasterFacade;
-import ejb.DiceMasterFacade;
-import ejb.SaveMasterFacade;
-import ejb.ReligionMasterFacade;
-import ejb.SkillMasterFacade;
-import ejb.BonusRankMasterFacade;
-import ejb.GenderMasterFacade;
-import ejb.CampaignMasterFacade;
-import ejb.AlignmentMasterFacade;
+import ejb.*;
 import entity.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.PostActivate;
 import javax.faces.bean.ApplicationScoped;
@@ -72,7 +62,7 @@ public class ApplicationBean {
     public ApplicationBean() {
     }
 
-    @PostActivate
+    @PostConstruct
     public void init() {
 
         //アプリケーション起動時のリストをアプリケーションBeanに保存しておく

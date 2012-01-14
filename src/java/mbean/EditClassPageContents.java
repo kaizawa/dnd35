@@ -77,7 +77,7 @@ public class EditClassPageContents extends BaseBean {
     }
 
     @PostConstruct
-    public void prerender() {
+    public void init() {
 
         ClassMaster classMaster =  getSessionBean().getClassMaster();
 

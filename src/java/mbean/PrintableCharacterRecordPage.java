@@ -34,8 +34,8 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
 
     @PostConstruct
     @Override
-    public void prerender() {
-        super.prerender();
+    public void init() {
+        super.init();
 
         int lv =  getSessionBean().getCharacterLevel();
         //クラスのリストをつくり、各クラスのレベルを計算する

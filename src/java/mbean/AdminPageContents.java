@@ -38,7 +38,7 @@ public class AdminPageContents extends BaseBean {
     }
     
     @PostConstruct
-    public void prerender() {
+    public void init() {
         List<ClassMaster> classmasterlist = classMasterFacade.findAll();
         getApplicationBean().setClassMasterList(classmasterlist);
     }    

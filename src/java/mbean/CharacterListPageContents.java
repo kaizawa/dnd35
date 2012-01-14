@@ -73,7 +73,7 @@ public class CharacterListPageContents  extends BaseBean {
 
     
     @PostConstruct
-    public void prerender() {
+    public void init() {
 
         List<CharacterRecord> charaFindAll;
         if ( getSessionBean().getCharacterListSelectedCampaign() == null) {
