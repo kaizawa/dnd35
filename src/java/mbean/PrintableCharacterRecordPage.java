@@ -450,8 +450,8 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     @Override
-    public Integer getgrappleBonus() {
-        return super.getgrappleBonus();
+    public Integer getGrappleBonus() {
+        return super.getGrappleBonus();
     }
 
     @Override
