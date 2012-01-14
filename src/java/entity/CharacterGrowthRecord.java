@@ -5,41 +5,58 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CHARACTER_GROWTH_RECORD")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CharacterGrowthRecord.findAll", query = "SELECT c FROM CharacterGrowthRecord c"),
     @NamedQuery(name = "CharacterGrowthRecord.findByCharacterId", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.characterGrowthRecordPK.characterId = :characterId"),
     @NamedQuery(name = "CharacterGrowthRecord.findByCharacterLevel", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.characterGrowthRecordPK.characterLevel = :characterLevel"),
-    @NamedQuery(name = "CharacterGrowthRecord.findByAbilityEnhancement", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.abilityEnhancement = :abilityEnhancement"),
-    @NamedQuery(name = "CharacterGrowthRecord.findByHitPoint", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.hitPoint = :hitPoint"),
-    @NamedQuery(name = "CharacterGrowthRecord.findByUpdateDescription", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.updateDescription = :updateDescription")})
+    @NamedQuery(name = "CharacterGrowthRecord.findByAbilityEnhancement", query = "SELECT c FROM CharacterGrowthRecord c WHERE c.abilityEnhancement = :abilityEnhancement")
+})
 public class CharacterGrowthRecord implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CharacterGrowthRecordPK characterGrowthRecordPK;
     @Column(name = "ABILITY_ENHANCEMENT")
     private Integer abilityEnhancement;
-    @Column(name = "HIT_POINT")
-    private Integer hitPoint;
-    @Size(max = 4000)
-    @Column(name = "UPDATE_DESCRIPTION")
-    private String updateDescription;
+    @JoinColumn(name = "CHARACTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private CharacterRecord characterRecord;
     @JoinColumn(name = "CLASS_ID", referencedColumnName = "ID")
     @ManyToOne
     private ClassMaster classId;
-    @JoinColumn(name = "CHARACTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private CharacterRecord characterRecord;
+    @Column(name = "HIT_POINT")
+    private Integer hitPoint;
+    @Column(name = "UPDATE_DESCRIPTION")
+    private String updateDescription;
+
+    public String getUpdateDescription() {
+        return updateDescription;
+    }
+
+    public void setUpdateDescription(String updateDescription) {
+        this.updateDescription = updateDescription;
+    }
+
+    public Integer getHitPoint() {
+        return hitPoint;
+    }
+
+    public void setHitPoint(Integer hitPoint) {
+        this.hitPoint = hitPoint;
+    }
 
     public CharacterGrowthRecord() {
     }
@@ -68,20 +85,12 @@ public class CharacterGrowthRecord implements Serializable {
         this.abilityEnhancement = abilityEnhancement;
     }
 
-    public Integer getHitPoint() {
-        return hitPoint;
+    public CharacterRecord getCharacterRecord() {
+        return characterRecord;
     }
 
-    public void setHitPoint(Integer hitPoint) {
-        this.hitPoint = hitPoint;
-    }
-
-    public String getUpdateDescription() {
-        return updateDescription;
-    }
-
-    public void setUpdateDescription(String updateDescription) {
-        this.updateDescription = updateDescription;
+    public void setCharacterRecord(CharacterRecord characterRecord) {
+        this.characterRecord = characterRecord;
     }
 
     public ClassMaster getClassId() {
@@ -90,14 +99,6 @@ public class CharacterGrowthRecord implements Serializable {
 
     public void setClassId(ClassMaster classId) {
         this.classId = classId;
-    }
-
-    public CharacterRecord getCharacterRecord() {
-        return characterRecord;
-    }
-
-    public void setCharacterRecord(CharacterRecord characterRecord) {
-        this.characterRecord = characterRecord;
     }
 
     @Override
@@ -122,7 +123,6 @@ public class CharacterGrowthRecord implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterGrowthRecord[ characterGrowthRecordPK=" + characterGrowthRecordPK + " ]";
+        return "entity.CharacterGrowthRecord[characterGrowthRecordPK=" + characterGrowthRecordPK + "]";
     }
-    
 }

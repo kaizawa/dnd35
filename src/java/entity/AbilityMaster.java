@@ -2,46 +2,45 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "ABILITY_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "AbilityMaster.findAll", query = "SELECT a FROM AbilityMaster a"),
-    @NamedQuery(name = "AbilityMaster.findById", query = "SELECT a FROM AbilityMaster a WHERE a.id = :id"),
-    @NamedQuery(name = "AbilityMaster.findByAbilityName", query = "SELECT a FROM AbilityMaster a WHERE a.abilityName = :abilityName")})
+@NamedQueries({@NamedQuery(name = "AbilityMaster.findById", query = "SELECT a FROM AbilityMaster a WHERE a.id = :id"), @NamedQuery(name = "AbilityMaster.findByAbilityName", query = "SELECT a FROM AbilityMaster a WHERE a.abilityName = :abilityName")})
 public class AbilityMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Integer id;
-    @Size(max = 100)
     @Column(name = "ABILITY_NAME")
     private String abilityName;
     @OneToMany(mappedBy = "abilityId")
     private Collection<SkillMaster> skillMasterCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "abilityMaster")
+    private Collection<ClassAbilityMaster> classAbilityMasterCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "abilityMaster")
     private Collection<CharacterAbilityRecord> characterAbilityRecordCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "abilityMaster")
     private Collection<RaceAbilityMaster> raceAbilityMasterCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "abilityMaster")
-    private Collection<ClassAbilityMaster> classAbilityMasterCollection;
     @OneToMany(mappedBy = "abilityId")
     private Collection<SaveMaster> saveMasterCollection;
 
@@ -68,7 +67,6 @@ public class AbilityMaster implements Serializable {
         this.abilityName = abilityName;
     }
 
-    @XmlTransient
     public Collection<SkillMaster> getSkillMasterCollection() {
         return skillMasterCollection;
     }
@@ -77,25 +75,6 @@ public class AbilityMaster implements Serializable {
         this.skillMasterCollection = skillMasterCollection;
     }
 
-    @XmlTransient
-    public Collection<CharacterAbilityRecord> getCharacterAbilityRecordCollection() {
-        return characterAbilityRecordCollection;
-    }
-
-    public void setCharacterAbilityRecordCollection(Collection<CharacterAbilityRecord> characterAbilityRecordCollection) {
-        this.characterAbilityRecordCollection = characterAbilityRecordCollection;
-    }
-
-    @XmlTransient
-    public Collection<RaceAbilityMaster> getRaceAbilityMasterCollection() {
-        return raceAbilityMasterCollection;
-    }
-
-    public void setRaceAbilityMasterCollection(Collection<RaceAbilityMaster> raceAbilityMasterCollection) {
-        this.raceAbilityMasterCollection = raceAbilityMasterCollection;
-    }
-
-    @XmlTransient
     public Collection<ClassAbilityMaster> getClassAbilityMasterCollection() {
         return classAbilityMasterCollection;
     }
@@ -104,7 +83,22 @@ public class AbilityMaster implements Serializable {
         this.classAbilityMasterCollection = classAbilityMasterCollection;
     }
 
-    @XmlTransient
+    public Collection<CharacterAbilityRecord> getCharacterAbilityRecordCollection() {
+        return characterAbilityRecordCollection;
+    }
+
+    public void setCharacterAbilityRecordCollection(Collection<CharacterAbilityRecord> characterAbilityRecordCollection) {
+        this.characterAbilityRecordCollection = characterAbilityRecordCollection;
+    }
+
+    public Collection<RaceAbilityMaster> getRaceAbilityMasterCollection() {
+        return raceAbilityMasterCollection;
+    }
+
+    public void setRaceAbilityMasterCollection(Collection<RaceAbilityMaster> raceAbilityMasterCollection) {
+        this.raceAbilityMasterCollection = raceAbilityMasterCollection;
+    }
+
     public Collection<SaveMaster> getSaveMasterCollection() {
         return saveMasterCollection;
     }
@@ -135,7 +129,7 @@ public class AbilityMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AbilityMaster[ id=" + id + " ]";
+        return "entity.AbilityMaster[id=" + id + "]";
     }
-    
+
 }

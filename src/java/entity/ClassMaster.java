@@ -2,59 +2,87 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CLASS_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ClassMaster.findAll", query = "SELECT c FROM ClassMaster c"),
-    @NamedQuery(name = "ClassMaster.findById", query = "SELECT c FROM ClassMaster c WHERE c.id = :id"),
-    @NamedQuery(name = "ClassMaster.findByClassName", query = "SELECT c FROM ClassMaster c WHERE c.className = :className"),
-    @NamedQuery(name = "ClassMaster.findByDescription", query = "SELECT c FROM ClassMaster c WHERE c.description = :description"),
-    @NamedQuery(name = "ClassMaster.findBySkillPoint", query = "SELECT c FROM ClassMaster c WHERE c.skillPoint = :skillPoint")})
+@NamedQueries({@NamedQuery(name = "ClassMaster.findById", query = "SELECT c FROM ClassMaster c WHERE c.id = :id"), @NamedQuery(name = "ClassMaster.findByClassName", query = "SELECT c FROM ClassMaster c WHERE c.className = :className"), @NamedQuery(name = "ClassMaster.findByDescription", query = "SELECT c FROM ClassMaster c WHERE c.description = :description")})
 public class ClassMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
-    @Size(max = 100)
     @Column(name = "CLASS_NAME")
     private String className;
-    @Size(max = 4000)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "SKILL_POINT")
-    private Integer skillPoint;
-    @JoinColumn(name = "HIT_DICE_TYPE", referencedColumnName = "ID")
-    @ManyToOne
-    private DiceMaster hitDiceType;
     @JoinColumn(name = "BASE_ATTACK_RANK_ID", referencedColumnName = "ID")
     @ManyToOne
     private BonusRankMaster baseAttackRankId;
+    @JoinColumn(name = "HIT_DICE_TYPE", referencedColumnName = "ID")
+    @ManyToOne
+    private DiceMaster hitDiceType;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "classMaster")
-    private Collection<ClassSkillMaster> classSkillMasterCollection;
+    private List<ClassAbilityMaster> classAbilityMasterList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "classMaster")
-    private Collection<ClassAbilityMaster> classAbilityMasterCollection;
-    @OneToMany(mappedBy = "classId")
-    private Collection<CharacterGrowthRecord> characterGrowthRecordCollection;
+    private List<ClassSaveMaster> classSaveMasterList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "classMaster")
-    private Collection<ClassSaveMaster> classSaveMasterCollection;
+    private List<ClassSkillMaster> classSkillMasterList;
+    @Column(name = "SKILL_POINT")
+    private Integer skillPoint;
+
+    public Integer getSkillPoint() {
+        return skillPoint;
+    }
+
+    public void setSkillPoint(Integer skillPoint) {
+        this.skillPoint = skillPoint;
+    }
+
+    public List<ClassAbilityMaster> getClassAbilityMasterList() {
+        return classAbilityMasterList;
+    }
+
+    public void setClassAbilityMasterList(List<ClassAbilityMaster> classAbilityMasterList) {
+        this.classAbilityMasterList = classAbilityMasterList;
+    }
+
+    public List<ClassSaveMaster> getClassSaveMasterList() {
+        return classSaveMasterList;
+    }
+
+    public void setClassSaveMasterList(List<ClassSaveMaster> classSaveMasterList) {
+        this.classSaveMasterList = classSaveMasterList;
+    }
+
+    public List<ClassSkillMaster> getClassSkillMasterList() {
+        return classSkillMasterList;
+    }
+
+    public void setClassSkillMasterList(List<ClassSkillMaster> classSkillMasterList) {
+        this.classSkillMasterList = classSkillMasterList;
+    }
 
     public ClassMaster() {
     }
@@ -87,22 +115,6 @@ public class ClassMaster implements Serializable {
         this.description = description;
     }
 
-    public Integer getSkillPoint() {
-        return skillPoint;
-    }
-
-    public void setSkillPoint(Integer skillPoint) {
-        this.skillPoint = skillPoint;
-    }
-
-    public DiceMaster getHitDiceType() {
-        return hitDiceType;
-    }
-
-    public void setHitDiceType(DiceMaster hitDiceType) {
-        this.hitDiceType = hitDiceType;
-    }
-
     public BonusRankMaster getBaseAttackRankId() {
         return baseAttackRankId;
     }
@@ -111,40 +123,12 @@ public class ClassMaster implements Serializable {
         this.baseAttackRankId = baseAttackRankId;
     }
 
-    @XmlTransient
-    public Collection<ClassSkillMaster> getClassSkillMasterCollection() {
-        return classSkillMasterCollection;
+    public DiceMaster getHitDiceType() {
+        return hitDiceType;
     }
 
-    public void setClassSkillMasterCollection(Collection<ClassSkillMaster> classSkillMasterCollection) {
-        this.classSkillMasterCollection = classSkillMasterCollection;
-    }
-
-    @XmlTransient
-    public Collection<ClassAbilityMaster> getClassAbilityMasterCollection() {
-        return classAbilityMasterCollection;
-    }
-
-    public void setClassAbilityMasterCollection(Collection<ClassAbilityMaster> classAbilityMasterCollection) {
-        this.classAbilityMasterCollection = classAbilityMasterCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterGrowthRecord> getCharacterGrowthRecordCollection() {
-        return characterGrowthRecordCollection;
-    }
-
-    public void setCharacterGrowthRecordCollection(Collection<CharacterGrowthRecord> characterGrowthRecordCollection) {
-        this.characterGrowthRecordCollection = characterGrowthRecordCollection;
-    }
-
-    @XmlTransient
-    public Collection<ClassSaveMaster> getClassSaveMasterCollection() {
-        return classSaveMasterCollection;
-    }
-
-    public void setClassSaveMasterCollection(Collection<ClassSaveMaster> classSaveMasterCollection) {
-        this.classSaveMasterCollection = classSaveMasterCollection;
+    public void setHitDiceType(DiceMaster hitDiceType) {
+        this.hitDiceType = hitDiceType;
     }
 
     @Override
@@ -169,7 +153,7 @@ public class ClassMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ClassMaster[ id=" + id + " ]";
+        return "entity.ClassMaster[id=" + id + "]";
     }
-    
+
 }

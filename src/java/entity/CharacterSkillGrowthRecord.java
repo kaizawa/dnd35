@@ -2,42 +2,40 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CHARACTER_SKILL_GROWTH_RECORD")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findAll", query = "SELECT c FROM CharacterSkillGrowthRecord c"),
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findByCharacterId", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.characterId = :characterId"),
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findByCharacterLevel", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.characterLevel = :characterLevel"),
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findBySkillId", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.skillId = :skillId"),
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findBySkillPoint", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.skillPoint = :skillPoint"),
-    @NamedQuery(name = "CharacterSkillGrowthRecord.findByDescription", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.description = :description")})
+@NamedQueries({@NamedQuery(name = "CharacterSkillGrowthRecord.findByCharacterId", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.characterId = :characterId"), @NamedQuery(name = "CharacterSkillGrowthRecord.findByCharacterLevel", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.characterLevel = :characterLevel"), @NamedQuery(name = "CharacterSkillGrowthRecord.findBySkillId", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.characterSkillGrowthRecordPK.skillId = :skillId"), @NamedQuery(name = "CharacterSkillGrowthRecord.findBySkillPoint", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.skillPoint = :skillPoint"), @NamedQuery(name = "CharacterSkillGrowthRecord.findByDescription", query = "SELECT c FROM CharacterSkillGrowthRecord c WHERE c.description = :description")})
 public class CharacterSkillGrowthRecord implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CharacterSkillGrowthRecordPK characterSkillGrowthRecordPK;
     @Column(name = "SKILL_POINT")
     private Integer skillPoint;
-    @Size(max = 400)
     @Column(name = "DESCRIPTION")
     private String description;
-    @JoinColumn(name = "SKILL_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SkillMaster skillMaster;
     @JoinColumn(name = "CHARACTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private CharacterRecord characterRecord;
+    @JoinColumn(name = "SKILL_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private SkillMaster skillMaster;
 
     public CharacterSkillGrowthRecord() {
     }
@@ -74,20 +72,20 @@ public class CharacterSkillGrowthRecord implements Serializable {
         this.description = description;
     }
 
-    public SkillMaster getSkillMaster() {
-        return skillMaster;
-    }
-
-    public void setSkillMaster(SkillMaster skillMaster) {
-        this.skillMaster = skillMaster;
-    }
-
     public CharacterRecord getCharacterRecord() {
         return characterRecord;
     }
 
     public void setCharacterRecord(CharacterRecord characterRecord) {
         this.characterRecord = characterRecord;
+    }
+
+    public SkillMaster getSkillMaster() {
+        return skillMaster;
+    }
+
+    public void setSkillMaster(SkillMaster skillMaster) {
+        this.skillMaster = skillMaster;
     }
 
     @Override
@@ -112,7 +110,7 @@ public class CharacterSkillGrowthRecord implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterSkillGrowthRecord[ characterSkillGrowthRecordPK=" + characterSkillGrowthRecordPK + " ]";
+        return "entity.CharacterSkillGrowthRecord[characterSkillGrowthRecordPK=" + characterSkillGrowthRecordPK + "]";
     }
-    
+
 }

@@ -2,27 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Embeddable
 public class SkillSynergyMasterPK implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "SKILL_ID")
+    @Column(name = "SKILL_ID", nullable = false)
     private int skillId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "AFFECTED_BY")
+    @Column(name = "AFFECTED_BY", nullable = false)
     private int affectedBy;
 
     public SkillSynergyMasterPK() {
@@ -75,7 +70,7 @@ public class SkillSynergyMasterPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SkillSynergyMasterPK[ skillId=" + skillId + ", affectedBy=" + affectedBy + " ]";
+        return "entity.SkillSynergyMasterPK[skillId=" + skillId + ", affectedBy=" + affectedBy + "]";
     }
-    
+
 }

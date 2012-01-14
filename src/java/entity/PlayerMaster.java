@@ -2,42 +2,38 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "PLAYER_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PlayerMaster.findAll", query = "SELECT p FROM PlayerMaster p"),
-    @NamedQuery(name = "PlayerMaster.findById", query = "SELECT p FROM PlayerMaster p WHERE p.id = :id"),
-    @NamedQuery(name = "PlayerMaster.findByUsername", query = "SELECT p FROM PlayerMaster p WHERE p.username = :username"),
-    @NamedQuery(name = "PlayerMaster.findByPassword", query = "SELECT p FROM PlayerMaster p WHERE p.password = :password"),
-    @NamedQuery(name = "PlayerMaster.findByPlayerName", query = "SELECT p FROM PlayerMaster p WHERE p.playerName = :playerName")})
+@NamedQueries({@NamedQuery(name = "PlayerMaster.findAll", query = "SELECT p FROM PlayerMaster p"), @NamedQuery(name = "PlayerMaster.findById", query = "SELECT p FROM PlayerMaster p WHERE p.id = :id"), @NamedQuery(name = "PlayerMaster.findByUsername", query = "SELECT p FROM PlayerMaster p WHERE p.username = :username"), @NamedQuery(name = "PlayerMaster.findByPassword", query = "SELECT p FROM PlayerMaster p WHERE p.password = :password"), @NamedQuery(name = "PlayerMaster.findByPlayerName", query = "SELECT p FROM PlayerMaster p WHERE p.playerName = :playerName")})
 public class PlayerMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 100)
     @Column(name = "USERNAME")
     private String username;
-    @Size(max = 100)
     @Column(name = "PASSWORD")
     private String password;
-    @Size(max = 200)
     @Column(name = "PLAYER_NAME")
     private String playerName;
 
@@ -102,7 +98,7 @@ public class PlayerMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.PlayerMaster[ id=" + id + " ]";
+        return "entity.PlayerMaster[id=" + id + "]";
     }
-    
+
 }

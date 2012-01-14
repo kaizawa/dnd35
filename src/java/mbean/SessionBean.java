@@ -113,8 +113,8 @@ public class SessionBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean getApplicationBean1() {
-        return getApplicationBean1();
+    protected ApplicationBean getApplicationBean() {
+        return getApplicationBean();
     }
     
     // 選択されたキャンペーン

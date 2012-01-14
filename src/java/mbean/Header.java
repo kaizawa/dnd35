@@ -96,7 +96,7 @@ public class Header extends BaseBean{
             characterRecordFacade.create(characterRecord);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("キャラクターの作成に失敗しました");
+            ////error("キャラクターの作成に失敗しました");
             return null;
         }
 
@@ -113,7 +113,7 @@ public class Header extends BaseBean{
                 characterSkillRecordFacade.create(charaSkillRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクター技能レコードの作成に失敗しました");
+                ////error("キャラクター技能レコードの作成に失敗しました");
                 return null;
             }
 
@@ -133,7 +133,7 @@ public class Header extends BaseBean{
                 characterAbilityRecordFacade.create(abilityRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクター能力値レコードの作成に失敗しました");
+                ////error("キャラクター能力値レコードの作成に失敗しました");
                 return null;
             }
 
@@ -152,7 +152,7 @@ public class Header extends BaseBean{
                 characterSaveRecordFacade.create(saveRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクターセーヴレコードの作成に失敗しました");
+                ////error("キャラクターセーヴレコードの作成に失敗しました");
                 return null;
             }
 
@@ -166,7 +166,7 @@ public class Header extends BaseBean{
             characterEquipmentFacade.create(equip);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("キャラクター装備データの作成に失敗しました");
+            ////error("キャラクター装備データの作成に失敗しました");
             return null;
         }
 

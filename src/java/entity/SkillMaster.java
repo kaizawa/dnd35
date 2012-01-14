@@ -2,53 +2,58 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "SKILL_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SkillMaster.findAll", query = "SELECT s FROM SkillMaster s"),
-    @NamedQuery(name = "SkillMaster.findById", query = "SELECT s FROM SkillMaster s WHERE s.id = :id"),
-    @NamedQuery(name = "SkillMaster.findBySkillName", query = "SELECT s FROM SkillMaster s WHERE s.skillName = :skillName"),
-    @NamedQuery(name = "SkillMaster.findByAcceptNoRank", query = "SELECT s FROM SkillMaster s WHERE s.acceptNoRank = :acceptNoRank"),
-    @NamedQuery(name = "SkillMaster.findByArmorCheck", query = "SELECT s FROM SkillMaster s WHERE s.armorCheck = :armorCheck")})
+@NamedQueries({@NamedQuery(name = "SkillMaster.findById", query = "SELECT s FROM SkillMaster s WHERE s.id = :id"), @NamedQuery(name = "SkillMaster.findBySkillName", query = "SELECT s FROM SkillMaster s WHERE s.skillName = :skillName"), @NamedQuery(name = "SkillMaster.findByAcceptNoRank", query = "SELECT s FROM SkillMaster s WHERE s.acceptNoRank = :acceptNoRank")})
 public class SkillMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Integer id;
-    @Size(max = 100)
     @Column(name = "SKILL_NAME")
     private String skillName;
     @Column(name = "ACCEPT_NO_RANK")
     private Integer acceptNoRank;
-    @Column(name = "ARMOR_CHECK")
-    private Integer armorCheck;
     @JoinColumn(name = "ABILITY_ID", referencedColumnName = "ID")
     @ManyToOne
     private AbilityMaster abilityId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillMaster")
-    private Collection<SkillSynergyMaster> skillSynergyMasterCollection;
+    private Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillMaster")
     private Collection<CharacterSkillRecord> characterSkillRecordCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillMaster")
-    private Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection;
+    @Column(name = "ARMOR_CHECK")
+    private int armorCheck;
+
+    public int getArmorCheck() {
+        return armorCheck;
+    }
+
+    public void setArmorCheck(int armorCheck) {
+        this.armorCheck = armorCheck;
+    }
 
     public SkillMaster() {
     }
@@ -81,14 +86,6 @@ public class SkillMaster implements Serializable {
         this.acceptNoRank = acceptNoRank;
     }
 
-    public Integer getArmorCheck() {
-        return armorCheck;
-    }
-
-    public void setArmorCheck(Integer armorCheck) {
-        this.armorCheck = armorCheck;
-    }
-
     public AbilityMaster getAbilityId() {
         return abilityId;
     }
@@ -97,31 +94,20 @@ public class SkillMaster implements Serializable {
         this.abilityId = abilityId;
     }
 
-    @XmlTransient
-    public Collection<SkillSynergyMaster> getSkillSynergyMasterCollection() {
-        return skillSynergyMasterCollection;
-    }
-
-    public void setSkillSynergyMasterCollection(Collection<SkillSynergyMaster> skillSynergyMasterCollection) {
-        this.skillSynergyMasterCollection = skillSynergyMasterCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterSkillRecord> getCharacterSkillRecordCollection() {
-        return characterSkillRecordCollection;
-    }
-
-    public void setCharacterSkillRecordCollection(Collection<CharacterSkillRecord> characterSkillRecordCollection) {
-        this.characterSkillRecordCollection = characterSkillRecordCollection;
-    }
-
-    @XmlTransient
     public Collection<CharacterSkillGrowthRecord> getCharacterSkillGrowthRecordCollection() {
         return characterSkillGrowthRecordCollection;
     }
 
     public void setCharacterSkillGrowthRecordCollection(Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection) {
         this.characterSkillGrowthRecordCollection = characterSkillGrowthRecordCollection;
+    }
+
+    public Collection<CharacterSkillRecord> getCharacterSkillRecordCollection() {
+        return characterSkillRecordCollection;
+    }
+
+    public void setCharacterSkillRecordCollection(Collection<CharacterSkillRecord> characterSkillRecordCollection) {
+        this.characterSkillRecordCollection = characterSkillRecordCollection;
     }
 
     @Override
@@ -146,7 +132,7 @@ public class SkillMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SkillMaster[ id=" + id + " ]";
+        return "entity.SkillMaster[id=" + id + "]";
     }
-    
+
 }

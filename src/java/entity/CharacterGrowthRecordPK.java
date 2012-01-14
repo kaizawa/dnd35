@@ -2,27 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Embeddable
 public class CharacterGrowthRecordPK implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CHARACTER_ID")
+    @Column(name = "CHARACTER_ID", nullable = false)
     private int characterId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CHARACTER_LEVEL")
+    @Column(name = "CHARACTER_LEVEL", nullable = false)
     private int characterLevel;
 
     public CharacterGrowthRecordPK() {
@@ -75,7 +70,7 @@ public class CharacterGrowthRecordPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterGrowthRecordPK[ characterId=" + characterId + ", characterLevel=" + characterLevel + " ]";
+        return "entity.CharacterGrowthRecordPK[characterId=" + characterId + ", characterLevel=" + characterLevel + "]";
     }
-    
+
 }

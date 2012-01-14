@@ -2,27 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Embeddable
 public class RaceSaveMasterPK implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "RACE_ID")
+    @Column(name = "RACE_ID", nullable = false)
     private int raceId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "SAVE_ID")
+    @Column(name = "SAVE_ID", nullable = false)
     private int saveId;
 
     public RaceSaveMasterPK() {
@@ -75,7 +70,7 @@ public class RaceSaveMasterPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.RaceSaveMasterPK[ raceId=" + raceId + ", saveId=" + saveId + " ]";
+        return "entity.RaceSaveMasterPK[raceId=" + raceId + ", saveId=" + saveId + "]";
     }
-    
+
 }

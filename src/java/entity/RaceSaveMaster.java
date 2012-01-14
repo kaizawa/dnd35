@@ -2,36 +2,38 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "RACE_SAVE_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RaceSaveMaster.findAll", query = "SELECT r FROM RaceSaveMaster r"),
-    @NamedQuery(name = "RaceSaveMaster.findByRaceId", query = "SELECT r FROM RaceSaveMaster r WHERE r.raceSaveMasterPK.raceId = :raceId"),
-    @NamedQuery(name = "RaceSaveMaster.findBySaveId", query = "SELECT r FROM RaceSaveMaster r WHERE r.raceSaveMasterPK.saveId = :saveId"),
-    @NamedQuery(name = "RaceSaveMaster.findByModifier", query = "SELECT r FROM RaceSaveMaster r WHERE r.modifier = :modifier")})
+@NamedQueries({@NamedQuery(name = "RaceSaveMaster.findByRaceId", query = "SELECT r FROM RaceSaveMaster r WHERE r.raceSaveMasterPK.raceId = :raceId"), @NamedQuery(name = "RaceSaveMaster.findBySaveId", query = "SELECT r FROM RaceSaveMaster r WHERE r.raceSaveMasterPK.saveId = :saveId"), @NamedQuery(name = "RaceSaveMaster.findByModifier", query = "SELECT r FROM RaceSaveMaster r WHERE r.modifier = :modifier")})
 public class RaceSaveMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RaceSaveMasterPK raceSaveMasterPK;
     @Column(name = "MODIFIER")
     private Integer modifier;
-    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SaveMaster saveMaster;
     @JoinColumn(name = "RACE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private RaceMaster raceMaster;
+    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private SaveMaster saveMaster;
 
     public RaceSaveMaster() {
     }
@@ -60,20 +62,20 @@ public class RaceSaveMaster implements Serializable {
         this.modifier = modifier;
     }
 
-    public SaveMaster getSaveMaster() {
-        return saveMaster;
-    }
-
-    public void setSaveMaster(SaveMaster saveMaster) {
-        this.saveMaster = saveMaster;
-    }
-
     public RaceMaster getRaceMaster() {
         return raceMaster;
     }
 
     public void setRaceMaster(RaceMaster raceMaster) {
         this.raceMaster = raceMaster;
+    }
+
+    public SaveMaster getSaveMaster() {
+        return saveMaster;
+    }
+
+    public void setSaveMaster(SaveMaster saveMaster) {
+        this.saveMaster = saveMaster;
     }
 
     @Override
@@ -98,7 +100,7 @@ public class RaceSaveMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.RaceSaveMaster[ raceSaveMasterPK=" + raceSaveMasterPK + " ]";
+        return "entity.RaceSaveMaster[raceSaveMasterPK=" + raceSaveMasterPK + "]";
     }
-    
+
 }

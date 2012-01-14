@@ -2,36 +2,38 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "RACE_ABILITY_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RaceAbilityMaster.findAll", query = "SELECT r FROM RaceAbilityMaster r"),
-    @NamedQuery(name = "RaceAbilityMaster.findByRaceId", query = "SELECT r FROM RaceAbilityMaster r WHERE r.raceAbilityMasterPK.raceId = :raceId"),
-    @NamedQuery(name = "RaceAbilityMaster.findByAbilityId", query = "SELECT r FROM RaceAbilityMaster r WHERE r.raceAbilityMasterPK.abilityId = :abilityId"),
-    @NamedQuery(name = "RaceAbilityMaster.findByModifier", query = "SELECT r FROM RaceAbilityMaster r WHERE r.modifier = :modifier")})
+@NamedQueries({@NamedQuery(name = "RaceAbilityMaster.findByRaceId", query = "SELECT r FROM RaceAbilityMaster r WHERE r.raceAbilityMasterPK.raceId = :raceId"), @NamedQuery(name = "RaceAbilityMaster.findByAbilityId", query = "SELECT r FROM RaceAbilityMaster r WHERE r.raceAbilityMasterPK.abilityId = :abilityId"), @NamedQuery(name = "RaceAbilityMaster.findByModifier", query = "SELECT r FROM RaceAbilityMaster r WHERE r.modifier = :modifier")})
 public class RaceAbilityMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RaceAbilityMasterPK raceAbilityMasterPK;
     @Column(name = "MODIFIER")
     private Integer modifier;
-    @JoinColumn(name = "RACE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private RaceMaster raceMaster;
     @JoinColumn(name = "ABILITY_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private AbilityMaster abilityMaster;
+    @JoinColumn(name = "RACE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private RaceMaster raceMaster;
 
     public RaceAbilityMaster() {
     }
@@ -60,20 +62,20 @@ public class RaceAbilityMaster implements Serializable {
         this.modifier = modifier;
     }
 
-    public RaceMaster getRaceMaster() {
-        return raceMaster;
-    }
-
-    public void setRaceMaster(RaceMaster raceMaster) {
-        this.raceMaster = raceMaster;
-    }
-
     public AbilityMaster getAbilityMaster() {
         return abilityMaster;
     }
 
     public void setAbilityMaster(AbilityMaster abilityMaster) {
         this.abilityMaster = abilityMaster;
+    }
+
+    public RaceMaster getRaceMaster() {
+        return raceMaster;
+    }
+
+    public void setRaceMaster(RaceMaster raceMaster) {
+        this.raceMaster = raceMaster;
     }
 
     @Override
@@ -98,7 +100,7 @@ public class RaceAbilityMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.RaceAbilityMaster[ raceAbilityMasterPK=" + raceAbilityMasterPK + " ]";
+        return "entity.RaceAbilityMaster[raceAbilityMasterPK=" + raceAbilityMasterPK + "]";
     }
-    
+
 }

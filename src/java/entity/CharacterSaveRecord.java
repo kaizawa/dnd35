@@ -2,41 +2,40 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CHARACTER_SAVE_RECORD")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CharacterSaveRecord.findAll", query = "SELECT c FROM CharacterSaveRecord c"),
-    @NamedQuery(name = "CharacterSaveRecord.findByCharacterId", query = "SELECT c FROM CharacterSaveRecord c WHERE c.characterSaveRecordPK.characterId = :characterId"),
-    @NamedQuery(name = "CharacterSaveRecord.findBySaveId", query = "SELECT c FROM CharacterSaveRecord c WHERE c.characterSaveRecordPK.saveId = :saveId"),
-    @NamedQuery(name = "CharacterSaveRecord.findByMiscModifier", query = "SELECT c FROM CharacterSaveRecord c WHERE c.miscModifier = :miscModifier"),
-    @NamedQuery(name = "CharacterSaveRecord.findByDescription", query = "SELECT c FROM CharacterSaveRecord c WHERE c.description = :description")})
+@NamedQueries({@NamedQuery(name = "CharacterSaveRecord.findByCharacterId", query = "SELECT c FROM CharacterSaveRecord c WHERE c.characterSaveRecordPK.characterId = :characterId"), @NamedQuery(name = "CharacterSaveRecord.findBySaveId", query = "SELECT c FROM CharacterSaveRecord c WHERE c.characterSaveRecordPK.saveId = :saveId"), @NamedQuery(name = "CharacterSaveRecord.findByMiscModifier", query = "SELECT c FROM CharacterSaveRecord c WHERE c.miscModifier = :miscModifier"), @NamedQuery(name = "CharacterSaveRecord.findByDescription", query = "SELECT c FROM CharacterSaveRecord c WHERE c.description = :description")})
 public class CharacterSaveRecord implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CharacterSaveRecordPK characterSaveRecordPK;
     @Column(name = "MISC_MODIFIER")
     private Integer miscModifier;
-    @Size(max = 400)
     @Column(name = "DESCRIPTION")
     private String description;
-    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SaveMaster saveMaster;
     @JoinColumn(name = "CHARACTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private CharacterRecord characterRecord;
+    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private SaveMaster saveMaster;
 
     public CharacterSaveRecord() {
     }
@@ -73,20 +72,20 @@ public class CharacterSaveRecord implements Serializable {
         this.description = description;
     }
 
-    public SaveMaster getSaveMaster() {
-        return saveMaster;
-    }
-
-    public void setSaveMaster(SaveMaster saveMaster) {
-        this.saveMaster = saveMaster;
-    }
-
     public CharacterRecord getCharacterRecord() {
         return characterRecord;
     }
 
     public void setCharacterRecord(CharacterRecord characterRecord) {
         this.characterRecord = characterRecord;
+    }
+
+    public SaveMaster getSaveMaster() {
+        return saveMaster;
+    }
+
+    public void setSaveMaster(SaveMaster saveMaster) {
+        this.saveMaster = saveMaster;
     }
 
     @Override
@@ -111,7 +110,7 @@ public class CharacterSaveRecord implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterSaveRecord[ characterSaveRecordPK=" + characterSaveRecordPK + " ]";
+        return "entity.CharacterSaveRecord[characterSaveRecordPK=" + characterSaveRecordPK + "]";
     }
-    
+
 }

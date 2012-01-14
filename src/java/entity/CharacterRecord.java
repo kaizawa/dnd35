@@ -7,76 +7,55 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CHARACTER_RECORD")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CharacterRecord.findAll", query = "SELECT c FROM CharacterRecord c"),
-    @NamedQuery(name = "CharacterRecord.findById", query = "SELECT c FROM CharacterRecord c WHERE c.id = :id"),
-    @NamedQuery(name = "CharacterRecord.findBySaveTime", query = "SELECT c FROM CharacterRecord c WHERE c.saveTime = :saveTime"),
-    @NamedQuery(name = "CharacterRecord.findBySheetId", query = "SELECT c FROM CharacterRecord c WHERE c.sheetId = :sheetId"),
-    @NamedQuery(name = "CharacterRecord.findByCharacterName", query = "SELECT c FROM CharacterRecord c WHERE c.characterName = :characterName"),
-    @NamedQuery(name = "CharacterRecord.findByPlayerName", query = "SELECT c FROM CharacterRecord c WHERE c.playerName = :playerName"),
-    @NamedQuery(name = "CharacterRecord.findByExperience", query = "SELECT c FROM CharacterRecord c WHERE c.experience = :experience"),
-    @NamedQuery(name = "CharacterRecord.findByHeight", query = "SELECT c FROM CharacterRecord c WHERE c.height = :height"),
-    @NamedQuery(name = "CharacterRecord.findByWeight", query = "SELECT c FROM CharacterRecord c WHERE c.weight = :weight"),
-    @NamedQuery(name = "CharacterRecord.findByDescription", query = "SELECT c FROM CharacterRecord c WHERE c.description = :description"),
-    @NamedQuery(name = "CharacterRecord.findByInitiativeMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeMiscModifier = :initiativeMiscModifier"),
-    @NamedQuery(name = "CharacterRecord.findByInitiativeFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeFeatModifier = :initiativeFeatModifier"),
-    @NamedQuery(name = "CharacterRecord.findBySpeedMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedMiscModifier = :speedMiscModifier"),
-    @NamedQuery(name = "CharacterRecord.findBySpeedFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedFeatModifier = :speedFeatModifier"),
-    @NamedQuery(name = "CharacterRecord.findByHairColor", query = "SELECT c FROM CharacterRecord c WHERE c.hairColor = :hairColor"),
-    @NamedQuery(name = "CharacterRecord.findBySkinColor", query = "SELECT c FROM CharacterRecord c WHERE c.skinColor = :skinColor"),
-    @NamedQuery(name = "CharacterRecord.findByEyeColor", query = "SELECT c FROM CharacterRecord c WHERE c.eyeColor = :eyeColor"),
-    @NamedQuery(name = "CharacterRecord.findByDamageReduction", query = "SELECT c FROM CharacterRecord c WHERE c.damageReduction = :damageReduction"),
-    @NamedQuery(name = "CharacterRecord.findBySpellResistance", query = "SELECT c FROM CharacterRecord c WHERE c.spellResistance = :spellResistance"),
-    @NamedQuery(name = "CharacterRecord.findByLanguage", query = "SELECT c FROM CharacterRecord c WHERE c.language = :language"),
-    @NamedQuery(name = "CharacterRecord.findByFeatDescription", query = "SELECT c FROM CharacterRecord c WHERE c.featDescription = :featDescription"),
-    @NamedQuery(name = "CharacterRecord.findByAttackDescription", query = "SELECT c FROM CharacterRecord c WHERE c.attackDescription = :attackDescription"),
-    @NamedQuery(name = "CharacterRecord.findBySpellDescription", query = "SELECT c FROM CharacterRecord c WHERE c.spellDescription = :spellDescription"),
-    @NamedQuery(name = "CharacterRecord.findByItemDescription", query = "SELECT c FROM CharacterRecord c WHERE c.itemDescription = :itemDescription"),
-    @NamedQuery(name = "CharacterRecord.findByDefenceDescription", query = "SELECT c FROM CharacterRecord c WHERE c.defenceDescription = :defenceDescription"),
-    @NamedQuery(name = "CharacterRecord.findByAcArmor", query = "SELECT c FROM CharacterRecord c WHERE c.acArmor = :acArmor"),
-    @NamedQuery(name = "CharacterRecord.findByAcShield", query = "SELECT c FROM CharacterRecord c WHERE c.acShield = :acShield"),
-    @NamedQuery(name = "CharacterRecord.findByAcMiscMod", query = "SELECT c FROM CharacterRecord c WHERE c.acMiscMod = :acMiscMod"),
-    @NamedQuery(name = "CharacterRecord.findByAge", query = "SELECT c FROM CharacterRecord c WHERE c.age = :age"),
-    @NamedQuery(name = "CharacterRecord.findByUpdateDescription", query = "SELECT c FROM CharacterRecord c WHERE c.updateDescription = :updateDescription")})
+@NamedQueries({@NamedQuery(name = "CharacterRecord.findById", query = "SELECT c FROM CharacterRecord c WHERE c.id = :id"), @NamedQuery(name = "CharacterRecord.findBySaveTime", query = "SELECT c FROM CharacterRecord c WHERE c.saveTime = :saveTime"), @NamedQuery(name = "CharacterRecord.findBySheetId", query = "SELECT c FROM CharacterRecord c WHERE c.sheetId = :sheetId"), @NamedQuery(name = "CharacterRecord.findByCharacterName", query = "SELECT c FROM CharacterRecord c WHERE c.characterName = :characterName"), @NamedQuery(name = "CharacterRecord.findByPlayerName", query = "SELECT c FROM CharacterRecord c WHERE c.playerName = :playerName"), @NamedQuery(name = "CharacterRecord.findByExperience", query = "SELECT c FROM CharacterRecord c WHERE c.experience = :experience"), @NamedQuery(name = "CharacterRecord.findByAge", query = "SELECT c FROM CharacterRecord c WHERE c.age = :age"), @NamedQuery(name = "CharacterRecord.findByHeight", query = "SELECT c FROM CharacterRecord c WHERE c.height = :height"), @NamedQuery(name = "CharacterRecord.findByWeight", query = "SELECT c FROM CharacterRecord c WHERE c.weight = :weight"), @NamedQuery(name = "CharacterRecord.findByDescription", query = "SELECT c FROM CharacterRecord c WHERE c.description = :description"), @NamedQuery(name = "CharacterRecord.findByInitiativeMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeMiscModifier = :initiativeMiscModifier"), @NamedQuery(name = "CharacterRecord.findByInitiativeFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeFeatModifier = :initiativeFeatModifier"), @NamedQuery(name = "CharacterRecord.findBySpeedMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedMiscModifier = :speedMiscModifier"), @NamedQuery(name = "CharacterRecord.findBySpeedFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedFeatModifier = :speedFeatModifier"), @NamedQuery(name = "CharacterRecord.findByHairColor", query = "SELECT c FROM CharacterRecord c WHERE c.hairColor = :hairColor"), @NamedQuery(name = "CharacterRecord.findBySkinColor", query = "SELECT c FROM CharacterRecord c WHERE c.skinColor = :skinColor"), @NamedQuery(name = "CharacterRecord.findByEyeColor", query = "SELECT c FROM CharacterRecord c WHERE c.eyeColor = :eyeColor"), @NamedQuery(name = "CharacterRecord.findByDamageReduction", query = "SELECT c FROM CharacterRecord c WHERE c.damageReduction = :damageReduction"), @NamedQuery(name = "CharacterRecord.findBySpellResistance", query = "SELECT c FROM CharacterRecord c WHERE c.spellResistance = :spellResistance"), @NamedQuery(name = "CharacterRecord.findByLanguage", query = "SELECT c FROM CharacterRecord c WHERE c.language = :language"), @NamedQuery(name = "CharacterRecord.findByFeatDescription", query = "SELECT c FROM CharacterRecord c WHERE c.featDescription = :featDescription"), @NamedQuery(name = "CharacterRecord.findByAttackDescription", query = "SELECT c FROM CharacterRecord c WHERE c.attackDescription = :attackDescription"), @NamedQuery(name = "CharacterRecord.findBySpellDescription", query = "SELECT c FROM CharacterRecord c WHERE c.spellDescription = :spellDescription"), @NamedQuery(name = "CharacterRecord.findByItemDescription", query = "SELECT c FROM CharacterRecord c WHERE c.itemDescription = :itemDescription"), @NamedQuery(name = "CharacterRecord.findByAcArmor", query = "SELECT c FROM CharacterRecord c WHERE c.acArmor = :acArmor"), @NamedQuery(name = "CharacterRecord.findByAcShield", query = "SELECT c FROM CharacterRecord c WHERE c.acShield = :acShield"), @NamedQuery(name = "CharacterRecord.findByAcMiscMod", query = "SELECT c FROM CharacterRecord c WHERE c.acMiscMod = :acMiscMod")})
 public class CharacterRecord implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Column(name = "SAVE_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date saveTime;
     @Column(name = "SHEET_ID")
     private Integer sheetId;
-    @Size(max = 100)
     @Column(name = "CHARACTER_NAME")
     private String characterName;
-    @Size(max = 100)
     @Column(name = "PLAYER_NAME")
     private String playerName;
     @Column(name = "EXPERIENCE")
     private Integer experience;
+    @Column(name = "AGE")
+    private Integer age;
     @Column(name = "HEIGHT")
     private Integer height;
     @Column(name = "WEIGHT")
     private Integer weight;
-    @Size(max = 4000)
     @Column(name = "DESCRIPTION")
     private String description;
     @Column(name = "INITIATIVE_MISC_MODIFIER")
@@ -87,75 +66,118 @@ public class CharacterRecord implements Serializable {
     private Integer speedMiscModifier;
     @Column(name = "SPEED_FEAT_MODIFIER")
     private Integer speedFeatModifier;
-    @Size(max = 200)
     @Column(name = "HAIR_COLOR")
     private String hairColor;
-    @Size(max = 200)
     @Column(name = "SKIN_COLOR")
     private String skinColor;
-    @Size(max = 200)
     @Column(name = "EYE_COLOR")
     private String eyeColor;
     @Column(name = "DAMAGE_REDUCTION")
     private Integer damageReduction;
     @Column(name = "SPELL_RESISTANCE")
     private Integer spellResistance;
-    @Size(max = 400)
     @Column(name = "LANGUAGE")
     private String language;
-    @Size(max = 4000)
     @Column(name = "FEAT_DESCRIPTION")
     private String featDescription;
-    @Size(max = 4000)
     @Column(name = "ATTACK_DESCRIPTION")
     private String attackDescription;
-    @Size(max = 4000)
     @Column(name = "SPELL_DESCRIPTION")
     private String spellDescription;
-    @Size(max = 4000)
     @Column(name = "ITEM_DESCRIPTION")
     private String itemDescription;
-    @Size(max = 4000)
     @Column(name = "DEFENCE_DESCRIPTION")
     private String defenceDescription;
+    @Column(name = "UPDATE_DESCRIPTION")
+    private String updateDescription;
     @Column(name = "AC_ARMOR")
     private Integer acArmor;
     @Column(name = "AC_SHIELD")
     private Integer acShield;
     @Column(name = "AC_MISC_MOD")
     private Integer acMiscMod;
-    @Column(name = "AGE")
-    private Integer age;
-    @Size(max = 12000)
-    @Column(name = "UPDATE_DESCRIPTION")
-    private String updateDescription;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
-    private Collection<CharacterAbilityRecord> characterAbilityRecordCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
-    private Collection<CharacterSkillRecord> characterSkillRecordCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
-    private Collection<CharacterSaveRecord> characterSaveRecordCollection;
-    @JoinColumn(name = "RELIGION_ID", referencedColumnName = "ID")
-    @ManyToOne
-    private ReligionMaster religionId;
-    @JoinColumn(name = "RACE_ID", referencedColumnName = "ID")
-    @ManyToOne
-    private RaceMaster raceId;
-    @JoinColumn(name = "GENDER_ID", referencedColumnName = "ID")
-    @ManyToOne
-    private GenderMaster genderId;
-    @JoinColumn(name = "CAMPAIGN_ID", referencedColumnName = "ID")
-    @ManyToOne
-    private CampaignMaster campaignId;
     @JoinColumn(name = "ALIGNMENT_ID", referencedColumnName = "ID")
     @ManyToOne
     private AlignmentMaster alignmentId;
+    @JoinColumn(name = "CAMPAIGN_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private CampaignMaster campaignId;
+    @JoinColumn(name = "GENDER_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private GenderMaster genderId;
+    @JoinColumn(name = "RACE_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private RaceMaster raceId;
+    @JoinColumn(name = "RELIGION_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private ReligionMaster religionId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "characterRecord")
     private CharacterEquipment characterEquipment;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
-    private Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection;
+    private List<CharacterAbilityRecord> characterAbilityRecordList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
-    private Collection<CharacterGrowthRecord> characterGrowthRecordCollection;
+    private List<CharacterGrowthRecord> characterGrowthRecordList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
+    private List<CharacterSaveRecord> characterSaveRecordList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
+    private List<CharacterSkillGrowthRecord> characterSkillGrowthRecordList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterRecord")
+    private List<CharacterSkillRecord> characterSkillRecordList;
+
+    public List<CharacterAbilityRecord> getCharacterAbilityRecordList() {
+        return characterAbilityRecordList;
+    }
+
+    public CharacterEquipment getCharacterEquipment() {
+        return characterEquipment;
+    }
+
+    public void setCharacterEquipment(CharacterEquipment characterEquipment) {
+        this.characterEquipment = characterEquipment;
+    }
+
+    public List<CharacterGrowthRecord> getCharacterGrowthRecordList() {
+        return characterGrowthRecordList;
+    }
+
+    public void setCharacterGrowthRecordList(List<CharacterGrowthRecord> characterGrowthRecordList) {
+        this.characterGrowthRecordList = characterGrowthRecordList;
+    }
+
+    public List<CharacterSaveRecord> getCharacterSaveRecordList() {
+        return characterSaveRecordList;
+    }
+
+    public void setCharacterSaveRecordList(List<CharacterSaveRecord> characterSaveRecordList) {
+        this.characterSaveRecordList = characterSaveRecordList;
+    }
+
+    public List<CharacterSkillGrowthRecord> getCharacterSkillGrowthRecordList() {
+        return characterSkillGrowthRecordList;
+    }
+
+    public void setCharacterSkillGrowthRecordList(List<CharacterSkillGrowthRecord> characterSkillGrowthRecordList) {
+        this.characterSkillGrowthRecordList = characterSkillGrowthRecordList;
+    }
+
+    public List<CharacterSkillRecord> getCharacterSkillRecordList() {
+        return characterSkillRecordList;
+    }
+
+    public void setCharacterSkillRecordList(List<CharacterSkillRecord> characterSkillRecordList) {
+        this.characterSkillRecordList = characterSkillRecordList;
+    }
+    public void setCharacterAbilityRecordList(List<CharacterAbilityRecord> characterAbilityRecordCollection) {
+        this.characterAbilityRecordList = characterAbilityRecordCollection;
+    }
+
+    public String getUpdateDescription() {
+        return updateDescription;
+    }
+
+    public void setUpdateDescription(String updateDescription) {
+        this.updateDescription = updateDescription;
+    }
 
     public CharacterRecord() {
     }
@@ -210,6 +232,14 @@ public class CharacterRecord implements Serializable {
 
     public void setExperience(Integer experience) {
         this.experience = experience;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Integer getHeight() {
@@ -348,14 +378,6 @@ public class CharacterRecord implements Serializable {
         this.itemDescription = itemDescription;
     }
 
-    public String getDefenceDescription() {
-        return defenceDescription;
-    }
-
-    public void setDefenceDescription(String defenceDescription) {
-        this.defenceDescription = defenceDescription;
-    }
-
     public Integer getAcArmor() {
         return acArmor;
     }
@@ -380,71 +402,12 @@ public class CharacterRecord implements Serializable {
         this.acMiscMod = acMiscMod;
     }
 
-    public Integer getAge() {
-        return age;
+    public AlignmentMaster getAlignmentId() {
+        return alignmentId;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getUpdateDescription() {
-        return updateDescription;
-    }
-
-    public void setUpdateDescription(String updateDescription) {
-        this.updateDescription = updateDescription;
-    }
-
-    @XmlTransient
-    public Collection<CharacterAbilityRecord> getCharacterAbilityRecordCollection() {
-        return characterAbilityRecordCollection;
-    }
-
-    public void setCharacterAbilityRecordCollection(Collection<CharacterAbilityRecord> characterAbilityRecordCollection) {
-        this.characterAbilityRecordCollection = characterAbilityRecordCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterSkillRecord> getCharacterSkillRecordCollection() {
-        return characterSkillRecordCollection;
-    }
-
-    public void setCharacterSkillRecordCollection(Collection<CharacterSkillRecord> characterSkillRecordCollection) {
-        this.characterSkillRecordCollection = characterSkillRecordCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterSaveRecord> getCharacterSaveRecordCollection() {
-        return characterSaveRecordCollection;
-    }
-
-    public void setCharacterSaveRecordCollection(Collection<CharacterSaveRecord> characterSaveRecordCollection) {
-        this.characterSaveRecordCollection = characterSaveRecordCollection;
-    }
-
-    public ReligionMaster getReligionId() {
-        return religionId;
-    }
-
-    public void setReligionId(ReligionMaster religionId) {
-        this.religionId = religionId;
-    }
-
-    public RaceMaster getRaceId() {
-        return raceId;
-    }
-
-    public void setRaceId(RaceMaster raceId) {
-        this.raceId = raceId;
-    }
-
-    public GenderMaster getGenderId() {
-        return genderId;
-    }
-
-    public void setGenderId(GenderMaster genderId) {
-        this.genderId = genderId;
+    public void setAlignmentId(AlignmentMaster alignmentId) {
+        this.alignmentId = alignmentId;
     }
 
     public CampaignMaster getCampaignId() {
@@ -455,38 +418,36 @@ public class CharacterRecord implements Serializable {
         this.campaignId = campaignId;
     }
 
-    public AlignmentMaster getAlignmentId() {
-        return alignmentId;
+    public GenderMaster getGenderId() {
+        return genderId;
     }
 
-    public void setAlignmentId(AlignmentMaster alignmentId) {
-        this.alignmentId = alignmentId;
+    public void setGenderId(GenderMaster genderId) {
+        this.genderId = genderId;
     }
 
-    public CharacterEquipment getCharacterEquipment() {
-        return characterEquipment;
+    public RaceMaster getRaceId() {
+        return raceId;
     }
 
-    public void setCharacterEquipment(CharacterEquipment characterEquipment) {
-        this.characterEquipment = characterEquipment;
+    public void setRaceId(RaceMaster raceId) {
+        this.raceId = raceId;
     }
 
-    @XmlTransient
-    public Collection<CharacterSkillGrowthRecord> getCharacterSkillGrowthRecordCollection() {
-        return characterSkillGrowthRecordCollection;
+    public ReligionMaster getReligionId() {
+        return religionId;
     }
 
-    public void setCharacterSkillGrowthRecordCollection(Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection) {
-        this.characterSkillGrowthRecordCollection = characterSkillGrowthRecordCollection;
+    public void setReligionId(ReligionMaster religionId) {
+        this.religionId = religionId;
     }
 
-    @XmlTransient
-    public Collection<CharacterGrowthRecord> getCharacterGrowthRecordCollection() {
-        return characterGrowthRecordCollection;
+    public String getDefenceDescription() {
+        return defenceDescription;
     }
 
-    public void setCharacterGrowthRecordCollection(Collection<CharacterGrowthRecord> characterGrowthRecordCollection) {
-        this.characterGrowthRecordCollection = characterGrowthRecordCollection;
+    public void setDefenceDescription(String defenceDescription) {
+        this.defenceDescription = defenceDescription;
     }
 
     @Override
@@ -511,7 +472,6 @@ public class CharacterRecord implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterRecord[ id=" + id + " ]";
+        return "entity.CharacterRecord[id=" + id + "]";
     }
-    
 }

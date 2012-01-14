@@ -2,36 +2,38 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CLASS_ABILITY_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ClassAbilityMaster.findAll", query = "SELECT c FROM ClassAbilityMaster c"),
-    @NamedQuery(name = "ClassAbilityMaster.findByClassId", query = "SELECT c FROM ClassAbilityMaster c WHERE c.classAbilityMasterPK.classId = :classId"),
-    @NamedQuery(name = "ClassAbilityMaster.findByAbilityId", query = "SELECT c FROM ClassAbilityMaster c WHERE c.classAbilityMasterPK.abilityId = :abilityId")})
+@NamedQueries({@NamedQuery(name = "ClassAbilityMaster.findByClassId", query = "SELECT c FROM ClassAbilityMaster c WHERE c.classAbilityMasterPK.classId = :classId"), @NamedQuery(name = "ClassAbilityMaster.findByAbilityId", query = "SELECT c FROM ClassAbilityMaster c WHERE c.classAbilityMasterPK.abilityId = :abilityId")})
 public class ClassAbilityMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ClassAbilityMasterPK classAbilityMasterPK;
-    @JoinColumn(name = "CLASS_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private ClassMaster classMaster;
+    @JoinColumn(name = "ABILITY_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private AbilityMaster abilityMaster;
     @JoinColumn(name = "RANK_ID", referencedColumnName = "ID")
     @ManyToOne
     private BonusRankMaster rankId;
-    @JoinColumn(name = "ABILITY_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private AbilityMaster abilityMaster;
+    @JoinColumn(name = "CLASS_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private ClassMaster classMaster;
 
     public ClassAbilityMaster() {
     }
@@ -52,12 +54,12 @@ public class ClassAbilityMaster implements Serializable {
         this.classAbilityMasterPK = classAbilityMasterPK;
     }
 
-    public ClassMaster getClassMaster() {
-        return classMaster;
+    public AbilityMaster getAbilityMaster() {
+        return abilityMaster;
     }
 
-    public void setClassMaster(ClassMaster classMaster) {
-        this.classMaster = classMaster;
+    public void setAbilityMaster(AbilityMaster abilityMaster) {
+        this.abilityMaster = abilityMaster;
     }
 
     public BonusRankMaster getRankId() {
@@ -68,12 +70,12 @@ public class ClassAbilityMaster implements Serializable {
         this.rankId = rankId;
     }
 
-    public AbilityMaster getAbilityMaster() {
-        return abilityMaster;
+    public ClassMaster getClassMaster() {
+        return classMaster;
     }
 
-    public void setAbilityMaster(AbilityMaster abilityMaster) {
-        this.abilityMaster = abilityMaster;
+    public void setClassMaster(ClassMaster classMaster) {
+        this.classMaster = classMaster;
     }
 
     @Override
@@ -98,7 +100,7 @@ public class ClassAbilityMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ClassAbilityMaster[ classAbilityMasterPK=" + classAbilityMasterPK + " ]";
+        return "entity.ClassAbilityMaster[classAbilityMasterPK=" + classAbilityMasterPK + "]";
     }
-    
+
 }

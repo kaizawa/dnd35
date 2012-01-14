@@ -2,40 +2,36 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CAMPAIGN_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CampaignMaster.findAll", query = "SELECT c FROM CampaignMaster c"),
-    @NamedQuery(name = "CampaignMaster.findById", query = "SELECT c FROM CampaignMaster c WHERE c.id = :id"),
-    @NamedQuery(name = "CampaignMaster.findByCampaignName", query = "SELECT c FROM CampaignMaster c WHERE c.campaignName = :campaignName"),
-    @NamedQuery(name = "CampaignMaster.findByMaster", query = "SELECT c FROM CampaignMaster c WHERE c.master = :master")})
+@NamedQueries({@NamedQuery(name = "CampaignMaster.findById", query = "SELECT c FROM CampaignMaster c WHERE c.id = :id"), @NamedQuery(name = "CampaignMaster.findByCampaignName", query = "SELECT c FROM CampaignMaster c WHERE c.campaignName = :campaignName"), @NamedQuery(name = "CampaignMaster.findByMaster", query = "SELECT c FROM CampaignMaster c WHERE c.master = :master")})
 public class CampaignMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Integer id;
-    @Size(max = 100)
     @Column(name = "CAMPAIGN_NAME")
     private String campaignName;
-    @Size(max = 100)
     @Column(name = "MASTER")
     private String master;
     @OneToMany(mappedBy = "campaignId")
@@ -72,7 +68,6 @@ public class CampaignMaster implements Serializable {
         this.master = master;
     }
 
-    @XmlTransient
     public Collection<CharacterRecord> getCharacterRecordCollection() {
         return characterRecordCollection;
     }
@@ -103,7 +98,7 @@ public class CampaignMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CampaignMaster[ id=" + id + " ]";
+        return "entity.CampaignMaster[id=" + id + "]";
     }
-    
+
 }

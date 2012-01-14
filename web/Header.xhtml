@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div style="-rave-layout: grid" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+    <f:subview id="Header">
+        <h:panelGrid id="header" style="  width: 800px" styleClass="header">
+            <h:panelGrid columns="2" id="headerGrid" style="width: 100%; height: 100%;">
+                <h:panelGrid id="imageGrid" style="height: 23px" width="71">
+                    <h:graphicImage height="29" id="image1" value="/resources/dndlogo.gif" width="96"/>
+                </h:panelGrid>
+                <h:panelGrid id="appnameGrid">
+                    <h:outputText id="outputText1" styleClass="appname" value="D&amp;D キャラクター一覧＠データベースてすと場３．５ Ⅱ"/>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:panelGrid>
+        <h:panelGrid id="subHeader" style="width: 800px" styleClass="subheader">
+            <h:panelGrid columns="10" id="subHeaderGrid" style="width: 100%; height: 100%;" styleClass="subheader">
+                <h:panelGrid id="profileCell" rendered="false" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.profileLink_action}" id="profileLink2" styleClass="subheadertext" text="プレイヤー設定"/>
+                </h:panelGrid>
+                <h:panelGrid id="logoutCell" rendered="#{sessionBean.loggedIn}" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.logoutLink_action}" id="logoutLink" styleClass="subheadertext" text="ログアウト"/>
+                </h:panelGrid>
+                <h:panelGrid id="adminCell" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.adminLink_action}" id="adminLink" styleClass="subheadertext" text="管理画面"/>
+                </h:panelGrid>
+                <h:panelGrid id="loginCell" rendered="false" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.loginLink_action}" id="loginLink" styleClass="subheadertext" text="ログイン"/>
+                </h:panelGrid>
+                <h:panelGrid id="newCharaCell" rendered="false" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.newCharaLink_action}" id="newCharaLink" styleClass="subheadertext" text="新規キャラクター作成"/>
+                </h:panelGrid>
+                <h:panelGrid id="charaListCell" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                    <h:commandLink action="#{Header.charaListLink_action}" id="charaListLink" styleClass="subheadertext" text="キャラクター一覧"/>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:panelGrid>
+        <h:messages //errorClass="//errorMessage" fatalClass="fatalMessage" id="messageList1" infoClass="infoMessage"
+            style="position: absolute; left: 810px; top: 60px" warnClass="warnMessage"/>
+    </f:subview>
+</div>

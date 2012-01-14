@@ -2,36 +2,38 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CLASS_SAVE_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ClassSaveMaster.findAll", query = "SELECT c FROM ClassSaveMaster c"),
-    @NamedQuery(name = "ClassSaveMaster.findByClassId", query = "SELECT c FROM ClassSaveMaster c WHERE c.classSaveMasterPK.classId = :classId"),
-    @NamedQuery(name = "ClassSaveMaster.findBySaveId", query = "SELECT c FROM ClassSaveMaster c WHERE c.classSaveMasterPK.saveId = :saveId")})
+@NamedQueries({@NamedQuery(name = "ClassSaveMaster.findByClassId", query = "SELECT c FROM ClassSaveMaster c WHERE c.classSaveMasterPK.classId = :classId"), @NamedQuery(name = "ClassSaveMaster.findBySaveId", query = "SELECT c FROM ClassSaveMaster c WHERE c.classSaveMasterPK.saveId = :saveId")})
 public class ClassSaveMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ClassSaveMasterPK classSaveMasterPK;
-    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SaveMaster saveMaster;
-    @JoinColumn(name = "CLASS_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private ClassMaster classMaster;
     @JoinColumn(name = "RANK_ID", referencedColumnName = "ID")
     @ManyToOne
     private BonusRankMaster rankId;
+    @JoinColumn(name = "CLASS_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private ClassMaster classMaster;
+    @JoinColumn(name = "SAVE_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    private SaveMaster saveMaster;
 
     public ClassSaveMaster() {
     }
@@ -52,12 +54,12 @@ public class ClassSaveMaster implements Serializable {
         this.classSaveMasterPK = classSaveMasterPK;
     }
 
-    public SaveMaster getSaveMaster() {
-        return saveMaster;
+    public BonusRankMaster getRankId() {
+        return rankId;
     }
 
-    public void setSaveMaster(SaveMaster saveMaster) {
-        this.saveMaster = saveMaster;
+    public void setRankId(BonusRankMaster rankId) {
+        this.rankId = rankId;
     }
 
     public ClassMaster getClassMaster() {
@@ -68,12 +70,12 @@ public class ClassSaveMaster implements Serializable {
         this.classMaster = classMaster;
     }
 
-    public BonusRankMaster getRankId() {
-        return rankId;
+    public SaveMaster getSaveMaster() {
+        return saveMaster;
     }
 
-    public void setRankId(BonusRankMaster rankId) {
-        this.rankId = rankId;
+    public void setSaveMaster(SaveMaster saveMaster) {
+        this.saveMaster = saveMaster;
     }
 
     @Override
@@ -98,7 +100,7 @@ public class ClassSaveMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ClassSaveMaster[ classSaveMasterPK=" + classSaveMasterPK + " ]";
+        return "entity.ClassSaveMaster[classSaveMasterPK=" + classSaveMasterPK + "]";
     }
-    
+
 }

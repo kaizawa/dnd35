@@ -2,29 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "SKILL_SYNERGY_MASTER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SkillSynergyMaster.findAll", query = "SELECT s FROM SkillSynergyMaster s"),
-    @NamedQuery(name = "SkillSynergyMaster.findBySkillId", query = "SELECT s FROM SkillSynergyMaster s WHERE s.skillSynergyMasterPK.skillId = :skillId"),
-    @NamedQuery(name = "SkillSynergyMaster.findByAffectedBy", query = "SELECT s FROM SkillSynergyMaster s WHERE s.skillSynergyMasterPK.affectedBy = :affectedBy")})
+@NamedQueries({@NamedQuery(name = "SkillSynergyMaster.findBySkillId", query = "SELECT s FROM SkillSynergyMaster s WHERE s.skillSynergyMasterPK.skillId = :skillId"), @NamedQuery(name = "SkillSynergyMaster.findByAffectedBy", query = "SELECT s FROM SkillSynergyMaster s WHERE s.skillSynergyMasterPK.affectedBy = :affectedBy")})
 public class SkillSynergyMaster implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected SkillSynergyMasterPK skillSynergyMasterPK;
     @JoinColumn(name = "SKILL_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private SkillMaster skillMaster;
 
     public SkillSynergyMaster() {
@@ -76,7 +78,7 @@ public class SkillSynergyMaster implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SkillSynergyMaster[ skillSynergyMasterPK=" + skillSynergyMasterPK + " ]";
+        return "entity.SkillSynergyMaster[skillSynergyMasterPK=" + skillSynergyMasterPK + "]";
     }
-    
+
 }

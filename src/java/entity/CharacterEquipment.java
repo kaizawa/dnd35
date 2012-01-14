@@ -2,98 +2,62 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
- * @author kaizawa
+ * @author ka78231
  */
 @Entity
 @Table(name = "CHARACTER_EQUIPMENT")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CharacterEquipment.findAll", query = "SELECT c FROM CharacterEquipment c"),
-    @NamedQuery(name = "CharacterEquipment.findByCharacterId", query = "SELECT c FROM CharacterEquipment c WHERE c.characterId = :characterId"),
-    @NamedQuery(name = "CharacterEquipment.findByHead", query = "SELECT c FROM CharacterEquipment c WHERE c.head = :head"),
-    @NamedQuery(name = "CharacterEquipment.findByCloak", query = "SELECT c FROM CharacterEquipment c WHERE c.cloak = :cloak"),
-    @NamedQuery(name = "CharacterEquipment.findByNecklace", query = "SELECT c FROM CharacterEquipment c WHERE c.necklace = :necklace"),
-    @NamedQuery(name = "CharacterEquipment.findByArmRing", query = "SELECT c FROM CharacterEquipment c WHERE c.armRing = :armRing"),
-    @NamedQuery(name = "CharacterEquipment.findByRing1", query = "SELECT c FROM CharacterEquipment c WHERE c.ring1 = :ring1"),
-    @NamedQuery(name = "CharacterEquipment.findByRing2", query = "SELECT c FROM CharacterEquipment c WHERE c.ring2 = :ring2"),
-    @NamedQuery(name = "CharacterEquipment.findByBelt", query = "SELECT c FROM CharacterEquipment c WHERE c.belt = :belt"),
-    @NamedQuery(name = "CharacterEquipment.findByArmor", query = "SELECT c FROM CharacterEquipment c WHERE c.armor = :armor"),
-    @NamedQuery(name = "CharacterEquipment.findByArm1", query = "SELECT c FROM CharacterEquipment c WHERE c.arm1 = :arm1"),
-    @NamedQuery(name = "CharacterEquipment.findByArm2", query = "SELECT c FROM CharacterEquipment c WHERE c.arm2 = :arm2"),
-    @NamedQuery(name = "CharacterEquipment.findByEye", query = "SELECT c FROM CharacterEquipment c WHERE c.eye = :eye"),
-    @NamedQuery(name = "CharacterEquipment.findByRobe", query = "SELECT c FROM CharacterEquipment c WHERE c.robe = :robe"),
-    @NamedQuery(name = "CharacterEquipment.findByVest", query = "SELECT c FROM CharacterEquipment c WHERE c.vest = :vest"),
-    @NamedQuery(name = "CharacterEquipment.findByGlove", query = "SELECT c FROM CharacterEquipment c WHERE c.glove = :glove"),
-    @NamedQuery(name = "CharacterEquipment.findByShield", query = "SELECT c FROM CharacterEquipment c WHERE c.shield = :shield"),
-    @NamedQuery(name = "CharacterEquipment.findByBoots", query = "SELECT c FROM CharacterEquipment c WHERE c.boots = :boots"),
-    @NamedQuery(name = "CharacterEquipment.findByPocket", query = "SELECT c FROM CharacterEquipment c WHERE c.pocket = :pocket"),
-    @NamedQuery(name = "CharacterEquipment.findBySkillArmorMod", query = "SELECT c FROM CharacterEquipment c WHERE c.skillArmorMod = :skillArmorMod"),
-    @NamedQuery(name = "CharacterEquipment.findBySkillShieldMod", query = "SELECT c FROM CharacterEquipment c WHERE c.skillShieldMod = :skillShieldMod"),
-    @NamedQuery(name = "CharacterEquipment.findByDexAcArmorLimit", query = "SELECT c FROM CharacterEquipment c WHERE c.dexAcArmorLimit = :dexAcArmorLimit"),
-    @NamedQuery(name = "CharacterEquipment.findByDexAcShieldLimit", query = "SELECT c FROM CharacterEquipment c WHERE c.dexAcShieldLimit = :dexAcShieldLimit")})
+@NamedQueries({@NamedQuery(name = "CharacterEquipment.findByCharacterId", query = "SELECT c FROM CharacterEquipment c WHERE c.characterId = :characterId"), @NamedQuery(name = "CharacterEquipment.findByHead", query = "SELECT c FROM CharacterEquipment c WHERE c.head = :head"), @NamedQuery(name = "CharacterEquipment.findByCloak", query = "SELECT c FROM CharacterEquipment c WHERE c.cloak = :cloak"), @NamedQuery(name = "CharacterEquipment.findByNecklace", query = "SELECT c FROM CharacterEquipment c WHERE c.necklace = :necklace"), @NamedQuery(name = "CharacterEquipment.findByArmRing", query = "SELECT c FROM CharacterEquipment c WHERE c.armRing = :armRing"), @NamedQuery(name = "CharacterEquipment.findByRing1", query = "SELECT c FROM CharacterEquipment c WHERE c.ring1 = :ring1"), @NamedQuery(name = "CharacterEquipment.findByRing2", query = "SELECT c FROM CharacterEquipment c WHERE c.ring2 = :ring2"), @NamedQuery(name = "CharacterEquipment.findByBelt", query = "SELECT c FROM CharacterEquipment c WHERE c.belt = :belt"), @NamedQuery(name = "CharacterEquipment.findByArmor", query = "SELECT c FROM CharacterEquipment c WHERE c.armor = :armor"), @NamedQuery(name = "CharacterEquipment.findByArm1", query = "SELECT c FROM CharacterEquipment c WHERE c.arm1 = :arm1"), @NamedQuery(name = "CharacterEquipment.findByArm2", query = "SELECT c FROM CharacterEquipment c WHERE c.arm2 = :arm2"), @NamedQuery(name = "CharacterEquipment.findByEye", query = "SELECT c FROM CharacterEquipment c WHERE c.eye = :eye"), @NamedQuery(name = "CharacterEquipment.findByRobe", query = "SELECT c FROM CharacterEquipment c WHERE c.robe = :robe"), @NamedQuery(name = "CharacterEquipment.findByVest", query = "SELECT c FROM CharacterEquipment c WHERE c.vest = :vest"), @NamedQuery(name = "CharacterEquipment.findByGlove", query = "SELECT c FROM CharacterEquipment c WHERE c.glove = :glove"), @NamedQuery(name = "CharacterEquipment.findByShield", query = "SELECT c FROM CharacterEquipment c WHERE c.shield = :shield"), @NamedQuery(name = "CharacterEquipment.findByBoots", query = "SELECT c FROM CharacterEquipment c WHERE c.boots = :boots"), @NamedQuery(name = "CharacterEquipment.findByPocket", query = "SELECT c FROM CharacterEquipment c WHERE c.pocket = :pocket"), @NamedQuery(name = "CharacterEquipment.findBySkillArmorMod", query = "SELECT c FROM CharacterEquipment c WHERE c.skillArmorMod = :skillArmorMod"), @NamedQuery(name = "CharacterEquipment.findBySkillShieldMod", query = "SELECT c FROM CharacterEquipment c WHERE c.skillShieldMod = :skillShieldMod"), @NamedQuery(name = "CharacterEquipment.findByDexAcArmorLimit", query = "SELECT c FROM CharacterEquipment c WHERE c.dexAcArmorLimit = :dexAcArmorLimit"), @NamedQuery(name = "CharacterEquipment.findByDexAcShieldLimit", query = "SELECT c FROM CharacterEquipment c WHERE c.dexAcShieldLimit = :dexAcShieldLimit")})
 public class CharacterEquipment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CHARACTER_ID")
+    @Column(name = "CHARACTER_ID", nullable = false)
     private Integer characterId;
-    @Size(max = 200)
     @Column(name = "HEAD")
     private String head;
-    @Size(max = 200)
     @Column(name = "CLOAK")
     private String cloak;
-    @Size(max = 200)
     @Column(name = "NECKLACE")
     private String necklace;
-    @Size(max = 200)
     @Column(name = "ARM_RING")
     private String armRing;
-    @Size(max = 200)
     @Column(name = "RING1")
     private String ring1;
-    @Size(max = 200)
     @Column(name = "RING2")
     private String ring2;
-    @Size(max = 200)
     @Column(name = "BELT")
     private String belt;
-    @Size(max = 200)
     @Column(name = "ARMOR")
     private String armor;
-    @Size(max = 200)
     @Column(name = "ARM1")
     private String arm1;
-    @Size(max = 200)
     @Column(name = "ARM2")
     private String arm2;
-    @Size(max = 200)
     @Column(name = "EYE")
     private String eye;
-    @Size(max = 200)
     @Column(name = "ROBE")
     private String robe;
-    @Size(max = 200)
     @Column(name = "VEST")
     private String vest;
-    @Size(max = 200)
     @Column(name = "GLOVE")
     private String glove;
-    @Size(max = 200)
     @Column(name = "SHIELD")
     private String shield;
-    @Size(max = 200)
     @Column(name = "BOOTS")
     private String boots;
     @Column(name = "POCKET")
@@ -107,7 +71,7 @@ public class CharacterEquipment implements Serializable {
     @Column(name = "DEX_AC_SHIELD_LIMIT")
     private Integer dexAcShieldLimit;
     @JoinColumn(name = "CHARACTER_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne
     private CharacterRecord characterRecord;
 
     public CharacterEquipment() {
@@ -323,7 +287,7 @@ public class CharacterEquipment implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CharacterEquipment[ characterId=" + characterId + " ]";
+        return "entity.CharacterEquipment[characterId=" + characterId + "]";
     }
-    
+
 }
