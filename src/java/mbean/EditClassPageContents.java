@@ -5,24 +5,18 @@
  */
 package mbean;
 
-import ejb.BonusRankMasterFacade;
-import ejb.ClassMasterFacade;
 import ejb.ClassSaveMasterFacade;
-import ejb.ClassSkillMasterFacade;
 import ejb.DiceMasterFacade;
 import ejb.SaveMasterFacade;
+import ejb.ClassSkillMasterFacade;
+import ejb.ClassMasterFacade;
 import ejb.SkillMasterFacade;
-import entity.BonusRankMaster;
-import entity.ClassMaster;
-import entity.ClassSaveMaster;
-import entity.ClassSkillMaster;
-import entity.ClassSkillMasterPK;
-import entity.SkillMaster;
+import ejb.BonusRankMasterFacade;
+import entity.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -136,7 +130,7 @@ public class EditClassPageContents extends BaseBean {
     }
 
     public String classListButton_action() {
-        return "classlist";
+        return "ClassListPageContents";
     }
 
     public String saveButton_action() {
@@ -424,7 +418,7 @@ public class EditClassPageContents extends BaseBean {
             //error("削除に失敗しました");
             return null;
         }
-        return "classlist";
+        return "ClassListPageContents";
     }
 
     // 削除ボタンの表示
@@ -433,7 +427,7 @@ public class EditClassPageContents extends BaseBean {
     }
 
     public String cancelButton_action() {
-        return "classlist";
+        return "ClassListPageContents";
     }
 
 

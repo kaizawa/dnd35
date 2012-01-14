@@ -89,7 +89,7 @@ public class LoginContents extends BaseBean {
          getSessionBean().setLoggedIn(true);
          getSessionBean().setPlayerMaster(player);
 
-        return "admin";
+        return "AdminPageContents";
     }
 
     public String register_action() {

@@ -51,7 +51,7 @@ public class AdminPageContents extends BaseBean {
         ClassMaster classmaser = getApplicationBean().getClassMasterList().get(classid);
 
         getSessionBean().setClassMaster(classmaser);
-        return "editclass";
+        return "EditClassPageContents";
     }
 
     public String createClassButton_action() {
@@ -60,7 +60,7 @@ public class AdminPageContents extends BaseBean {
         ClassMaster classMaster = new ClassMaster();
 
         getSessionBean().setClassMaster(classMaster);
-        return "editclass";
+        return "EditClassPageContents";
     }
 
     public String classListLink_action() {
@@ -73,9 +73,9 @@ public class AdminPageContents extends BaseBean {
 
     public String raceListLink_action() {
         if(getSessionBean().loggedIn){
-            return "racelist";
+            return "EditRacePageContents";
         } else {
-            return "login";
+            return "EditRacePageContents";
         }
     }
 }

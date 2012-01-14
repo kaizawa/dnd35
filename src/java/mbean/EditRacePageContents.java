@@ -6,11 +6,11 @@
 package mbean;
 
 
-import ejb.RaceAbilityMasterFacade;
 import ejb.RaceMasterFacade;
-import ejb.RaceSaveMasterFacade;
-import ejb.SaveMasterFacade;
 import ejb.SizeMasterFacade;
+import ejb.SaveMasterFacade;
+import ejb.RaceAbilityMasterFacade;
+import ejb.RaceSaveMasterFacade;
 import entity.RaceAbilityMaster;
 import entity.RaceMaster;
 import entity.RaceSaveMaster;
@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ValueChangeEvent;
@@ -283,7 +282,7 @@ public class EditRacePageContents extends BaseBean {
             //error("種族の削除に失敗しました。利用中の可能性があります。");
             return null;
         }
-        return "racelist";
+        return "RaceListPageContents";
     }
 
     // 削除ボタンの表示
@@ -292,7 +291,7 @@ public class EditRacePageContents extends BaseBean {
     }
 
     public String cancelButton_action() {
-        return "racelist";
+        return "RaceListPageContents";
     }
 
     public Integer getCharismaModifier() {

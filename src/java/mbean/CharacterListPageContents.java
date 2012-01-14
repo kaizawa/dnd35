@@ -7,45 +7,27 @@ package mbean;
 
 
 
-import ejb.AbilityMasterFacade;
-import ejb.CampaignMasterFacade;
-import ejb.CharacterAbilityRecordFacade;
 import ejb.CharacterEquipmentFacade;
-import ejb.CharacterGrowthRecordFacade;
-import ejb.CharacterRecordFacade;
-import ejb.CharacterSaveRecordFacade;
-import ejb.CharacterSkillGrowthRecordFacade;
 import ejb.CharacterSkillRecordFacade;
+import ejb.AbilityMasterFacade;
+import ejb.CharacterGrowthRecordFacade;
 import ejb.SaveMasterFacade;
-import ejb.SizeMasterFacade;
+import ejb.CharacterAbilityRecordFacade;
 import ejb.SkillMasterFacade;
-import ejb.SkillMasterFacade;
-import entity.AbilityMaster;
-import entity.CampaignMaster;
-import entity.CharacterAbilityRecord;
-import entity.CharacterEquipment;
-import entity.CharacterGrowthRecord;
-import entity.CharacterRecord;
-import entity.CharacterSaveRecord;
-import entity.CharacterSkillGrowthRecord;
-import entity.CharacterSkillRecord;
-import entity.ClassMaster;
-import entity.SaveMaster;
-import entity.SkillMaster;
-import java.text.SimpleDateFormat;
+import ejb.CharacterSaveRecordFacade;
+import ejb.CharacterRecordFacade;
+import ejb.CharacterSkillGrowthRecordFacade;
+import ejb.CampaignMasterFacade;
+import entity.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
-import javax.faces.model.SelectItem;
 
 @ManagedBean
 @RequestScoped
@@ -178,7 +160,7 @@ public class CharacterListPageContents  extends BaseBean {
         //管理Beanへ反映
          getSessionBean().setCharacterRecord(characterRecord);
 
-        return "editchara";
+        return "EditCharacterRecordPageContents";
     }
 
     public String charaViewButton_action() {
@@ -193,13 +175,13 @@ public class CharacterListPageContents  extends BaseBean {
         //管理Beanへ反映
          getSessionBean().setCharacterRecord(characterRecord);
 
-        return "view";
+        return "PrintableCharacterRecordPage";
     }
 
     public String button1_action() {
         // TODO: ボタンクリックアクションを処理します。戻り値は、
         // ナビゲーションケース名で、null の場合は同じページに戻ります。
-        return "editclass";
+        return "EditClassPageContents";
     }
 
     public String saveButton_action() {
@@ -359,7 +341,7 @@ public class CharacterListPageContents  extends BaseBean {
 
         //セッションBeanにキャラクターレコードをセット
          getSessionBean().setCharacterRecord(characterRecord);
-        return "editchara";
+        return "EditCharacterRecordPageContents";
     }
 }
 

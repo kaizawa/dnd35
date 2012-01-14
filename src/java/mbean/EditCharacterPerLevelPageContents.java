@@ -6,24 +6,17 @@
 package mbean;
 
 
-import entity.CharacterGrowthRecord;
-import entity.CharacterRecord;
-import entity.CharacterSkillGrowthRecord;
-import entity.ClassMaster;
-import entity.DiceMaster;
-import entity.SkillMaster;
+import entity.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.faces.FacesException;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
-import entity.RaceMaster;
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -66,6 +59,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
     }
 
     @PostConstruct
+    @Override
     public void prerender() {
         
         setCharacterRecord( getSessionBean().getCharacterRecord());
@@ -169,7 +163,6 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
                 break;
             }
         }
-        return;
     }
 
     // 特定のレベルのランク値 (計算値)
@@ -177,7 +170,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
         int skillId = skillTable.getRowIndex() + 1;
         SkillMaster skill = skillMasterFacade.find(skillId);
 
-        return getskillRankByLevelAndSkill( getSessionBean().getCharacterGrowthRecord(), skill).intValue();
+        return getSkillRankByLevelAndSkill( getSessionBean().getCharacterGrowthRecord(), skill).intValue();
     }
 
     @Override
@@ -215,7 +208,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
     }
 
     public String returnCharacterRecordPageButton_action() {
-        return "editchara";
+        return "EditCharacterRecordPageContents";
     }
 
     public String previousLevelButton_action() {
@@ -244,7 +237,9 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
         //form1 は デザイン画面から form1 の「バインド属性を追加」でアクセスできるようになる。
         //form1.discardSubmittedValues("selectitem");
         return null;
-    }    // ボタンを非表示にするかどうかを決める
+    }    
+    
+    // ボタンを非表示にするかどうかを決める
     protected boolean nextButtonDisabled;
 
     public boolean isNextButtonDisabled() {
@@ -320,8 +315,6 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
         }
         klass = classMasterFacade.find(classId);
         growth.setClassId(klass);
-        return;
-
     }
     protected String hitDiceType;
 
@@ -363,8 +356,6 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
     public Integer getHitPointAbilityModifier() {
         return super.getHitPointAbilityModifier();
     }
-
-    protected CharacterRecord characterRecord;
 
     @Override
     public CharacterRecord getCharacterRecord() {

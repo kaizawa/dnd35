@@ -29,11 +29,12 @@ import javax.faces.component.html.HtmlDataTable;
 @ManagedBean
 @RequestScoped
 public class ClassListPageContents extends BaseBean {
+    /*
     @EJB
     private ClassSkillMasterFacade classSkillMasterFacade;
     @EJB
     private ClassMasterFacade classMasterFacade;
-
+*/
 
     private HtmlDataTable classTable = new HtmlDataTable();
 
@@ -67,7 +68,7 @@ public class ClassListPageContents extends BaseBean {
         ClassMaster classmaser = getApplicationBean().getClassMasterList().get(classid);
 
         getSessionBean().setClassMaster(classmaser);
-        return "editclass";
+        return "EditClassPageContents";
     }
 
     public String createClassButton_action() {
@@ -76,16 +77,16 @@ public class ClassListPageContents extends BaseBean {
         ClassMaster classMaster = new ClassMaster();
 
         getSessionBean().setClassMaster(classMaster);
-        return "editclass";
+        return "EditClassPageContents";
     }
 
     public String newClassButton_action() {
         if(getSessionBean().loggedIn){
             ClassMaster classMaster = new ClassMaster();
             getSessionBean().setClassMaster(classMaster);
-            return "editclass";
+            return "EditClassPageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 

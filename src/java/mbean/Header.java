@@ -71,7 +71,7 @@ public class Header extends BaseBean{
 
 
     public String charaListLink_action() {
-        return "charalist";
+        return "CharacterListPageContents";
     }
 
     public String newCharaLink_action() {
@@ -174,35 +174,35 @@ public class Header extends BaseBean{
         //他のリストは EditCharacterRecordPage の中で作成する
         getSessionBean().setCharacterRecord(characterRecord);
 
-        return "editchara";
+        return "EditCharacterRecordPageContents";
     }
 
     public String profileLink_action() {
         if(getSessionBean().loggedIn){
             return "profile";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 
     public String adminLink_action() {
         if(getSessionBean().loggedIn){
-            return "admin";
+            return "AdminPageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 
     public String loginLink_action() {
         getSessionBean().setLoggedIn(false);
         getSessionBean().setPlayerMaster(null);
-        return "login";
+        return "LoginContents";
     }
 
     public String logoutLink_action() {
         getSessionBean().setLoggedIn(false);
         getSessionBean().setPlayerMaster(null);
-        return "login";
+        return "LoginContents";
     }
 
     public String helpLink_action() {

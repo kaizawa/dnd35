@@ -36,17 +36,17 @@ public class AdminPageSubHeader extends BaseBean{
         if(getSessionBean().loggedIn){
             ClassMaster classMaster = new ClassMaster();
             getSessionBean().setClassMaster(classMaster);
-            return "editclass";
+            return "EditClassPageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 
     public String classListLink_action() {
         if(getSessionBean().loggedIn){
-            return "classlist";
+            return "ClassListPageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
     String selectedHandle;
@@ -65,17 +65,17 @@ public class AdminPageSubHeader extends BaseBean{
         if(getSessionBean().loggedIn){
             RaceMaster raceMaster = new RaceMaster();
             getSessionBean().setRaceMaster(raceMaster);
-            return "editrace";
+            return "EditRacePageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 
     public String raceListLink_action() {
         if(getSessionBean().loggedIn){
-            return "racelist";
+            return "RaceListPageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 }

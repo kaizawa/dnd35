@@ -5,39 +5,25 @@
  */
 package mbean;
 
+import ejb.RaceMasterFacade;
 import ejb.AbilityMasterFacade;
-import ejb.AlignmentMasterFacade;
-import ejb.BonusRankMasterFacade;
-import ejb.CampaignMasterFacade;
+import ejb.SizeMasterFacade;
 import ejb.ClassMasterFacade;
 import ejb.DiceMasterFacade;
-import ejb.GenderMasterFacade;
-import ejb.RaceMasterFacade;
-import ejb.ReligionMasterFacade;
 import ejb.SaveMasterFacade;
-import ejb.SizeMasterFacade;
+import ejb.ReligionMasterFacade;
 import ejb.SkillMasterFacade;
-import entity.AbilityMaster;
-import entity.AlignmentMaster;
-import entity.BonusRankMaster;
-import entity.CampaignMaster;
-import entity.CharacterRecord;
-import entity.ClassMaster;
-import entity.DiceMaster;
-import entity.GenderMaster;
-import entity.RaceMaster;
-import entity.ReligionMaster;
-import entity.SaveMaster;
-import entity.SizeMaster;
-import entity.SkillMaster;
+import ejb.BonusRankMasterFacade;
+import ejb.GenderMasterFacade;
+import ejb.CampaignMasterFacade;
+import ejb.AlignmentMasterFacade;
+import entity.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.PostActivate;
-import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.model.SelectItem;
 
 /**

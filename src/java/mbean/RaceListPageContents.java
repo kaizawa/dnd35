@@ -9,17 +9,12 @@ package mbean;
 
 
 import ejb.RaceMasterFacade;
-import ejb.ClassSkillMasterFacade;
-import ejb.RaceMasterFacade;
-import entity.RaceMaster;
 import entity.RaceMaster;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlDataTable;
 
 @ManagedBean
@@ -57,16 +52,16 @@ public class RaceListPageContents extends BaseBean{
         RaceMaster racemaster = getApplicationBean().getRaceMasterList().get(raceid);
 
          getSessionBean().setRaceMaster(racemaster);
-        return "editrace";
+        return "EditRacePageContents";
     }
 
     public String newRaceButton_action() {
         if( getSessionBean().loggedIn){
             RaceMaster raceMaster = new RaceMaster();
              getSessionBean().setRaceMaster(raceMaster);
-            return "editrace";
+            return "EditRacePageContents";
         } else {
-            return "login";
+            return "LoginContents";
         }
     }
 }

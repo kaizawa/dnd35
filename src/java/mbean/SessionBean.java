@@ -5,35 +5,17 @@
  */
 package mbean;
 
-import ejb.AbilityMasterFacade;
-import ejb.AlignmentMasterFacade;
-import ejb.AlignmentMasterFacade;
-import ejb.BonusRankMasterFacade;
-import ejb.CampaignMasterFacade;
-import ejb.GenderMasterFacade;
 import ejb.RaceMasterFacade;
+import ejb.AbilityMasterFacade;
 import ejb.ReligionMasterFacade;
-import entity.AlignmentMaster;
-import entity.BonusRankMaster;
-import entity.CampaignMaster;
-import entity.CharacterAbilityRecord;
-import entity.CharacterEquipment;
-import entity.CharacterGrowthRecord;
-import entity.CharacterRecord;
-import entity.CharacterSaveRecord;
-import entity.CharacterSkillGrowthRecord;
-import entity.CharacterSkillRecord;
-import entity.ClassMaster;
-import entity.ClassSkillMaster;
-import entity.GenderMaster;
-import entity.PlayerMaster;
-import entity.RaceMaster;
-import entity.ReligionMaster;
+import ejb.BonusRankMasterFacade;
+import ejb.GenderMasterFacade;
+import ejb.AlignmentMasterFacade;
+import ejb.CampaignMasterFacade;
+import entity.*;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 

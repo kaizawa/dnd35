@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -456,53 +455,53 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     @Override
-    public String getskillAbilityName() {
-        return super.getskillAbilityName();
+    public String getSkillAbilityName() {
+        return super.getSkillAbilityName();
     }
 
     @Override
-    public String getskillAbilityNameById(int skill) {
-        return super.getskillAbilityNameById(skill);
+    public String getSkillAbilityNameById(int skill) {
+        return super.getSkillAbilityNameById(skill);
     }
 
     @Override
-    public String getskillAbilityShortName() {
-        return super.getskillAbilityShortName();
+    public String getSkillAbilityShortName() {
+        return super.getSkillAbilityShortName();
     }
 
     @Override
-    public String getskillAbilityShortNameById(int skill) {
-        return super.getskillAbilityShortNameById(skill);
+    public String getSkillAbilityShortNameById(int skill) {
+        return super.getSkillAbilityShortNameById(skill);
     }
 
     @Override
-    public Integer getskillArmorModifier() {
-        return super.getskillArmorModifier();
+    public Integer getSkillArmorModifier() {
+        return super.getSkillArmorModifier();
     }
 
     @Override
-    public Integer getskillArmorModifierById(int skillId) {
-        return super.getskillArmorModifierById(skillId);
+    public Integer getSkillArmorModifierById(int skillId) {
+        return super.getSkillArmorModifierById(skillId);
     }
 
     @Override
-    public Integer getskillMiscModifier() {
-        return super.getskillMiscModifier();
+    public Integer getSkillMiscModifier() {
+        return super.getSkillMiscModifier();
     }
 
     @Override
-    public Float getskillRankByLevelAndSkill(CharacterGrowthRecord growth, SkillMaster skill) {
-        return super.getskillRankByLevelAndSkill(growth, skill);
+    public Float getSkillRankByLevelAndSkill(CharacterGrowthRecord growth, SkillMaster skill) {
+        return super.getSkillRankByLevelAndSkill(growth, skill);
     }
 
     @Override
-    public Integer getskillSynergyModifier() {
-        return super.getskillSynergyModifier();
+    public Integer getSkillSynergyModifier() {
+        return super.getSkillSynergyModifier();
     }
 
     @Override
-    public Integer getskillSynergyModifierById(int skillId) {
-        return super.getskillSynergyModifierById(skillId);
+    public Integer getSkillSynergyModifierById(int skillId) {
+        return super.getSkillSynergyModifierById(skillId);
     }
 
     @Override
@@ -616,8 +615,8 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     @Override
-    public void setskillMiscModifier(Integer skillMiscModifier) {
-        super.setskillMiscModifier(skillMiscModifier);
+    public void setSkillMiscModifier(Integer skillMiscModifier) {
+        super.setSkillMiscModifier(skillMiscModifier);
     }
 
     @Override
@@ -631,7 +630,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     public String editCharaLink_action() {
-        return "editchara";
+        return "EditCharacterRecordPageContents";
     }
 
     @Override
@@ -660,7 +659,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     public String charalist_action() {
-        return "charalist";
+        return "CharacterListPageContents";
     }
 
 
