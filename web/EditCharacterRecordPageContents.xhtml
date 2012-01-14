@@ -44,10 +44,10 @@
                                     </h:selectOneMenu>
                                 </h:panelGrid>
                                 <h:panelGrid columns="4" id="gridPanel7" style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 255); height: 100%; text-align: center; width: 100%">
-                                    <h:outputText id="staticText1" text="レベル"/>
-                                    <h:outputText id="staticText2" text="経験点"/>
-                                    <h:outputText id="staticText3" text="次レベル"/>
-                                    <h:outputText id="staticText4" text="最終更新"/>
+                                    <h:outputText id="staticText1" value="レベル"/>
+                                    <h:outputText id="staticText2" value="経験点"/>
+                                    <h:outputText id="staticText3" value="次レベル"/>
+                                    <h:outputText id="staticText4" value="最終更新"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="4" id="gridPanel8" style="color: rgb(51,51,51); text-align: center" styleClass="g">
                                     <h:outputText id="outputText5"
@@ -61,7 +61,7 @@
                                     <h:outputText id="outputText9" value="信仰する神格"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" id="aligngridPanel1" style="text-align: left" styleClass="g">
-                                    <h:selectOneMenu id="dropdown2" onchange="" style="" value="#{sessionBean.selectedAlignment}" valueChangeListener="#{editCharacterRecordPageContents.dropdown2_processValueChange}">
+                                    <h:selectOneMenu id="dropdown2" onchange="" style="" value="#{sessionBean.selectedAlignment}" valueChangeListener="#{editCharacterRecordPageContents.dropdown2_processValueChange(vce)}">
                                         <f:selectItems id="dropdown2SelectItems1" value="#{applicationBean.alignmentArray}"/>
                                     </h:selectOneMenu>
                                     <h:selectOneMenu id="dropdown3" onchange="" value="#{sessionBean.selectedReligion}">
@@ -378,7 +378,7 @@
                                                 <h:outputText id="outputText205" value="組み付き"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel71" style="width: 30px" styleClass="p">
-                                                <h:outputText id="outputText206" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.grappleBonus}"/>
+                                                <h:outputText id="outputText206" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.getgrappleBonus}"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="10" id="gridPanel72" style="height: 100%; width: 260px" styleClass="w">
                                                 <h:outputText id="outputText207" value="#{editCharacterRecordPageContents.baseAttackTotal}"/>
@@ -470,7 +470,6 @@
                                             <h:inputText id="textField29" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.armor}"/>
                                             <h:outputText id="outputText123" styleClass="tableTitleBlackMiddle" value="武器1"/>
                                             <h:inputText id="textField129" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.arm1}"/>
-                                            <!-- <h:commandLink action="#{editCharacterRecordPageContents.arm1Select_action}" id="arm1Link" value="#{editCharacterRecordPageContents.arm1}"/> -->
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" id="gridPanel45" style="height: 100%; width: 100%">
                                             <h:outputText id="outputText124" styleClass="tableTitleBlackMiddle" value="眼"/>
@@ -489,7 +488,6 @@
                                             <h:inputText id="textField37" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.shield}"/>
                                             <h:outputText id="outputText131" styleClass="tableTitleBlackMiddle" value="武器2"/>
                                             <h:inputText id="textField130" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.arm2}"/>
-                                            <!-- <h:commandLink action="#{editCharacterRecordPageContents.arm2Select_action}" id="arm2Link" value="#{editCharacterRecordPageContents.arm2}"/> -->
                                         </h:panelGrid>
                                     </h:panelGrid>
                                     <h:panelGrid columns="3" id="armorgridPanel1" style="height: 100%; width: 100%">

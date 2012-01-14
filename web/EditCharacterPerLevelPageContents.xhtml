@@ -33,7 +33,7 @@
                                                      disabled="#{editCharacterPerLevelPageContents.nextButtonDisabled}" id="nextLevelButton1" value="次のレベルへ"/>
                                     <h:selectOneMenu id="levelDropdown1"
                                                      onchange="webui.suntheme.common.timeoutSubmitForm(this.form, 'gridPanel2:gridPanel16:gridPanel1:naviGationGridPanel:levelDropdown');"
-                                                     rendered="false" value="#{editCharacterPerLevelPageContents.selectedLevel}" valueChangeListener="#{editCharacterPerLevelPageContents.levelDropdown_processValueChange}">
+                                                     rendered="false" value="#{editCharacterPerLevelPageContents.selectedLevel}" valueChangeListener="#{editCharacterPerLevelPageContents.levelDropdown_processValueChange(vce)}">
                                         <f:selectItems id="dropdown1SelectItems1" value="#{sessionBean.levelArray}"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
