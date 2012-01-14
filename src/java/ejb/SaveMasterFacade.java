@@ -2,44 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.SaveMaster;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class SaveMasterFacade implements SaveMasterFacadeLocal {
-    @PersistenceContext
+public class SaveMasterFacade extends AbstractFacade<SaveMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(SaveMaster saveMaster) {
-        em.persist(saveMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(SaveMaster saveMaster) {
-        em.merge(saveMaster);
+    public SaveMasterFacade() {
+        super(SaveMaster.class);
     }
-
-    public void remove(SaveMaster saveMaster) {
-        em.remove(em.merge(saveMaster));
-    }
-
-    public SaveMaster find(Object id) {
-        return em.find(entity.SaveMaster.class, id);
-    }
-
-    public List<SaveMaster> findAll() {
-        @SuppressWarnings("unchecked")
-        List<SaveMaster> result = em.createQuery("select object(o) from SaveMaster as o").getResultList();
-        return result;
-    }
-
+    
 }

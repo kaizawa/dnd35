@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.ClassMaster;
@@ -15,36 +14,22 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class ClassSkillMasterFacade implements ClassSkillMasterFacadeLocal {
-    @PersistenceContext
+public class ClassSkillMasterFacade extends AbstractFacade<ClassSkillMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(ClassSkillMaster classSkillMaster) {
-        em.persist(classSkillMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(ClassSkillMaster classSkillMaster) {
-        em.merge(classSkillMaster);
+    public ClassSkillMasterFacade() {
+        super(ClassSkillMaster.class);
     }
-
-    public void remove(ClassSkillMaster classSkillMaster) {
-        em.remove(em.merge(classSkillMaster));
-    }
-
-    public ClassSkillMaster find(Object id) {
-        return em.find(entity.ClassSkillMaster.class, id);
-    }
-
-    public List<ClassSkillMaster> findAll() {
-        @SuppressWarnings("unchecked")                                                        
-        List<ClassSkillMaster> result = em.createQuery("select object(o) from ClassSkillMaster as o").getResultList();
-        return result;
-    }
-
-    public List<ClassSkillMaster> findByClass(ClassMaster classMaster) {
+        public List<ClassSkillMaster> findByClass(ClassMaster classMaster) {
 
 
         // キャラクターが渡されていた無かったら空のリストを渡す
@@ -59,5 +44,4 @@ public class ClassSkillMasterFacade implements ClassSkillMasterFacadeLocal {
         List<ClassSkillMaster> result = em.createQuery(jpqr).setParameter("cls", classMaster).getResultList();
         return result;
     }
-
 }

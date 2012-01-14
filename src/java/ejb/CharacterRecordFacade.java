@@ -6,9 +6,6 @@ package ejb;
 
 import entity.CampaignMaster;
 import entity.CharacterRecord;
-import java.lang.Exception;
-import java.lang.Exception;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,36 +13,22 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class CharacterRecordFacade implements CharacterRecordFacadeLocal {
-
-    @PersistenceContext
+public class CharacterRecordFacade extends AbstractFacade<CharacterRecord> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(CharacterRecord characterRecord) {
-        em.persist(characterRecord);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(CharacterRecord characterRecord) {
-        em.merge(characterRecord);
+    public CharacterRecordFacade() {
+        super(CharacterRecord.class);
     }
-
-    public void remove(CharacterRecord characterRecord) {
-        em.remove(em.merge(characterRecord));
-    }
-
-    public CharacterRecord find(Object id) {
-        return em.find(entity.CharacterRecord.class, id);
-    }
-
-    public List<CharacterRecord> findAll() {
-        @SuppressWarnings("unchecked")                                            
-        List<CharacterRecord> result = em.createQuery("select object(o) from CharacterRecord as o").getResultList();
-        return result;
-    }
-
+ 
     public List<CharacterRecord> findByCampaignId(Integer id) {
 
         // キャンペーンが指定されていなかったら
@@ -72,5 +55,5 @@ public class CharacterRecordFacade implements CharacterRecordFacadeLocal {
         @SuppressWarnings("unchecked")
         List<CharacterRecord> result = em.createQuery(jpqr).setParameter("id", key).getResultList();
         return result;
-    }
+    }   
 }

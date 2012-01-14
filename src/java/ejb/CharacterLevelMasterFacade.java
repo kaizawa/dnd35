@@ -4,7 +4,7 @@
  */
 package ejb;
 
-import entity.CampaignMaster;
+import entity.CharacterLevelMaster;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author kaizawa
  */
 @Stateless
-public class CampaignMasterFacade extends AbstractFacade<CampaignMaster> {
+public class CharacterLevelMasterFacade extends AbstractFacade<CharacterLevelMaster> {
     @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class CampaignMasterFacade extends AbstractFacade<CampaignMaster> {
         return em;
     }
 
-    public CampaignMasterFacade() {
-        super(CampaignMaster.class);
+    public CharacterLevelMasterFacade() {
+        super(CharacterLevelMaster.class);
     }
     
 }

@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
+import entity.CharacterGrowthRecord;
 import entity.CharacterRecord;
 import entity.CharacterSkillGrowthRecord;
 import java.util.ArrayList;
@@ -15,35 +15,21 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class CharacterSkillGrowthRecordFacade implements CharacterSkillGrowthRecordFacadeLocal {
-    @PersistenceContext
+public class CharacterSkillGrowthRecordFacade extends AbstractFacade<CharacterSkillGrowthRecord> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(CharacterSkillGrowthRecord characterSkillGrowthRecord) {
-        em.persist(characterSkillGrowthRecord);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(CharacterSkillGrowthRecord characterSkillGrowthRecord) {
-        em.merge(characterSkillGrowthRecord);
+    public CharacterSkillGrowthRecordFacade() {
+        super(CharacterSkillGrowthRecord.class);
     }
-
-    public void remove(CharacterSkillGrowthRecord characterSkillGrowthRecord) {
-        em.remove(em.merge(characterSkillGrowthRecord));
-    }
-
-    public CharacterSkillGrowthRecord find(Object id) {
-        return em.find(entity.CharacterSkillGrowthRecord.class, id);
-    }
-
-    public List<CharacterSkillGrowthRecord> findAll() {
-        @SuppressWarnings("unchecked")
-        List<CharacterSkillGrowthRecord> result = em.createQuery("select object(o) from CharacterSkillGrowthRecord as o").getResultList();
-        return result;
-    }
-
     public List<CharacterSkillGrowthRecord> findByCharacterAndLevel(CharacterRecord characterRecord, Integer lv) {
 
 
@@ -75,6 +61,5 @@ public class CharacterSkillGrowthRecordFacade implements CharacterSkillGrowthRec
         @SuppressWarnings("unchecked")                
         List<CharacterSkillGrowthRecord>  result = em.createQuery(jpqr).setParameter("chara", characterRecord).getResultList();
         return result;
-    }
-
+    }    
 }

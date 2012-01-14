@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.CharacterGrowthRecord;
@@ -15,33 +14,20 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class CharacterGrowthRecordFacade implements CharacterGrowthRecordFacadeLocal {
-    @PersistenceContext
+public class CharacterGrowthRecordFacade extends AbstractFacade<CharacterGrowthRecord> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(CharacterGrowthRecord characterGrowthRecord) {
-        em.persist(characterGrowthRecord);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(CharacterGrowthRecord characterGrowthRecord) {
-        em.merge(characterGrowthRecord);
-    }
-
-    public void remove(CharacterGrowthRecord characterGrowthRecord) {
-        em.remove(em.merge(characterGrowthRecord));
-    }
-
-    public CharacterGrowthRecord find(Object id) {
-        return em.find(entity.CharacterGrowthRecord.class, id);
-    }
-
-    public List<CharacterGrowthRecord> findAll() {
-        @SuppressWarnings("unchecked")                
-        List<CharacterGrowthRecord> result = em.createQuery("select object(o) from CharacterGrowthRecord as o").getResultList();
-        return result;
+    public CharacterGrowthRecordFacade() {
+        super(CharacterGrowthRecord.class);
     }
 
     //キャラクターとレベルから、ひとつのレコードを返す
@@ -77,5 +63,5 @@ public class CharacterGrowthRecordFacade implements CharacterGrowthRecordFacadeL
         List<CharacterGrowthRecord> result = em.createQuery(jpqr).setParameter("chara", characterRecord).getResultList();
         return result;
     }    
-
+    
 }

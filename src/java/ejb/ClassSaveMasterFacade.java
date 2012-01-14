@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.ClassMaster;
@@ -15,35 +14,22 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class ClassSaveMasterFacade implements ClassSaveMasterFacadeLocal {
-    @PersistenceContext
+public class ClassSaveMasterFacade extends AbstractFacade<ClassSaveMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(ClassSaveMaster classSaveMaster) {
-        em.persist(classSaveMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(ClassSaveMaster classSaveMaster) {
-        em.merge(classSaveMaster);
+    public ClassSaveMasterFacade() {
+        super(ClassSaveMaster.class);
     }
-
-    public void remove(ClassSaveMaster classSaveMaster) {
-        em.remove(em.merge(classSaveMaster));
-    }
-
-    public ClassSaveMaster find(Object id) {
-        return em.find(entity.ClassSaveMaster.class, id);
-    }
-
-    public List<ClassSaveMaster> findAll() {
-        @SuppressWarnings("unchecked")                                        
-        List<ClassSaveMaster> result = em.createQuery("select object(o) from ClassSaveMaster as o").getResultList();
-        return result;
-    }
-
+ 
     public ClassSaveMaster findByClassAndSave(ClassMaster classMaster, SaveMaster save) {
         ClassSaveMaster result;
 
@@ -73,6 +59,5 @@ public class ClassSaveMasterFacade implements ClassSaveMasterFacadeLocal {
         @SuppressWarnings("unchecked")                                                
         List<ClassSaveMaster> result = em.createQuery(jpqr).setParameter("klass", classMaster).getResultList();
         return result;
-    }
-
+    }   
 }

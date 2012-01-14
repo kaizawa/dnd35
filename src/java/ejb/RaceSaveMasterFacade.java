@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.RaceMaster;
@@ -16,33 +15,20 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class RaceSaveMasterFacade implements RaceSaveMasterFacadeLocal {
-    @PersistenceContext
+public class RaceSaveMasterFacade extends AbstractFacade<RaceSaveMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(RaceSaveMaster raceSaveMaster) {
-        em.persist(raceSaveMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(RaceSaveMaster raceSaveMaster) {
-        em.merge(raceSaveMaster);
-    }
-
-    public void remove(RaceSaveMaster raceSaveMaster) {
-        em.remove(em.merge(raceSaveMaster));
-    }
-
-    public RaceSaveMaster find(Object id) {
-        return em.find(entity.RaceSaveMaster.class, id);
-    }
-
-    public List<RaceSaveMaster> findAll() {
-        @SuppressWarnings("unchecked")
-        List<RaceSaveMaster> result = em.createQuery("select object(o) from RaceSaveMaster as o").getResultList();
-        return result;
+    public RaceSaveMasterFacade() {
+        super(RaceSaveMaster.class);
     }
 
     public List<RaceSaveMaster> findByRace(RaceMaster race) {
@@ -74,6 +60,5 @@ public class RaceSaveMasterFacade implements RaceSaveMasterFacadeLocal {
                 " order by g.raceSaveMasterPK.saveId";
         result = (RaceSaveMaster)em.createQuery(jpqr).setParameter("race", race).setParameter("save", save).getSingleResult();
         return result;
-    }
-
+    }    
 }

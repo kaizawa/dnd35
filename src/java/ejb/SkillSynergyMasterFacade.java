@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.SkillMaster;
@@ -15,35 +14,22 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class SkillSynergyMasterFacade implements SkillSynergyMasterFacadeLocal {
-    @PersistenceContext
+public class SkillSynergyMasterFacade extends AbstractFacade<SkillSynergyMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(SkillSynergyMaster skillSynergyMaster) {
-        em.persist(skillSynergyMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(SkillSynergyMaster skillSynergyMaster) {
-        em.merge(skillSynergyMaster);
+    public SkillSynergyMasterFacade() {
+        super(SkillSynergyMaster.class);
     }
-
-    public void remove(SkillSynergyMaster skillSynergyMaster) {
-        em.remove(em.merge(skillSynergyMaster));
-    }
-
-    public SkillSynergyMaster find(Object id) {
-        return em.find(entity.SkillSynergyMaster.class, id);
-    }
-
-    public List<SkillSynergyMaster> findAll() {
-        @SuppressWarnings("unchecked")
-        List<SkillSynergyMaster> result = em.createQuery("select object(o) from SkillSynergyMaster as o").getResultList();
-        return result;
-    }
-
+  
     public List<SkillSynergyMaster> findBySkill(SkillMaster skill) {
 
 

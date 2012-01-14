@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.AbilityMaster;
@@ -16,36 +15,22 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class RaceAbilityMasterFacade implements RaceAbilityMasterFacadeLocal {
-    @PersistenceContext
+public class RaceAbilityMasterFacade extends AbstractFacade<RaceAbilityMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(RaceAbilityMaster raceAbilityMaster) {
-        em.persist(raceAbilityMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(RaceAbilityMaster raceAbilityMaster) {
-        em.merge(raceAbilityMaster);
+    public RaceAbilityMasterFacade() {
+        super(RaceAbilityMaster.class);
     }
-
-    public void remove(RaceAbilityMaster raceAbilityMaster) {
-        em.remove(em.merge(raceAbilityMaster));
-    }
-
-    public RaceAbilityMaster find(Object id) {
-        return em.find(entity.RaceAbilityMaster.class, id);
-    }
-
-    public List<RaceAbilityMaster> findAll() {
-        @SuppressWarnings("unchecked")                        
-        List<RaceAbilityMaster> result = em.createQuery("select object(o) from RaceAbilityMaster as o").getResultList();
-        return result;
-    }
-
-    public RaceAbilityMaster findByRaceAndAbility(RaceMaster race, AbilityMaster ability) {
+   public RaceAbilityMaster findByRaceAndAbility(RaceMaster race, AbilityMaster ability) {
         RaceAbilityMaster result;
 
         // 種族や能力が渡されていた無かったら NULL を渡す
@@ -73,6 +58,5 @@ public class RaceAbilityMasterFacade implements RaceAbilityMasterFacadeLocal {
         @SuppressWarnings("unchecked")                
         List<RaceAbilityMaster> result = em.createQuery(jpqr).setParameter("race", race).getResultList();
         return result;
-    }
-
+    }    
 }

@@ -2,44 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejb;
 
 import entity.SkillMaster;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ka78231
+ * @author kaizawa
  */
 @Stateless
-public class SkillMasterFacade implements SkillMasterFacadeLocal {
-    @PersistenceContext
+public class SkillMasterFacade extends AbstractFacade<SkillMaster> {
+    @PersistenceContext(unitName = "dndPU")
     private EntityManager em;
 
-    public void create(SkillMaster skillMaster) {
-        em.persist(skillMaster);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
-    public void edit(SkillMaster skillMaster) {
-        em.merge(skillMaster);
+    public SkillMasterFacade() {
+        super(SkillMaster.class);
     }
-
-    public void remove(SkillMaster skillMaster) {
-        em.remove(em.merge(skillMaster));
-    }
-
-    public SkillMaster find(Object id) {
-        return em.find(entity.SkillMaster.class, id);
-    }
-
-    public List<SkillMaster> findAll() {
-        @SuppressWarnings("unchecked")
-        List<SkillMaster> result = em.createQuery("select object(o) from SkillMaster as o").getResultList();
-        return result;
-    }
-
+    
 }
