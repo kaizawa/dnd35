@@ -1424,7 +1424,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
      * -------- 攻撃ボーナス 組み付きボーナス ---------------------------
      */
 
-    public Integer getgrappleBonus() {
+    public Integer getGrappleBonus() {
         return getMeleeAttackBonus();
     }
     /*
