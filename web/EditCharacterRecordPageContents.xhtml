@@ -4,11 +4,12 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
+    
+    <!-- TODO: editCharacterRecordPageContents.characterRecord は sessionBeans から取ってくるべき。-->
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="xxx"></h:outputText>
+            <h:outputText value="キャラクタ編集"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form>
@@ -37,7 +38,7 @@
 
                                 </h:panelGrid>
                                 <h:panelGrid columns="4" id="gridPanel6" style="text-align: center; width: 100%" styleClass="g">
-                                    <h:inputText id="textField1" onchange="" requiredMessage="キャラクター名を入力して下さい" style="width: 180px" value="#{editCharacterRecordPageContents.characterRecord.characterName}"/>
+                                    <h:inputText id="textField1" onchange="" requiredMessage="キャラクター名を入力して下さい" style="width: 180px" value="#{sessionBean.characterRecord.characterName}"/>
                                     <h:inputText id="textField2" onchange="" requiredMessage="プレイヤー名を入力して下さい" style="width: 181px" value="#{editCharacterRecordPageContents.characterRecord.playerName}"/>
                                     <h:selectOneMenu id="dropdown1" onchange="" requiredMessage="キャンペーンを選択して下さい" value="#{sessionBean.selectedCampaign}">
                                         <f:selectItems id="dropdown1SelectItems1" value="#{applicationBean.campaignArray}"/>
