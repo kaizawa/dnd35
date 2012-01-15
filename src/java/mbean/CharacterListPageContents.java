@@ -70,11 +70,11 @@ public class CharacterListPageContents  extends BaseBean {
      */
     public CharacterListPageContents() {
     }
-
     
+
     @PostConstruct
     public void init() {
-
+        
         List<CharacterRecord> charaFindAll;
         if ( getSessionBean().getCharacterListSelectedCampaign() == null) {
             charaFindAll = characterRecordFacade.findAll();
@@ -342,6 +342,6 @@ public class CharacterListPageContents  extends BaseBean {
         //セッションBeanにキャラクターレコードをセット
          getSessionBean().setCharacterRecord(characterRecord);
         return "EditCharacterRecordPageContents";
-    }
+    }   
 }
 
