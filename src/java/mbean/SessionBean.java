@@ -13,7 +13,9 @@ import ejb.GenderMasterFacade;
 import ejb.AlignmentMasterFacade;
 import ejb.CampaignMasterFacade;
 import entity.*;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -36,6 +38,9 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 @SessionScoped
 public class SessionBean {
+    
+    private Set selectedCharas = new LinkedHashSet();
+
 
     @EJB
     private BonusRankMasterFacade bonusRankMasterFacade;
@@ -419,5 +424,14 @@ public class SessionBean {
         Integer campaign = (Integer) vce.getNewValue();
         setCharacterListSelectedCampaign(campaign);
     }     
-      
+    
+    public Set getSelectedCharas()
+    {
+        return selectedCharas;
+    }
+
+    public void setSelectedCharas(Set selectedCharas)
+    {
+        this.selectedCharas = selectedCharas;
+    }    
 }    

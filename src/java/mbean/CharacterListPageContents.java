@@ -19,10 +19,7 @@ import ejb.CharacterRecordFacade;
 import ejb.CharacterSkillGrowthRecordFacade;
 import ejb.CampaignMasterFacade;
 import entity.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -343,5 +340,56 @@ public class CharacterListPageContents  extends BaseBean {
          getSessionBean().setCharacterRecord(characterRecord);
         return "EditCharacterRecordPageContents";
     }   
+    
+   /*
+     * Check Box をつけようとしていることこ。
+     * DataProvider の扱いがうまくいってない。というか、使い方がいまいち。
+     *
+     */
+    public String listSummaryButton_action() {
+        return "charasummary";
+
+    }
+    private boolean charaSelected;
+    /**
+     * @return the charaSelected
+     */
+    public boolean isCharaSelected() {
+        CharacterRecord chara = (CharacterRecord)dataTable1.getRowData();
+        Set selectedCharas = getSessionBean().getSelectedCharas();
+        return selectedCharas != null && selectedCharas.contains(chara);
+    }
+
+    /**
+     * @param charaSelected the charaSelected to set
+     */
+    public void setCharaSelected(boolean charaSelected) {
+        CharacterRecord chara = (CharacterRecord) dataTable1.getRowData();
+        if (chara != null) {
+            if (charaSelected) {
+                getSessionBean().getSelectedCharas().add(chara);
+            } else {
+                getSessionBean().getSelectedCharas().remove(chara);
+            }
+        }
+    }
+
+    public String selectAllButton_action() {
+        // TODO: Process the button click action. Return value is a navigation
+        // case name where null will return to the same page.
+        Set<CharacterRecord> charaSet = getSessionBean().getSelectedCharas();
+        //Clear first, just in case.
+        charaSet.clear();
+        for(CharacterRecord chara : getSessionBean().getCharacterRecordList()){
+            charaSet.add(chara);
+        }
+        return null;
+    }
+
+    public String releaseAllButton_action() {
+        Set charaSet = getSessionBean().getSelectedCharas();
+        charaSet.clear();
+        return null;
+    }
 }
 
