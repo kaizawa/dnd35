@@ -17,6 +17,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 /**
@@ -408,5 +410,14 @@ public class SessionBean {
     public void setMainArm(boolean mainArm) {
         this.mainArm = mainArm;
     }
-
+    
+    /*
+     * この valueChangeListener は CharacterListPageContents の PostConstract 
+     * の init の「後」に呼ばれるようだ。なので init では 値の変更に気がついていない。。。
+     */
+    public void campaign_processValueChange(ValueChangeEvent vce) {
+        Integer campaign = (Integer) vce.getNewValue();
+        setCharacterListSelectedCampaign(campaign);
+    }     
+      
 }    
