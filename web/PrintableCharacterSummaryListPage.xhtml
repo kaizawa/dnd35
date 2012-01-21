@@ -19,16 +19,15 @@
                 </h:panelGrid>
                 <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;">
                     <h:dataTable binding="#{printableCharacterSummaryListPage.dataTable1}"
-
-                                 id="dataTable1" style="" styleClass="gPrintSummaryList" value="#{sessionBean.characterRecordSummary}" var="currentRow">
+                                 id="dataTable1" style="" styleClass="gPrintSummaryList" value="#{sessionBean.characterRecordList}" var="currentRow">
                         <h:column id="nameColumn1">
                             <h:panelGrid columns="1" id="gridPanel36" style="width: 150px" styleClass="qPrint">
                                 <h:commandLink action="#{printableCharacterSummaryListPage.editCharaLink_action}" id="editCharaLink"
                                                style="font-size: 12px;" target="_blank">
-                                    <h:outputText id="charaEditLinkText1" value="#{currentRow['characterName']} Lv #{currentRow['characterLevel']}"/>
+                                    <h:outputText id="charaEditLinkText1" value="#{currentRow['characterName']} Lv #{printableCharacterSummaryListPage.characterLevel}"/>
                                 </h:commandLink>
                                 <h:outputText id="playerName" value="#{currentRow['playerName']}"/>
-                                <h:outputText id="classList" value="#{currentRow['classList']}"/>
+                                <h:outputText id="classList" value="#{printableCharacterSummaryListPage.classList}"/>
                             </h:panelGrid>
                             <f:facet name="header"/>
                         </h:column>

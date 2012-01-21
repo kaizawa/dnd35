@@ -625,6 +625,6 @@ public class DnDUtil {
     
     public static String getAbilityShortName(AbilityMaster ability){
         String name = ability.getAbilityName();
-        return (new StringBuilder()).append("\u3010").append(name.substring(0, 1)).append(" \u3011").toString();
+        return (new StringBuilder()).append("\u3010").append(name.substring(0, 1)).append("\u3011").toString();
     }    
 }

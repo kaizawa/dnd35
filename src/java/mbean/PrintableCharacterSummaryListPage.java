@@ -208,4 +208,21 @@ public class PrintableCharacterSummaryListPage extends BaseBean {
 
         return DnDUtil.getAbilityShortName(ability);        
     }
+    
+    public Integer getCharacterLevel(){
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+        DnDUtil util = new DnDUtil(characterRecord);
+        return util.getCharacterLevel();
+    }
+    
+      public String getClassList(){
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+        DnDUtil util = new DnDUtil(characterRecord);
+        return util.getClassList();
+    }  
+    
 }
