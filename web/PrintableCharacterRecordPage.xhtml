@@ -85,7 +85,7 @@
                             <h:dataTable binding="#{printableCharacterRecordPage.abilityTable}" id="abilityTable" styleClass="gPrint"
                                          value="#{applicationBean.abilityList}" var="currentRow">
                                 <h:column id="column4">
-                                    <h:outputText id="outputText22" styleClass="bPrint" value="#{currentRow['abilityName']}"/>
+                                    <h:outputText id="outputText22" styleClass="bPrint" value="#{currentRow.abilityName}"/>
                                     <f:facet name="header">
                                         <h:outputText escape="false" id="outputText23"/>
                                     </f:facet>
@@ -139,7 +139,7 @@
                             <h:dataTable binding="#{printableCharacterRecordPage.saveTable}" cellpadding="1" cellspacing="0" id="saveTable" style=""
                                          styleClass="gPrint" value="#{applicationBean.saveList}" var="currentRow">
                                 <h:column id="column19">
-                                    <h:outputText id="outputText47" styleClass="bPrint" value="#{currentRow['saveName']}"/>
+                                    <h:outputText id="outputText47" styleClass="bPrint" value="#{currentRow.saveName}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText48"/>
                                     </f:facet>
@@ -422,7 +422,7 @@
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column12">
-                                    <h:outputText id="outputText35" styleClass="bPrint" value="#{currentRow['skillName']} #{printableCharacterRecordPage.skillCheckAcceptNoRank}"/>
+                                    <h:outputText id="outputText35" styleClass="bPrint" value="#{currentRow.skillName} #{printableCharacterRecordPage.skillCheckAcceptNoRank}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText36" value="技能名"/>
                                     </f:facet>

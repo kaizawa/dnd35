@@ -5,13 +5,7 @@
  */
 package mbean;
 
-import ejb.RaceMasterFacade;
-import ejb.AbilityMasterFacade;
-import ejb.ReligionMasterFacade;
-import ejb.BonusRankMasterFacade;
-import ejb.GenderMasterFacade;
-import ejb.AlignmentMasterFacade;
-import ejb.CampaignMasterFacade;
+import ejb.*;
 import entity.*;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -19,7 +13,6 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
@@ -57,7 +50,7 @@ public class SessionBean {
     @EJB
     private CampaignMasterFacade campaignMasterFacade; 
 
-    boolean loggedIn = true;
+    boolean loggedIn = false;
     
     public boolean isLoggedIn() {
         return loggedIn;
@@ -128,19 +121,7 @@ public class SessionBean {
     public void setCharacterRecordList(List<CharacterRecord> characterRecords) {
         this.characterRecordList = characterRecords;
     }   
-    
-    ////////////////////////////////////////////
-    // キャラクターレコードのサマリーリスト
-    //////////////////////////////////////////////
-    private List<CharacterRecordSummary> charaRecordSummary;
-
-    public List<CharacterRecordSummary> getCharacterRecordSummary() {
-        return charaRecordSummary;
-    }
-
-    public void setCharacterRecordSummary(List<CharacterRecordSummary> charaRecordSummary) {
-        this.charaRecordSummary = charaRecordSummary;
-    }    
+      
     // キャラクターレコード
     private CharacterRecord characterRecoed;
 

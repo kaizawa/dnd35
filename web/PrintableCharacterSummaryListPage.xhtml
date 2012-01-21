@@ -24,9 +24,9 @@
                             <h:panelGrid columns="1" id="gridPanel36" style="width: 150px" styleClass="qPrint">
                                 <h:commandLink action="#{printableCharacterSummaryListPage.editCharaLink_action}" id="editCharaLink"
                                                style="font-size: 12px;" target="_blank">
-                                    <h:outputText id="charaEditLinkText1" value="#{currentRow['characterName']} Lv #{printableCharacterSummaryListPage.characterLevel}"/>
+                                    <h:outputText id="charaEditLinkText1" value="#{currentRow.characterName} Lv #{printableCharacterSummaryListPage.characterLevel}"/>
                                 </h:commandLink>
-                                <h:outputText id="playerName" value="#{currentRow['playerName']}"/>
+                                <h:outputText id="playerName" value="#{currentRow.playerName}"/>
                                 <h:outputText id="classList" value="#{printableCharacterSummaryListPage.classList}"/>
                             </h:panelGrid>
                             <f:facet name="header"/>
@@ -73,7 +73,7 @@
                                         <h:dataTable binding="#{printableCharacterSummaryListPage.saveTable}" headerClass="list-header"
                                                      id="saveTable" rowClasses="list-row-even,list-row-odd" value="#{applicationBean.saveList}" var="saveCurrentRow">
                                             <h:column id="column2">
-                                                <h:outputText id="outputText1" value="#{saveCurrentRow['saveName']}"/>
+                                                <h:outputText id="outputText1" value="#{savecurrentRow.saveName}"/>
                                                 <f:facet name="header"/>
                                             </h:column>
                                             <h:column id="column3">

@@ -24,18 +24,18 @@
                         </h:panelGrid>
                         <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;" styleClass="tableGrid">
                             <h:dataTable binding="#{characterListPageContents.dataTable1}"
-                                         id="dataTable1" style="" styleClass="w" value="#{sessionBean.characterRecordSummary}" var="currentRow">
+                                         id="dataTable1" style="" styleClass="w" value="#{sessionBean.characterRecordList}" var="currentRow">
                                 <h:column id="check">
                                     <h:selectBooleanCheckbox id="checkbox1" value="#{characterListPageContents.charaSelected}"/>
                                 </h:column>
                                 <h:column id="column1">
-                                    <h:outputText id="outputText2" style="font-size: 14px; font-weight: bold;"  value="#{currentRow['characterName']}"/>
+                                    <h:outputText id="outputText2" style="font-size: 14px; font-weight: bold;"  value="#{currentRow.characterName}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText3" value="キャラクター名"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column3">
-                                    <h:outputText id="outputText6" style="font-size: 14px; font-weight: bold;" value="#{currentRow['playerName']}"/>
+                                    <h:outputText id="outputText6" style="font-size: 14px; font-weight: bold;" value="#{currentRow.playerName}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText7" value="プレイヤー"/>
                                     </f:facet>
@@ -50,27 +50,27 @@
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column4">
-                                    <h:outputText id="outputText8" style="font-size: 14px" value="#{currentRow['characterLevel']}"/>
+                                    <h:outputText id="outputText8" style="font-size: 14px" value="#{characterListPageContents.characterLevel}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText10"  value="Lv"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column7">
                                     <h:panelGrid id="gridPanel2" style="width: 230px" styleClass="qPrint">
-                                        <h:outputText id="outputText13" value="#{currentRow['classList']}"/>
+                                        <h:outputText id="outputText13" value="#{characterListPageContents.classList}"/>
                                     </h:panelGrid>
                                     <f:facet name="header">
                                         <h:outputText id="outputText14" value="クラスリスト"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column2">
-                                    <h:outputText id="outputText4" value="#{currentRow['campaign']}"/>
+                                    <h:outputText id="outputText4" value="#{currentRow.campaignId.campaignName}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText5" value="キャンペーン"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column8">
-                                    <h:outputText id="outputText15" value="#{currentRow['lastChange']}"/>
+                                    <h:outputText id="outputText15" value="#{characterListPageContents.lastChange}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText16" value="更新日"/>
                                     </f:facet>

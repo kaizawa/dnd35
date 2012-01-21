@@ -82,75 +82,6 @@ public class CharacterListPageContents  extends BaseBean {
         }
 
          getSessionBean().setCharacterRecordList(charaFindAll);
-
-
-        /*
-         * サマリー用のクラス CharacterRecordSummary のリストを作る
-         * その中にプレーヤー名とキャラクター名、そして計算したキャラクタレベルを入れておく
-         * TODO: この中でやっていることは DnDUtil とやっていることとかぶる。
-         *        なんとか一元化できないものか? おそらく CharacterRecordSummary はいらない。
-         *        CharacterRecordSummary 管理 Bean 内で CharacterRecord から必要なデータを
-         *        DnDUtil を使って計算させればいいだけ。
-         */
-        List<CharacterRecordSummary> charaRecordSummary = new ArrayList<CharacterRecordSummary>();
-        for (CharacterRecord charaRecord : charaFindAll) {
-            DnDUtil util = new DnDUtil(charaRecord);
-            Integer lv = null;
-            int exp = 0; // 経験値 が登録されていなかったら Exp を 0 とする
-
-            if (charaRecord.getExperience() != null) {
-                exp = charaRecord.getExperience().intValue();
-            }
-            CharacterRecordSummary charaSummary = new CharacterRecordSummary();
-            charaSummary.setPlayerName(charaRecord.getPlayerName());
-            charaSummary.setCharacterName(charaRecord.getCharacterName());
-            if (charaRecord.getCampaignId() == null) {
-                charaSummary.setCampaign("未設定");
-            } else {
-                charaSummary.setCampaign(charaRecord.getCampaignId().getCampaignName());
-            }
-
-            //経験値からキャラクタレベルを計算
-            lv = util.getLevel();
-            charaSummary.setCharacterLevel(lv);
-
-            //クラスのリストをつくり、各クラスのレベルを計算する
-            List<CharacterGrowthRecord> growthList = characterGrowthRecordFacade.findByCharacter(charaRecord);
-            Map<ClassMaster, Integer> classMap = new HashMap<ClassMaster, Integer>();
-            int i = 1;
-            for (CharacterGrowthRecord growth : growthList) {
-                // 現在のキャラクタレベル分だけしか見ないでよい。
-                if (i > lv) {
-                    break;
-                }
-                int newVal = 0;
-                ClassMaster klass = growth.getClassId();
-
-                if (classMap.get(klass) == null) {
-                    newVal = 1;
-                } else {
-                    newVal = classMap.get(klass).intValue() + 1;
-                }
-                classMap.put(klass, newVal);
-                i++;
-            }
-            String classList = "";
-            for (Map.Entry<ClassMaster, Integer> mapEntry : classMap.entrySet()) {
-                ClassMaster klass = mapEntry.getKey();
-                String line =
-                        (klass == null ? "未設定" : klass.getClassName()) +
-                        mapEntry.getValue() + " Lv" + ", ";
-                classList = classList + line;
-            }
-            charaSummary.setClassList(classList);
-
-            // 最終更新日
-            charaSummary.setLastChange(DnDUtil.getLastChange(charaRecord));
-
-            charaRecordSummary.add(charaSummary);           
-        }
-
-         getSessionBean().setCharacterRecordSummary(charaRecordSummary);
     }
 
     public String charaEditLink_action() {
@@ -404,5 +335,30 @@ public class CharacterListPageContents  extends BaseBean {
         charaSet.clear();
         return null;
     }
+    
+    public Integer getCharacterLevel(){
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+        DnDUtil util = new DnDUtil(characterRecord);
+        return util.getCharacterLevel();
+    }
+    
+      public String getClassList(){
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+        DnDUtil util = new DnDUtil(characterRecord);
+        return util.getClassList();
+    }      
+
+      public String getLastChange(){
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+        DnDUtil util = new DnDUtil(characterRecord);
+        return util.getLastChange();
+    }       
+      
 }
 

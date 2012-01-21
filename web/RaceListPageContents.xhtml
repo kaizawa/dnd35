@@ -24,7 +24,7 @@
                         <h:dataTable binding="#{raceListPageContents.raceTable}" id="raceTable" styleClass="w"
                                      value="#{applicationBean.raceMasterList}" var="currentRow">
                             <h:column id="column1">
-                                <h:outputText id="outputText1" value="#{currentRow['raceName']}"/>
+                                <h:outputText id="outputText1" value="#{currentRow.raceName}"/>
                                 <f:facet name="header">
                                     <h:outputText id="outputText2" value="種族名"/>
                                 </f:facet>

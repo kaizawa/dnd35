@@ -26,7 +26,7 @@
                         <h:dataTable binding="#{classListPageContents.classTable}" id="classTable" styleClass="w"
                                      value="#{applicationBean.classMasterList}" var="currentRow">
                             <h:column id="column1">
-                                <h:outputText id="outputText1" value="#{currentRow['className']}"/>
+                                <h:outputText id="outputText1" value="#{currentRow.className}"/>
                                 <f:facet name="header">
                                     <h:outputText id="outputText2" value="クラス名"/>
                                 </f:facet>
