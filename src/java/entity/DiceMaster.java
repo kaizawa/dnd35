@@ -6,12 +6,9 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -21,6 +18,8 @@ import javax.persistence.Table;
 @Table(name = "DICE_MASTER")
 @NamedQueries({@NamedQuery(name = "DiceMaster.findById", query = "SELECT d FROM DiceMaster d WHERE d.id = :id"), @NamedQuery(name = "DiceMaster.findByName", query = "SELECT d FROM DiceMaster d WHERE d.name = :name"), @NamedQuery(name = "DiceMaster.findByType", query = "SELECT d FROM DiceMaster d WHERE d.type = :type")})
 public class DiceMaster implements Serializable {
+    @OneToMany(mappedBy = "hitDiceType")
+    private List<ClassMaster> classMasterList;
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "ID", nullable = false)
@@ -84,6 +83,15 @@ public class DiceMaster implements Serializable {
     @Override
     public String toString() {
         return "entity.DiceMaster[id=" + id + "]";
+    }
+
+    @XmlTransient
+    public List<ClassMaster> getClassMasterList() {
+        return classMasterList;
+    }
+
+    public void setClassMasterList(List<ClassMaster> classMasterList) {
+        this.classMasterList = classMasterList;
     }
 
 }

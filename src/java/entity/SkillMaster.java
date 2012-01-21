@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,8 @@ import javax.persistence.Table;
 @Table(name = "SKILL_MASTER")
 @NamedQueries({@NamedQuery(name = "SkillMaster.findById", query = "SELECT s FROM SkillMaster s WHERE s.id = :id"), @NamedQuery(name = "SkillMaster.findBySkillName", query = "SELECT s FROM SkillMaster s WHERE s.skillName = :skillName"), @NamedQuery(name = "SkillMaster.findByAcceptNoRank", query = "SELECT s FROM SkillMaster s WHERE s.acceptNoRank = :acceptNoRank")})
 public class SkillMaster implements Serializable {
+    @Column(name = "ARMOR_CHECK")
+    private Integer armorCheck;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,8 +47,16 @@ public class SkillMaster implements Serializable {
     private Collection<CharacterSkillGrowthRecord> characterSkillGrowthRecordCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillMaster")
     private Collection<CharacterSkillRecord> characterSkillRecordCollection;
-    @Column(name = "ARMOR_CHECK")
-    private int armorCheck;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillMaster")
+    private List<SkillSynergyMaster> skillSynergyMasterList;
+
+    public List<SkillSynergyMaster> getSkillSynergyMasterList() {
+        return skillSynergyMasterList;
+    }
+
+    public void setSkillSynergyMasterList(List<SkillSynergyMaster> skillSynergyMasterList) {
+        this.skillSynergyMasterList = skillSynergyMasterList;
+    }
 
     public int getArmorCheck() {
         return armorCheck;
@@ -133,6 +144,10 @@ public class SkillMaster implements Serializable {
     @Override
     public String toString() {
         return "entity.SkillMaster[id=" + id + "]";
+    }
+
+    public void setArmorCheck(Integer armorCheck) {
+        this.armorCheck = armorCheck;
     }
 
 }

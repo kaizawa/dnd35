@@ -152,6 +152,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         int nextLv;
         
         setCharacterRecord( getSessionBean().getCharacterRecord());
+        DnDUtil util = new DnDUtil(getCharacterRecord());
         
 
         //////////////////////////////////////////////////////////////
@@ -164,7 +165,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         ///////////////////////////////////////////////////////////
         //経験値からキャラクタレベルを計算
         ///////////////////////////////////////////////////////////
-        int lv = DnDUtil.getLevel(exp).intValue();
+        int lv = util.getLevel();
 
          getSessionBean().setCharacterLevel(lv);
 

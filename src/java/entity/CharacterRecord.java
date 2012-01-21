@@ -32,17 +32,44 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "CHARACTER_RECORD")
-@NamedQueries({@NamedQuery(name = "CharacterRecord.findById", query = "SELECT c FROM CharacterRecord c WHERE c.id = :id"), @NamedQuery(name = "CharacterRecord.findBySaveTime", query = "SELECT c FROM CharacterRecord c WHERE c.saveTime = :saveTime"), @NamedQuery(name = "CharacterRecord.findBySheetId", query = "SELECT c FROM CharacterRecord c WHERE c.sheetId = :sheetId"), @NamedQuery(name = "CharacterRecord.findByCharacterName", query = "SELECT c FROM CharacterRecord c WHERE c.characterName = :characterName"), @NamedQuery(name = "CharacterRecord.findByPlayerName", query = "SELECT c FROM CharacterRecord c WHERE c.playerName = :playerName"), @NamedQuery(name = "CharacterRecord.findByExperience", query = "SELECT c FROM CharacterRecord c WHERE c.experience = :experience"), @NamedQuery(name = "CharacterRecord.findByAge", query = "SELECT c FROM CharacterRecord c WHERE c.age = :age"), @NamedQuery(name = "CharacterRecord.findByHeight", query = "SELECT c FROM CharacterRecord c WHERE c.height = :height"), @NamedQuery(name = "CharacterRecord.findByWeight", query = "SELECT c FROM CharacterRecord c WHERE c.weight = :weight"), @NamedQuery(name = "CharacterRecord.findByDescription", query = "SELECT c FROM CharacterRecord c WHERE c.description = :description"), @NamedQuery(name = "CharacterRecord.findByInitiativeMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeMiscModifier = :initiativeMiscModifier"), @NamedQuery(name = "CharacterRecord.findByInitiativeFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeFeatModifier = :initiativeFeatModifier"), @NamedQuery(name = "CharacterRecord.findBySpeedMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedMiscModifier = :speedMiscModifier"), @NamedQuery(name = "CharacterRecord.findBySpeedFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedFeatModifier = :speedFeatModifier"), @NamedQuery(name = "CharacterRecord.findByHairColor", query = "SELECT c FROM CharacterRecord c WHERE c.hairColor = :hairColor"), @NamedQuery(name = "CharacterRecord.findBySkinColor", query = "SELECT c FROM CharacterRecord c WHERE c.skinColor = :skinColor"), @NamedQuery(name = "CharacterRecord.findByEyeColor", query = "SELECT c FROM CharacterRecord c WHERE c.eyeColor = :eyeColor"), @NamedQuery(name = "CharacterRecord.findByDamageReduction", query = "SELECT c FROM CharacterRecord c WHERE c.damageReduction = :damageReduction"), @NamedQuery(name = "CharacterRecord.findBySpellResistance", query = "SELECT c FROM CharacterRecord c WHERE c.spellResistance = :spellResistance"), @NamedQuery(name = "CharacterRecord.findByLanguage", query = "SELECT c FROM CharacterRecord c WHERE c.language = :language"), @NamedQuery(name = "CharacterRecord.findByFeatDescription", query = "SELECT c FROM CharacterRecord c WHERE c.featDescription = :featDescription"), @NamedQuery(name = "CharacterRecord.findByAttackDescription", query = "SELECT c FROM CharacterRecord c WHERE c.attackDescription = :attackDescription"), @NamedQuery(name = "CharacterRecord.findBySpellDescription", query = "SELECT c FROM CharacterRecord c WHERE c.spellDescription = :spellDescription"), @NamedQuery(name = "CharacterRecord.findByItemDescription", query = "SELECT c FROM CharacterRecord c WHERE c.itemDescription = :itemDescription"), @NamedQuery(name = "CharacterRecord.findByAcArmor", query = "SELECT c FROM CharacterRecord c WHERE c.acArmor = :acArmor"), @NamedQuery(name = "CharacterRecord.findByAcShield", query = "SELECT c FROM CharacterRecord c WHERE c.acShield = :acShield"), @NamedQuery(name = "CharacterRecord.findByAcMiscMod", query = "SELECT c FROM CharacterRecord c WHERE c.acMiscMod = :acMiscMod")})
+@NamedQueries({
+    @NamedQuery(name = "CharacterRecord.findById", query = "SELECT c FROM CharacterRecord c WHERE c.id = :id"),
+    @NamedQuery(name = "CharacterRecord.findBySaveTime", query = "SELECT c FROM CharacterRecord c WHERE c.saveTime = :saveTime"),
+    @NamedQuery(name = "CharacterRecord.findBySheetId", query = "SELECT c FROM CharacterRecord c WHERE c.sheetId = :sheetId"),
+    @NamedQuery(name = "CharacterRecord.findByCharacterName", query = "SELECT c FROM CharacterRecord c WHERE c.characterName = :characterName"),
+    @NamedQuery(name = "CharacterRecord.findByPlayerName", query = "SELECT c FROM CharacterRecord c WHERE c.playerName = :playerName"),
+    @NamedQuery(name = "CharacterRecord.findByExperience", query = "SELECT c FROM CharacterRecord c WHERE c.experience = :experience"),
+    @NamedQuery(name = "CharacterRecord.findByAge", query = "SELECT c FROM CharacterRecord c WHERE c.age = :age"),
+    @NamedQuery(name = "CharacterRecord.findByHeight", query = "SELECT c FROM CharacterRecord c WHERE c.height = :height"),
+    @NamedQuery(name = "CharacterRecord.findByWeight", query = "SELECT c FROM CharacterRecord c WHERE c.weight = :weight"),
+    @NamedQuery(name = "CharacterRecord.findByDescription", query = "SELECT c FROM CharacterRecord c WHERE c.description = :description"),
+    @NamedQuery(name = "CharacterRecord.findByInitiativeMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeMiscModifier = :initiativeMiscModifier"),
+    @NamedQuery(name = "CharacterRecord.findByInitiativeFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.initiativeFeatModifier = :initiativeFeatModifier"),
+    @NamedQuery(name = "CharacterRecord.findBySpeedMiscModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedMiscModifier = :speedMiscModifier"),
+    @NamedQuery(name = "CharacterRecord.findBySpeedFeatModifier", query = "SELECT c FROM CharacterRecord c WHERE c.speedFeatModifier = :speedFeatModifier"),
+    @NamedQuery(name = "CharacterRecord.findByHairColor", query = "SELECT c FROM CharacterRecord c WHERE c.hairColor = :hairColor"),
+    @NamedQuery(name = "CharacterRecord.findBySkinColor", query = "SELECT c FROM CharacterRecord c WHERE c.skinColor = :skinColor"),
+    @NamedQuery(name = "CharacterRecord.findByEyeColor", query = "SELECT c FROM CharacterRecord c WHERE c.eyeColor = :eyeColor"),
+    @NamedQuery(name = "CharacterRecord.findByDamageReduction", query = "SELECT c FROM CharacterRecord c WHERE c.damageReduction = :damageReduction"),
+    @NamedQuery(name = "CharacterRecord.findBySpellResistance", query = "SELECT c FROM CharacterRecord c WHERE c.spellResistance = :spellResistance"),
+    @NamedQuery(name = "CharacterRecord.findByLanguage", query = "SELECT c FROM CharacterRecord c WHERE c.language = :language"),
+    @NamedQuery(name = "CharacterRecord.findByFeatDescription", query = "SELECT c FROM CharacterRecord c WHERE c.featDescription = :featDescription"),
+    @NamedQuery(name = "CharacterRecord.findByAttackDescription", query = "SELECT c FROM CharacterRecord c WHERE c.attackDescription = :attackDescription"),
+    @NamedQuery(name = "CharacterRecord.findBySpellDescription", query = "SELECT c FROM CharacterRecord c WHERE c.spellDescription = :spellDescription"),
+    @NamedQuery(name = "CharacterRecord.findByItemDescription", query = "SELECT c FROM CharacterRecord c WHERE c.itemDescription = :itemDescription"),
+    @NamedQuery(name = "CharacterRecord.findByAcArmor", query = "SELECT c FROM CharacterRecord c WHERE c.acArmor = :acArmor"),
+    @NamedQuery(name = "CharacterRecord.findByAcShield", query = "SELECT c FROM CharacterRecord c WHERE c.acShield = :acShield"),
+    @NamedQuery(name = "CharacterRecord.findByAcMiscMod", query = "SELECT c FROM CharacterRecord c WHERE c.acMiscMod = :acMiscMod")})
 public class CharacterRecord implements Serializable {
+    @Column(name =     "SAVE_TIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date saveTime;
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
-    @Column(name = "SAVE_TIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date saveTime;
     @Column(name = "SHEET_ID")
     private Integer sheetId;
     @Column(name = "CHARACTER_NAME")

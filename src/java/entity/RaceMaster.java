@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +46,7 @@ public class RaceMaster implements Serializable {
     @ManyToOne
     private SizeMaster sizeId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "raceMaster")
-    private Collection<RaceAbilityMaster> raceAbilityMasterCollection;
+    private List<RaceAbilityMaster> raceAbilityMasterList;
     @Column(name = "SPEED")
     private Integer speed;
 
@@ -112,14 +113,14 @@ public class RaceMaster implements Serializable {
         this.sizeId = sizeId;
     }
 
-    public Collection<RaceAbilityMaster> getRaceAbilityMasterCollection() {
-        return raceAbilityMasterCollection;
+    public List<RaceAbilityMaster> getRaceAbilityMasterList() {
+        return raceAbilityMasterList;
     }
 
-    public void setRaceAbilityMasterCollection(Collection<RaceAbilityMaster> raceAbilityMasterCollection) {
-        this.raceAbilityMasterCollection = raceAbilityMasterCollection;
+    public void setRaceAbilityMasterList(List<RaceAbilityMaster> raceAbilityMasterList) {
+        this.raceAbilityMasterList = raceAbilityMasterList;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,6 +29,8 @@ import javax.persistence.Table;
 @Table(name = "CLASS_MASTER")
 @NamedQueries({@NamedQuery(name = "ClassMaster.findById", query = "SELECT c FROM ClassMaster c WHERE c.id = :id"), @NamedQuery(name = "ClassMaster.findByClassName", query = "SELECT c FROM ClassMaster c WHERE c.className = :className"), @NamedQuery(name = "ClassMaster.findByDescription", query = "SELECT c FROM ClassMaster c WHERE c.description = :description")})
 public class ClassMaster implements Serializable {
+    @OneToMany(mappedBy = "classId")
+    private List<CharacterGrowthRecord> characterGrowthRecordList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -154,6 +157,15 @@ public class ClassMaster implements Serializable {
     @Override
     public String toString() {
         return "entity.ClassMaster[id=" + id + "]";
+    }
+
+    @XmlTransient
+    public List<CharacterGrowthRecord> getCharacterGrowthRecordList() {
+        return characterGrowthRecordList;
+    }
+
+    public void setCharacterGrowthRecordList(List<CharacterGrowthRecord> characterGrowthRecordList) {
+        this.characterGrowthRecordList = characterGrowthRecordList;
     }
 
 }

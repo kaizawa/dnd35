@@ -87,6 +87,7 @@ public class CharacterListPageContents  extends BaseBean {
         //その中にプレーヤー名とキャラクター名、そして計算したキャラクタレベルを入れておく
         List<CharacterRecordSummary> charaRecordSummary = new ArrayList<CharacterRecordSummary>();
         for (CharacterRecord charaRecord : charaFindAll) {
+            DnDUtil util = new DnDUtil(charaRecord);
             Integer lv = null;
             int exp = 0; // 経験値 が登録されていなかったら Exp を 0 とする
 
@@ -103,7 +104,7 @@ public class CharacterListPageContents  extends BaseBean {
             }
 
             //経験値からキャラクタレベルを計算
-            lv = DnDUtil.getLevel(exp);
+            lv = util.getLevel();
             charaSummary.setCharacterLevel(lv);
 
             //クラスのリストをつくり、各クラスのレベルを計算する

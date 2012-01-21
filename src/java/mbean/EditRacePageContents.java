@@ -59,7 +59,7 @@ public class EditRacePageContents extends BaseBean {
     public void init() {
         RaceMaster race =  getSessionBean().getRaceMaster();
 
-        setAbilityCollection(race.getRaceAbilityMasterCollection());
+        setAbilityCollection(race.getRaceAbilityMasterList());
         setSaveCollection(race.getRaceSaveMasterCollection());
 
         if (race.getId() != null) {

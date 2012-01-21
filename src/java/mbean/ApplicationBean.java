@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.ejb.PostActivate;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 /**

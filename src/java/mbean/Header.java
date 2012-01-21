@@ -41,7 +41,7 @@ import javax.faces.bean.RequestScoped;
  * @author ka78231
  */
 
-@ManagedBean
+@ManagedBean(name="header")
 @RequestScoped
 public class Header extends BaseBean{
     @EJB
