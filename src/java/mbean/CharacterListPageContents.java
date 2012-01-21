@@ -22,6 +22,7 @@ import entity.*;
 import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -216,7 +217,7 @@ public class CharacterListPageContents  extends BaseBean {
             characterRecordFacade.create(characterRecord);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("キャラクターの作成に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの作成に失敗しました")));
             return null;
         }
 
@@ -237,7 +238,7 @@ public class CharacterListPageContents  extends BaseBean {
                 characterSkillRecordFacade.create(charaSkillRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクター技能レコードの作成に失敗しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター技能レコードの作成に失敗しました")));
                 return null;
             }
             charaSkillList.add(charaSkillRecord);
@@ -251,7 +252,7 @@ public class CharacterListPageContents  extends BaseBean {
                 characterSkillGrowthRecordFacade.create(skillGrowthRecord);
             } catch (Exception e) {
                 e.printStackTrace();
-                //error("キャラクターの技能成長レコードの作製に失敗しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの技能成長レコードの作製に失敗しました")));
                 return null;
             }
             charaSkillGrowthList.add(skillGrowthRecord);
@@ -272,7 +273,7 @@ public class CharacterListPageContents  extends BaseBean {
                 characterAbilityRecordFacade.create(abilityRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクター能力値(" + ability.getAbilityName() + ")レコードの作成に失敗しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター能力値(" + ability.getAbilityName() + ")レコードの作成に失敗しました")));
                 return null;
             }
             charaAbilityList.add(abilityRecord);
@@ -292,7 +293,7 @@ public class CharacterListPageContents  extends BaseBean {
                 characterSaveRecordFacade.create(saveRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //error("キャラクターセーヴレコードの作成に失敗しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターセーヴレコードの作成に失敗しました")));
                 return null;
             }
             charaSaveList.add(saveRecord);
@@ -306,7 +307,7 @@ public class CharacterListPageContents  extends BaseBean {
             characterEquipmentFacade.create(equip);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("キャラクター装備データの作成に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター装備データの作成に失敗しました")));
             return null;
         }
 
@@ -320,7 +321,7 @@ public class CharacterListPageContents  extends BaseBean {
             characterGrowthRecordFacade.create(charaGrowth);
         } catch (Exception e) {
             e.printStackTrace();
-            //error("キャラクターの成長レコードの作成に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの成長レコードの作成に失敗しました")));
             return null;
         }
         charaGrowthList.add(charaGrowth);

@@ -28,6 +28,7 @@ import entity.*;
 import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -202,7 +203,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 characterGrowthRecordFacade.create(newRecord);
             } catch (Exception e) {
                 e.printStackTrace();
-                //error("キャラクターの成長レコードの作成に失敗しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの成長レコードの作成に失敗しました")));
                 return;
             }
             //作成したリストにあらためて追加
@@ -240,7 +241,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                     characterSkillGrowthRecordFacade.create(newRecord);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    //error("キャラクターの技能成長レコードの作製に失敗しました");
+                    context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの技能成長レコードの作製に失敗しました")));
                     return;
                 }
 
@@ -333,10 +334,10 @@ public class EditCharacterRecordPageContents  extends BaseBean {
             for (CharacterSaveRecord save : saveList) {
                 characterSaveRecordFacade.edit(save);
             }
-            //error("保存されました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("保存されました")));
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("キャラクターの保存に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの保存に失敗しました")));
             return null;
         }
 
@@ -352,7 +353,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
             characterRecordFacade.remove(charaRecord);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("削除に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("削除に失敗しました")));
             return null;
         }
         return "CharacterListPageContents";

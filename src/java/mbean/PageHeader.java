@@ -41,9 +41,9 @@ import javax.faces.bean.RequestScoped;
  * @author ka78231
  */
 
-@ManagedBean(name="header")
+@ManagedBean
 @RequestScoped
-public class Header extends BaseBean{
+public class PageHeader extends BaseBean{
     @EJB
     private CharacterEquipmentFacade characterEquipmentFacade;
     @EJB
@@ -66,7 +66,7 @@ public class Header extends BaseBean{
     private CharacterRecordFacade characterRecordFacade;
 
 
-    public Header() {
+    public PageHeader() {
     }
 
 
@@ -96,7 +96,7 @@ public class Header extends BaseBean{
             characterRecordFacade.create(characterRecord);
         } catch (Exception ex) {
             ex.printStackTrace();
-            ////error("キャラクターの作成に失敗しました");
+            //context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターの作成に失敗しました")));
             return null;
         }
 
@@ -113,7 +113,7 @@ public class Header extends BaseBean{
                 characterSkillRecordFacade.create(charaSkillRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                ////error("キャラクター技能レコードの作成に失敗しました");
+                //context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター技能レコードの作成に失敗しました")));
                 return null;
             }
 
@@ -133,7 +133,7 @@ public class Header extends BaseBean{
                 characterAbilityRecordFacade.create(abilityRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                ////error("キャラクター能力値レコードの作成に失敗しました");
+                //context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター能力値レコードの作成に失敗しました")));
                 return null;
             }
 
@@ -152,7 +152,7 @@ public class Header extends BaseBean{
                 characterSaveRecordFacade.create(saveRecord);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                ////error("キャラクターセーヴレコードの作成に失敗しました");
+                //context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクターセーヴレコードの作成に失敗しました")));
                 return null;
             }
 
@@ -166,7 +166,7 @@ public class Header extends BaseBean{
             characterEquipmentFacade.create(equip);
         } catch (Exception ex) {
             ex.printStackTrace();
-            ////error("キャラクター装備データの作成に失敗しました");
+            //context.addMessage("contents:contentGrid:label1", new FacesMessage(("キャラクター装備データの作成に失敗しました")));
             return null;
         }
 

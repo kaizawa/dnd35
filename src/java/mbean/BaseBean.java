@@ -5,6 +5,9 @@
 package mbean;
 
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
+
 
 /**
  *
@@ -21,6 +24,7 @@ class BaseBean {
     @ManagedProperty(value="#{requestBean}")    
     private RequestBean requestBean;    
     
+    FacesContext context = FacesContext.getCurrentInstance();
 
     public ApplicationBean getApplicationBean() {
         return applicationBean;

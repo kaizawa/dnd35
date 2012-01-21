@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ValueChangeEvent;
@@ -186,7 +187,7 @@ public class EditRacePageContents extends BaseBean {
                 raceAbilityMasterFacade.create(wis);
                 raceAbilityMasterFacade.create(charisma);
 
-                //error("作成しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("作成しました")));
             } else {
                 //更新
                 for (RaceSaveMaster saveMaster : getSaveCollection()) {
@@ -238,12 +239,12 @@ public class EditRacePageContents extends BaseBean {
                 race.setSizeId(sizeMasterFacade.find(sizeid));
                 race.setSpeed(getSpeed());
                 raceMasterFacade.edit(race);
-                //error("保存しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("保存しました")));
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("種族の保存に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("種族の保存に失敗しました")));
             return null;
         }
 
@@ -279,7 +280,7 @@ public class EditRacePageContents extends BaseBean {
             raceMasterFacade.remove(raceMaster);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("種族の削除に失敗しました。利用中の可能性があります。");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("種族の削除に失敗しました。利用中の可能性があります。")));
             return null;
         }
         return "RaceListPageContents";

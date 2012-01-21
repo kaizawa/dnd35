@@ -5,13 +5,17 @@
 
 package mbean;
 
+import com.sun.xml.internal.ws.resources.AddressingMessages;
 import ejb.PlayerMasterFacade;
 import entity.PlayerMaster;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -27,7 +31,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class LoginContents extends BaseBean {
+public class LoginContents extends BaseBean {    
     @EJB
     private PlayerMasterFacade PlayerMasterFacade;
 
@@ -49,7 +53,6 @@ public class LoginContents extends BaseBean {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
 
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -77,12 +80,12 @@ public class LoginContents extends BaseBean {
         PlayerMaster player =  PlayerMasterFacade.findByUsername(username);
 
         if(player == null){
-            //error("ログインに失敗しました. ユーザ名が間違っています");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage("ログインに失敗しました. ユーザ名が間違っています"));            
             return null;
         }
 
         if( !player.getPassword().equals(passwd)){
-            //error("ログインに失敗しました. パスワードが間違っています");
+            context.addMessage(null, new FacesMessage("ログインに失敗しました. パスワードが間違っています"));
             return null;
         }
 

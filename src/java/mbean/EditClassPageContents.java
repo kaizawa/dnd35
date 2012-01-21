@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -162,7 +163,7 @@ public class EditClassPageContents extends BaseBean {
                     classSkill.getClassSkillMasterPK().setClassId(classMaster.getId());
                     classSkillMasterFacade.create(classSkill);
                 }
-                //error("作成しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("作成しました")));
             } else {
                 if (getClassSaveFortitute() != null) {
                     classSaveMasterFacade.edit(getClassSaveFortitute());
@@ -191,12 +192,12 @@ public class EditClassPageContents extends BaseBean {
                 }
                 //更新
                 classMasterFacade.edit(classMaster);
-                //error("保存しました");
+                context.addMessage("contents:contentGrid:label1", new FacesMessage(("保存しました")));
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("クラスの保存に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("クラスの保存に失敗しました")));
             return null;
         }
 
@@ -415,7 +416,7 @@ public class EditClassPageContents extends BaseBean {
             classMasterFacade.remove(classMaster);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("削除に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("削除に失敗しました")));
             return null;
         }
         return "ClassListPageContents";

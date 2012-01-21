@@ -23,10 +23,10 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class Footer extends BaseBean{
+public class PageFooter extends BaseBean{
 
 
-    public Footer() {
+    public PageFooter() {
     }
 
     public String gotoTopLink_action() {

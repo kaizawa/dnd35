@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlDataTable;
@@ -199,11 +200,11 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
             for (CharacterGrowthRecord growth : growthList) {
                 characterGrowthRecordFacade.edit(growth);
             }
-            //error("保存されました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("保存されました")));
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            //error("成長記録の保存に失敗しました");
+            context.addMessage("contents:contentGrid:label1", new FacesMessage(("成長記録の保存に失敗しました")));
         }
     }
 
