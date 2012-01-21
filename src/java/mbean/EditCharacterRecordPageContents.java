@@ -1448,7 +1448,11 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     public String cancelButton_action() {
-        return "CharacterListPageContents";
+        if(getCharacterRecord().getSaveTime() == null){
+           return deleteButton_action();
+        } else {
+            return "CharacterListPageContents";
+        }
     }
 
     public String viewLink_action() {
@@ -1467,8 +1471,8 @@ public class EditCharacterRecordPageContents  extends BaseBean {
 
     /*
      * ------------ アイテム 武器 -----------------------------------
-     * 未実装
-
+     * TODO: 未実装
+      
     public String getArm1 (){
         ArmMaster arm1 = getCharacterRecord().getCharacterEquipment().getArm1();
         if(arm1 != null) {
