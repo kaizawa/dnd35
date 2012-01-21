@@ -56,7 +56,7 @@
                                     <h:selectOneMenu id="dropdown5" onchange="" required="true" requiredMessage="HDの種類を選択してください" value="#{editClassPageContents.classEditSelectedHitDiceType}">
                                         <f:selectItems id="dropdown2SelectItems2" value="#{applicationBean.diceArray}"/>
                                     </h:selectOneMenu>
-                                    <h:inputText id="textField109" required="true" style="font-size: 14px; width: 30px" value="#{sessionBean.classMaster.skillPoint}"/>
+                                    <h:inputText id="textField109" required="true" requiredMessage="レベル毎の技能ポイントを指定してください" style="font-size: 14px; width: 30px" value="#{sessionBean.classMaster.skillPoint}"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGrid">
                                     <h:outputText id="outputText8" styleClass="tableTitleBlack" value="説明・特徴"/>

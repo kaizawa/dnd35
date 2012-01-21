@@ -57,7 +57,7 @@ public class SessionBean {
     @EJB
     private CampaignMasterFacade campaignMasterFacade; 
 
-    boolean loggedIn = false;
+    boolean loggedIn = true;
     
     public boolean isLoggedIn() {
         return loggedIn;

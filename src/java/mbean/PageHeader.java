@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mbean;
 
 import ejb.AbilityMasterFacade;
@@ -14,36 +13,29 @@ import ejb.CharacterSaveRecordFacade;
 import ejb.CharacterSkillRecordFacade;
 import ejb.SaveMasterFacade;
 import ejb.SkillMasterFacade;
-import entity.AbilityMaster;
-import entity.CampaignMaster;
-import entity.CharacterAbilityRecord;
-import entity.CharacterEquipment;
-import entity.CharacterRecord;
-import entity.CharacterSaveRecord;
-import entity.CharacterSkillRecord;
-import entity.SaveMaster;
-import entity.SkillMaster;
+import entity.*;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ValueChangeEvent;
 
 /**
- * <p>Fragment bean that corresponds to a similarly named JSP page
- * fragment.  This class contains component definitions (and initialization
- * code) for all components that you have defined on this fragment, as well as
- * lifecycle methods and event handlers where you may add behavior
- * to respond to incoming events.</p>
+ * <p>Fragment bean that corresponds to a similarly named JSP page fragment.
+ * This class contains component definitions (and initialization code) for all
+ * components that you have defined on this fragment, as well as lifecycle
+ * methods and event handlers where you may add behavior to respond to incoming
+ * events.</p>
  *
  * @version Header.java
  * @version Created on 2009/03/29, 14:55:38
  * @author ka78231
  */
-
 @ManagedBean
 @RequestScoped
-public class PageHeader extends BaseBean{
+public class PageHeader extends BaseBean {
+
     @EJB
     private CharacterEquipmentFacade characterEquipmentFacade;
     @EJB
@@ -65,10 +57,8 @@ public class PageHeader extends BaseBean{
     @EJB
     private CharacterRecordFacade characterRecordFacade;
 
-
     public PageHeader() {
     }
-
 
     public String charaListLink_action() {
         return "CharacterListPageContents";
@@ -178,7 +168,7 @@ public class PageHeader extends BaseBean{
     }
 
     public String profileLink_action() {
-        if(getSessionBean().loggedIn){
+        if (getSessionBean().loggedIn) {
             return "profile";
         } else {
             return "LoginContents";
@@ -186,7 +176,7 @@ public class PageHeader extends BaseBean{
     }
 
     public String adminLink_action() {
-        if(getSessionBean().loggedIn){
+        if (getSessionBean().loggedIn) {
             return "AdminPageContents";
         } else {
             return "LoginContents";
@@ -211,5 +201,50 @@ public class PageHeader extends BaseBean{
         return null;
     }
 
+    public String newClassLink_action() {
+        if (getSessionBean().loggedIn) {
+            ClassMaster classMaster = new ClassMaster();
+            getSessionBean().setClassMaster(classMaster);
+            return "EditClassPageContents";
+        } else {
+            return "LoginContents";
+        }
+    }
 
+    public String classListLink_action() {
+        if (getSessionBean().loggedIn) {
+            return "ClassListPageContents";
+        } else {
+            return "LoginContents";
+        }
+    }
+    String selectedHandle;
+
+    public void setSelectedHandle(String selectedHandle) {
+        this.selectedHandle = selectedHandle;
+    }
+
+    public void raceDropDown_processValueChange(ValueChangeEvent vce) {
+        // ドロップダウンを使った ページ遷移のサンプル.. ヘッダー(JSPF)では使えなかった。。。なぜかエラー
+        //String handle = (String) raceDropDown.getValue();
+        //moveToPage(handle);
+    }
+
+    public String newRaceLink_action() {
+        if (getSessionBean().loggedIn) {
+            RaceMaster raceMaster = new RaceMaster();
+            getSessionBean().setRaceMaster(raceMaster);
+            return "EditRacePageContents";
+        } else {
+            return "LoginContents";
+        }
+    }
+
+    public String raceListLink_action() {
+        if (getSessionBean().loggedIn) {
+            return "RaceListPageContents";
+        } else {
+            return "LoginContents";
+        }
+    }
 }

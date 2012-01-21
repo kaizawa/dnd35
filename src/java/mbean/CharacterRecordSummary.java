@@ -105,5 +105,5 @@ public class CharacterRecordSummary implements Serializable {
     }
     public void setLastChange(String lastChage) {
         this.lastChange = lastChage;
-    }
+    }  
 }

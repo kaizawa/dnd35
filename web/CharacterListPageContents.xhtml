@@ -13,77 +13,88 @@
         </ui:define>
         <ui:define name="body">
             <h:form id="form1">
-                    <h:panelGrid id="contents" style="width: 800px" styleClass="contents">
-                        <h:panelGrid id="contentsGrid" style="width: 100%">
-                            <h:panelGrid columns="3" id="campFilterGridPanel" style="width: 100%; height: 100%;">
-                                <h:selectOneMenu id="dropdown1" onchange="submit()" style="width: 240px" value="#{sessionBean.characterListSelectedCampaign}">
-                                    <f:selectItems id="dropdown1SelectItems" value="#{applicationBean.campaignArray}"/>
-                                </h:selectOneMenu>
-                                <h:commandButton value="キャンペーンで絞る" style="position: right"/>
-                                <h:commandButton action="#{characterListPageContents.newCharaButton_action}" id="newCharaButton" style="font-size: 12px" value="新キャラクター作成"/>
-                            </h:panelGrid>
-                            <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;" styleClass="tableGrid">
-                                <h:dataTable binding="#{characterListPageContents.dataTable1}"
-                                             columnClasses="charaList-col-normal,charaList-col-normal,charaList-col-normal,charaList-col-normal,charaList-col-200,charaList-col-normal,"
-                                             id="dataTable1" style="" styleClass="w" value="#{sessionBean.characterRecordSummary}" var="currentRow">
-                                    <h:column id="column1">
-                                        <h:outputText id="outputText2" style="font-size: 14px; font-weight: bold; width: 200px" value="#{currentRow['characterName']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText3" value="キャラクター名"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column3">
-                                        <h:outputText id="outputText6" style="font-size: 14px; font-weight: bold; width: 200px" value="#{currentRow['playerName']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText7" value="プレイヤー"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column5">
-                                        <h:commandLink action="#{characterListPageContents.charaEditLink_action}" id="charaEditLink"
-                                                       style="font-size: 12px; width: 50px" target="_blank">
-                                            <h:outputText id="charaEditLinkText" value="データ修正"/>
-                                        </h:commandLink>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText9"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column4">
-                                        <h:outputText id="outputText8" style="width: 50px" value="#{currentRow['characterLevel']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText10" style="font-size: 10px" value="Lv"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column7">
-                                        <h:outputText id="outputText13" style="width: 200px;" value="#{currentRow['classList']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText14" style="width: 200px" value="クラスリスト"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column2">
-                                        <h:outputText id="outputText4" style="width: 100px" value="#{currentRow['campaign']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText5" value="キャンペーン"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column8">
-                                        <h:outputText id="outputText15" style="width: 100px" value="#{currentRow['lastChange']}"/>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText16" value="更新日"/>
-                                        </f:facet>
-                                    </h:column>
-                                    <h:column id="column6">
-                                        <h:commandLink action="#{characterListPageContents.charaViewButton_action}" id="linkAction1"
-                                                       style="font-size: 12px; width: 50px" target="_blank">
-                                            <h:outputText id="linkAction1Text" value="印刷用"/>
-                                        </h:commandLink>
-                                        <f:facet name="header">
-                                            <h:outputText id="outputText11" style="border: 1px solid #000000; "/>
-                                        </f:facet>
-                                    </h:column>
-                                </h:dataTable>
-                            </h:panelGrid>
+                <h:panelGrid id="contents" style="width: 800px" styleClass="contents">
+                    <h:panelGrid id="contentsGrid" style="width: 100%">
+                        <h:panelGrid columns="3" id="campFilterGridPanel" style="width: 100%; height: 100%;">
+                            <h:selectOneMenu id="dropdown1" onchange="submit()" style="width: 240px" value="#{sessionBean.characterListSelectedCampaign}">
+                                <f:selectItems id="dropdown1SelectItems" value="#{applicationBean.campaignArray}"/>
+                            </h:selectOneMenu>
+                            <h:commandButton value="キャンペーンで絞る" style="position: right"/>
+                            <h:commandButton action="#{characterListPageContents.newCharaButton_action}" id="newCharaButton" style="font-size: 12px" value="新キャラクター作成"/>
                         </h:panelGrid>
+                        <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;" styleClass="tableGrid">
+                            <h:dataTable binding="#{characterListPageContents.dataTable1}"
+                                         id="dataTable1" style="" styleClass="w" value="#{sessionBean.characterRecordSummary}" var="currentRow">
+                                <h:column id="check">
+                                    <h:selectBooleanCheckbox id="checkbox1" value="#{characterListPageContents.charaSelected}"/>
+                                </h:column>
+                                <h:column id="column1">
+                                    <h:outputText id="outputText2" style="font-size: 14px; font-weight: bold;"  value="#{currentRow['characterName']}"/>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText3" value="キャラクター名"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column3">
+                                    <h:outputText id="outputText6" style="font-size: 14px; font-weight: bold;" value="#{currentRow['playerName']}"/>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText7" value="プレイヤー"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column5">
+                                    <h:commandLink action="#{characterListPageContents.charaEditLink_action}" id="charaEditLink"
+                                                   style="font-size: 12px; " target="_blank">
+                                        <h:outputText id="charaEditLinkText" value="修正"/>
+                                    </h:commandLink>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText9"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column4">
+                                    <h:outputText id="outputText8" style="font-size: 14px" value="#{currentRow['characterLevel']}"/>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText10"  value="Lv"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column7">
+                                    <h:panelGrid id="gridPanel2" style="width: 230px" styleClass="qPrint">
+                                        <h:outputText id="outputText13" value="#{currentRow['classList']}"/>
+                                    </h:panelGrid>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText14" value="クラスリスト"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column2">
+                                    <h:outputText id="outputText4" value="#{currentRow['campaign']}"/>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText5" value="キャンペーン"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column8">
+                                    <h:outputText id="outputText15" value="#{currentRow['lastChange']}"/>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText16" value="更新日"/>
+                                    </f:facet>
+                                </h:column>
+                                <h:column id="column6">
+                                    <h:commandLink action="#{characterListPageContents.charaViewButton_action}" id="linkAction1"
+                                                   style="font-size: 12px;" target="_blank">
+                                        <h:outputText id="linkAction1Text" value="印刷用"/>
+                                    </h:commandLink>
+                                    <f:facet name="header">
+                                        <h:outputText id="outputText11" style="border: 1px solid #000000; "/>
+                                    </f:facet>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGrid>
+                        <h:panelGrid columns="3" id="gridPanel1" style="height: 100%; width: 100%">
+                            <h:commandButton action="#{characterListPageContents.listSummaryButton_action}" id="listSummaryButton" value="選択したキャラを一覧表示"/>
+                            <h:commandButton action="#{characterListPageContents.selectAllButton_action}" id="selectAllButton" value="全て選択"/>
+                            <h:commandButton action="#{characterListPageContents.releaseAllButton_action}" id="releaseAllButton" value="全て解除"/>
+                        </h:panelGrid>    
                     </h:panelGrid>
+                </h:panelGrid>
+
+
             </h:form>
         </ui:define>            
     </ui:composition>

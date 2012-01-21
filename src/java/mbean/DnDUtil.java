@@ -611,4 +611,20 @@ public class DnDUtil {
         }
         return false;
     }    
+    
+    private String attackDescriptionWithBR;    
+    
+    public String getAttackDescriptionWithBR()
+    {
+        return newLineToBr(charaRecord.getAttackDescription());
+    }
+
+    public void setAttackDescriptionWithBR(String attackDescriptionWithBR) {
+        this.attackDescriptionWithBR = attackDescriptionWithBR;
+    }
+    
+    public static String getAbilityShortName(AbilityMaster ability){
+        String name = ability.getAbilityName();
+        return (new StringBuilder()).append("\u3010").append(name.substring(0, 1)).append(" \u3011").toString();
+    }    
 }

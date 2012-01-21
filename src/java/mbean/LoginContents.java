@@ -5,17 +5,12 @@
 
 package mbean;
 
-import com.sun.xml.internal.ws.resources.AddressingMessages;
 import ejb.PlayerMasterFacade;
 import entity.PlayerMaster;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -74,8 +69,8 @@ public class LoginContents extends BaseBean {
 
     public String login_action() {
 
-        String username = (String)this.userName;
-        String passwd = (String)this.password;
+        String username = this.userName;
+        String passwd = this.password;
 
         PlayerMaster player =  PlayerMasterFacade.findByUsername(username);
 

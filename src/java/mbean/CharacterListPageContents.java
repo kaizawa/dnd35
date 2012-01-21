@@ -84,8 +84,14 @@ public class CharacterListPageContents  extends BaseBean {
          getSessionBean().setCharacterRecordList(charaFindAll);
 
 
-        //サマリー用のクラス CharacterRecordSummary のリストを作る
-        //その中にプレーヤー名とキャラクター名、そして計算したキャラクタレベルを入れておく
+        /*
+         * サマリー用のクラス CharacterRecordSummary のリストを作る
+         * その中にプレーヤー名とキャラクター名、そして計算したキャラクタレベルを入れておく
+         * TODO: この中でやっていることは DnDUtil とやっていることとかぶる。
+         *        なんとか一元化できないものか? おそらく CharacterRecordSummary はいらない。
+         *        CharacterRecordSummary 管理 Bean 内で CharacterRecord から必要なデータを
+         *        DnDUtil を使って計算させればいいだけ。
+         */
         List<CharacterRecordSummary> charaRecordSummary = new ArrayList<CharacterRecordSummary>();
         for (CharacterRecord charaRecord : charaFindAll) {
             DnDUtil util = new DnDUtil(charaRecord);
@@ -141,7 +147,7 @@ public class CharacterListPageContents  extends BaseBean {
             // 最終更新日
             charaSummary.setLastChange(DnDUtil.getLastChange(charaRecord));
 
-            charaRecordSummary.add(charaSummary);
+            charaRecordSummary.add(charaSummary);           
         }
 
          getSessionBean().setCharacterRecordSummary(charaRecordSummary);
@@ -349,7 +355,7 @@ public class CharacterListPageContents  extends BaseBean {
      *
      */
     public String listSummaryButton_action() {
-        return "charasummary";
+        return "PrintableCharacterSummaryListPage";
 
     }
     private boolean charaSelected;
@@ -357,21 +363,26 @@ public class CharacterListPageContents  extends BaseBean {
      * @return the charaSelected
      */
     public boolean isCharaSelected() {
-        CharacterRecord chara = (CharacterRecord)dataTable1.getRowData();
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);
+
         Set selectedCharas = getSessionBean().getSelectedCharas();
-        return selectedCharas != null && selectedCharas.contains(chara);
+        return selectedCharas != null && selectedCharas.contains(characterRecord);
     }
 
     /**
      * @param charaSelected the charaSelected to set
      */
     public void setCharaSelected(boolean charaSelected) {
-        CharacterRecord chara = (CharacterRecord) dataTable1.getRowData();
-        if (chara != null) {
+        int index = dataTable1.getRowIndex();
+        
+        CharacterRecord characterRecord =  getSessionBean().getCharacterRecordList().get(index);       
+        if (characterRecord != null) {
             if (charaSelected) {
-                getSessionBean().getSelectedCharas().add(chara);
+                getSessionBean().getSelectedCharas().add(characterRecord);
             } else {
-                getSessionBean().getSelectedCharas().remove(chara);
+                getSessionBean().getSelectedCharas().remove(characterRecord);
             }
         }
     }

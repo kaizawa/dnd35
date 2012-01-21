@@ -190,11 +190,6 @@ table.waku td{
     text-align: center;
 }
 
-.charaList-col-normal {
-}
-.charaList-col-200 {
-    width: 200px;
-}
 
 .p{
     background-image:url(../resources/dndback02.jpg);
@@ -377,7 +372,7 @@ background-color: #eeeeee;
     font-weight: bold;
 }
 
-.//errorMessage {
+.errorMessage {
     color: red;
     font-weight: bold;
 }
@@ -440,7 +435,6 @@ table.gPrint td{
 
     text-align:center;
     border-bottom: 1px solid black;
-/*    border-top: 1px solid black; */
     vertical-align:middle;
     padding-top: 2px; 
     padding-bottom: 2px;
@@ -448,6 +442,45 @@ table.gPrint td{
     padding-right: 2px;
 }
 
+table.gPrintSummaryList{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.gPrintSummaryList th{
+
+    padding:4px;
+/*    border-bottom: 1px solid black; */
+/*    border-top: 1px solid black; */
+    text-align: center;
+}
+table.gPrintSummaryList td {
+    text-align:center;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    vertical-align:middle;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #333333;
+}
+
+table.noborder td {
+    color: #333333;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    text-align:center;
+    vertical-align:middle;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
 
 table.pPrint{
     border-collapse: collapse;
@@ -519,4 +552,32 @@ table.acPrint {
 }
 table.acPrint td {
         vertical-align: middle;
+}
+
+
+table.qPrint{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.qPrint th{
+
+    padding:4px;
+    text-align: center;
+}
+
+table.qPrint td{
+
+    text-align:center;
+    vertical-align:middle;
+    text-align: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }

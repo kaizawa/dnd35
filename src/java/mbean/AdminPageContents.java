@@ -67,15 +67,15 @@ public class AdminPageContents extends BaseBean {
         if(getSessionBean().loggedIn){
             return "ClassListPageContents";
         } else {
-            return "ClassListPageContents";
+            return "LoginContents";
         }
     }
 
     public String raceListLink_action() {
         if(getSessionBean().loggedIn){
-            return "EditRacePageContents";
+            return "RaceListPageContents";
         } else {
-            return "EditRacePageContents";
+            return "LoginContents";
         }
     }
 }

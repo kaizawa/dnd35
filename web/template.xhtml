@@ -47,17 +47,17 @@
         <h:form>
             <h:panelGrid id="subHeader" rendered="#{sessionBean.loggedIn}" style="width: 800px;" styleClass="subheader">
                 <h:panelGrid columns="10" id="subHeaderGrid" style="width: 100%; height: 100%;" styleClass="subheader">
-                    <h:panelGrid id="newClassCell" rendered="false" style="width: 100%; height: 100%;" styleClass="subheaderlink">
-                        <h:commandLink action="#{adminPageSubHeader.newClassLink_action}" id="newClassLink" styleClass="subheadertext" value="新規クラス作成"/>
+                    <h:panelGrid id="newClassCell" rendered="true" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                        <h:commandLink action="#{pageHeader.newClassLink_action}" id="newClassLink" styleClass="subheadertext" value="新規クラス作成"/>
                     </h:panelGrid>
                     <h:panelGrid id="classListCell" style="width: 100%; height: 100%;" styleClass="subheaderlink">
-                        <h:commandLink action="#{adminPageSubHeader.classListLink_action}" id="classListLink" styleClass="subheadertext" value="クラス一覧"/>
+                        <h:commandLink action="#{pageHeader.classListLink_action}" id="classListLink" styleClass="subheadertext" value="クラス一覧"/>
                     </h:panelGrid>
-                    <h:panelGrid id="newRaceCell" rendered="false" style="width: 100%; height: 100%;" styleClass="subheaderlink">
-                        <h:commandLink action="#{adminPageSubHeader.newRaceLink_action}" id="newRaceLink" styleClass="subheadertext" value="新規種族作成"/>
+                    <h:panelGrid id="newRaceCell" rendered="true" style="width: 100%; height: 100%;" styleClass="subheaderlink">
+                        <h:commandLink action="#{pageHeader.newRaceLink_action}" id="newRaceLink" styleClass="subheadertext" value="新規種族作成"/>
                     </h:panelGrid>
                     <h:panelGrid id="raceListCell" style="width: 100%; height: 100%;" styleClass="subheaderlink">
-                        <h:commandLink action="#{adminPageSubHeader.raceListLink_action}" id="raceListLink" styleClass="subheadertext" value="種族一覧"/>
+                        <h:commandLink action="#{pageHeader.raceListLink_action}" id="raceListLink" styleClass="subheadertext" value="種族一覧"/>
                     </h:panelGrid>
                 </h:panelGrid>
             </h:panelGrid>    
