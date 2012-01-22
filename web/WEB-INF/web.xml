@@ -19,6 +19,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>faces/CharacterListPageContents.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/CharacterListPageContents.xhtml</location>
+    </error-page>
 </web-app>
