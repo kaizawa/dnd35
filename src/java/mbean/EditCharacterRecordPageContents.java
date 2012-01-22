@@ -972,7 +972,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         // Lv とキャラクターレコードを元に、キャラクター成長レコードを得、セッションBeanにセットする
          getSessionBean().setCharacterGrowthRecord(getCharacterRecord().getCharacterGrowthRecordList().get(index));
 
-        return "editskill";
+        return "EditCharacterPerLevelPageContents";
     }
     /*
      * ------------------ セーヴ 対応能力修正値  ---------------------------------
@@ -1329,7 +1329,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     public String editSkillNomalButton_action() {
         // キャラクターレコードを元に、キャラクター成長レコードを得、セッションBeanにセットする。Lv は 1 固定
          getSessionBean().setCharacterGrowthRecord(getCharacterRecord().getCharacterGrowthRecordList().get(0));
-        return "editskill";
+        return "EditCharacterPerLevelPageContents";
     }
     /*
      * ------------ 能力値上昇の選択リストを非表示にするかどうかを決める -------------
