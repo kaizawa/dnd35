@@ -13,7 +13,7 @@ import javax.faces.application.FacesMessage;
  *
  * @author kaizawa
  */
-class BaseBean {
+public class BaseBean {
     
     @ManagedProperty(value="#{sessionBean}")
     private SessionBean sessionBean;
