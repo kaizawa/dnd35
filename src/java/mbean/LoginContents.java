@@ -75,7 +75,7 @@ public class LoginContents extends BaseBean {
         PlayerMaster player =  PlayerMasterFacade.findByUsername(username);
 
         if(player == null){
-            context.addMessage("contents:contentGrid:label1", new FacesMessage("ログインに失敗しました. ユーザ名が間違っています"));            
+            context.addMessage("contents:contentGrid:label1", new FacesMessage("ログインに失敗しました. ユーザ名(" + username + ")が間違っています"));            
             return null;
         }
 

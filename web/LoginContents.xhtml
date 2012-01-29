@@ -19,9 +19,9 @@
                         </h:panelGrid>
                         <h:panelGrid cellpadding="5" columns="2" id="dataGrid1" style="width: 100%; height: 100%;">
                             <h:outputLabel id="label1" value="ユーザー名:"/>
-                            <h:inputText binding="#{loginContents.userName}" id="usernameTextField" />
+                            <h:inputText value="#{loginContents.userName}" id="usernameTextField" />
                             <h:outputLabel id="label2" value="パスワード:"/>
-                            <h:inputSecret binding="#{loginContents.password}" id="passwordField" />
+                            <h:inputSecret value="#{loginContents.password}" id="passwordField" />
                         </h:panelGrid>
                         <h:panelGrid cellpadding="5" columns="2" id="commandGrid1" style="height: 100%">
                             <h:commandButton action="#{loginContents.login_action}" id="login1" value="ログイン"/>
