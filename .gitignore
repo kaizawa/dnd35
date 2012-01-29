@@ -1,2 +1,5 @@
 dist
 build
+/DB_BACKUP.txt
+/MEMO.txt
+/ITEM_TABLES.txt
