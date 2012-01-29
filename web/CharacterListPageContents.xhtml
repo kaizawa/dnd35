@@ -16,10 +16,9 @@
                 <h:panelGrid id="contents" style="width: 800px" styleClass="contents">
                     <h:panelGrid id="contentsGrid" style="width: 100%">
                         <h:panelGrid columns="3" id="campFilterGridPanel" style="width: 100%; height: 100%;">
-                            <h:selectOneMenu id="dropdown1" onchange="submit()" style="width: 240px" value="#{sessionBean.characterListSelectedCampaign}">
+                            <h:selectOneMenu id="dropdown1" onchange="submit()" style="width: 240px" value="#{sessionBean.characterListSelectedCampaign}" >
                                 <f:selectItems id="dropdown1SelectItems" value="#{applicationBean.campaignArray}"/>
                             </h:selectOneMenu>
-                            <h:commandButton value="キャンペーンで絞る" style="position: right"/>
                             <h:commandButton action="#{characterListPageContents.newCharaButton_action}" id="newCharaButton" style="font-size: 12px" value="新キャラクター作成"/>
                         </h:panelGrid>
                         <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;" styleClass="tableGrid">

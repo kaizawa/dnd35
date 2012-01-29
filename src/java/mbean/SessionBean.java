@@ -31,6 +31,8 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 @SessionScoped
 public class SessionBean {
+    @EJB
+    private CharacterRecordFacade characterRecordFacade;
     
     private Set selectedCharas = new LinkedHashSet();
 
@@ -105,7 +107,7 @@ public class SessionBean {
     public Integer getCharacterListSelectedCampaign() {
         return characterListSelectedCampaign;
     }
-
+    
     public void setCharacterListSelectedCampaign(Integer selectedCampaign) {
         this.characterListSelectedCampaign = selectedCampaign;
     }
@@ -115,7 +117,13 @@ public class SessionBean {
     private List<CharacterRecord> characterRecordList;
 
     public List<CharacterRecord> getCharacterRecordList() {
-        return characterRecordList;
+
+        if ( getCharacterListSelectedCampaign() == null) {
+            return characterRecordFacade.findAll();
+        } else {
+            //選択されたキャンペーンキャラクターレコードのリストを得る
+             return characterRecordFacade.findByCampaignId(getCharacterListSelectedCampaign());
+        }        
     }
 
     public void setCharacterRecordList(List<CharacterRecord> characterRecords) {

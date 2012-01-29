@@ -73,15 +73,6 @@ public class CharacterListPageContents  extends BaseBean {
     @PostConstruct
     public void init() {
         
-        List<CharacterRecord> charaFindAll;
-        if ( getSessionBean().getCharacterListSelectedCampaign() == null) {
-            charaFindAll = characterRecordFacade.findAll();
-        } else {
-            //選択されたキャンペーンキャラクターレコードのリストを得る
-            charaFindAll = characterRecordFacade.findByCampaignId( getSessionBean().getCharacterListSelectedCampaign());
-        }
-
-         getSessionBean().setCharacterRecordList(charaFindAll);
     }
 
     public String charaEditLink_action() {
