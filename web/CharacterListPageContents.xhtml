@@ -87,7 +87,9 @@
                             </h:dataTable>
                         </h:panelGrid>
                         <h:panelGrid columns="3" id="gridPanel1" style="height: 100%; width: 100%">
-                            <h:commandButton action="#{characterListPageContents.listSummaryButton_action}" id="listSummaryButton" value="選択したキャラを一覧表示"/>
+                            <h:commandLink action="#{characterListPageContents.listSummaryButton_action}" target="blank" id="listSummaryButton">
+                                <h:outputText style="size: 10px" value="選択したキャラを一覧表示" />                                
+                            </h:commandLink> 
                             <h:commandButton action="#{characterListPageContents.selectAllButton_action}" id="selectAllButton" value="全て選択"/>
                             <h:commandButton action="#{characterListPageContents.releaseAllButton_action}" id="releaseAllButton" value="全て解除"/>
                         </h:panelGrid>    

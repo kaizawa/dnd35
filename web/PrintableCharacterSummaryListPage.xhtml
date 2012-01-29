@@ -14,18 +14,12 @@
     <h:body>    
         <h:form>
             <h:panelGrid columns="1" id="gridPanel34" styleClass="topLevelGrid topLevelGridPrint">
-                <h:panelGrid columns="3" id="headerGridPanel">
-                    <h:commandLink action="#{printableCharacterSummaryListPage.charalist_action}" id="charalist" value="キャラ一覧に戻る"/>
-                </h:panelGrid>
                 <h:panelGrid id="charaListGridPanel" style="width: 100%; height: 100%;">
                     <h:dataTable binding="#{printableCharacterSummaryListPage.dataTable1}"
                                  id="dataTable1" style="" styleClass="gPrintSummaryList" value="#{sessionBean.characterRecordList}" var="currentRow">
                         <h:column id="nameColumn1">
                             <h:panelGrid columns="1" id="gridPanel36" style="width: 150px" styleClass="qPrint">
-                                <h:commandLink action="#{printableCharacterSummaryListPage.editCharaLink_action}" id="editCharaLink"
-                                               style="font-size: 12px;" target="_blank">
-                                    <h:outputText id="charaEditLinkText1" value="#{currentRow.characterName} Lv #{printableCharacterSummaryListPage.characterLevel}"/>
-                                </h:commandLink>
+                                <h:outputText id="charaEditLinkText1" style="font-size: 12px;" value="#{currentRow.characterName} Lv #{printableCharacterSummaryListPage.characterLevel}"/>
                                 <h:outputText id="playerName" value="#{currentRow.playerName}"/>
                                 <h:outputText id="classList" value="#{printableCharacterSummaryListPage.classList}"/>
                             </h:panelGrid>
