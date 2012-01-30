@@ -1,5 +1,5 @@
 /*
- * EditClassPageContents.java
+ * EditClassPage.java
  *
  * Created on 2009/01/06, 0:04:02
  */
@@ -35,7 +35,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean
 @RequestScoped
-public class EditClassPageContents extends BaseBean {
+public class EditClassPage extends BaseBean {
     @EJB
     private DiceMasterFacade diceMasterFacade;
 
@@ -74,7 +74,7 @@ public class EditClassPageContents extends BaseBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public EditClassPageContents() {
+    public EditClassPage() {
     }
 
     @PostConstruct
@@ -131,7 +131,7 @@ public class EditClassPageContents extends BaseBean {
     }
 
     public String classListButton_action() {
-        return "ClassListPageContents";
+        return "ClassListPage";
     }
 
     public String saveButton_action() {
@@ -419,7 +419,7 @@ public class EditClassPageContents extends BaseBean {
             context.addMessage("contents:contentGrid:label1", new FacesMessage(("削除に失敗しました")));
             return null;
         }
-        return "ClassListPageContents";
+        return "ClassListPage";
     }
 
     // 削除ボタンの表示
@@ -428,7 +428,7 @@ public class EditClassPageContents extends BaseBean {
     }
 
     public String cancelButton_action() {
-        return "ClassListPageContents";
+        return "ClassListPage";
     }
 
 

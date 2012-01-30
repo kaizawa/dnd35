@@ -19,14 +19,14 @@ import javax.faces.bean.RequestScoped;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version LoginContents.java
+ * @version LoginPage.java
  * @version Created on 2009/03/29, 19:18:15
  * @author ka78231
  */
 
 @ManagedBean
 @RequestScoped
-public class LoginContents extends BaseBean {    
+public class LoginPage extends BaseBean {    
     @EJB
     private PlayerMasterFacade PlayerMasterFacade;
 
@@ -52,7 +52,7 @@ public class LoginContents extends BaseBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public LoginContents() {
+    public LoginPage() {
     }
 
     public String charaEditLink_action() {
@@ -87,7 +87,7 @@ public class LoginContents extends BaseBean {
          getSessionBean().setLoggedIn(true);
          getSessionBean().setPlayerMaster(player);
 
-        return "AdminPageContents";
+        return "AdminPage";
     }
 
     public String register_action() {

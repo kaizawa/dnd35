@@ -16,10 +16,10 @@
                     <h:panelGrid id="gridPanel1" styleClass="topLevelGdid">
                         <h:panelGrid columns="2" id="buttonGrid" style="height: 100%; width: 100%">
                             <h:panelGrid id="gridPanel5" style="height: 100%; text-align: left; width: 100%">
-                                <h:commandButton action="#{editClassPageContents.saveButton_action}" id="saveButton" value="保存"/>
+                                <h:commandButton action="#{editClassPage.saveButton_action}" id="saveButton" value="保存"/>
                             </h:panelGrid>
                             <h:panelGrid id="gridPanel3" style="height: 100%; text-align: right; width: 100%">
-                                <h:commandButton action="#{editClassPageContents.cancelButton_action}" id="cancelButton" value="キャンセル" immediate="true"/>
+                                <h:commandButton action="#{editClassPage.cancelButton_action}" id="cancelButton" value="キャンセル" immediate="true"/>
                             </h:panelGrid>
                         </h:panelGrid>
                         <h:panelGrid columns="2" id="gridPanel6" style="background-color: rgb(0, 0, 0); height: 100%; text-align: left; vertical-align: middle; width: 100%">
@@ -35,13 +35,13 @@
                                     <h:outputText id="outputText3" value="頑健セーブランク"/>
                                     <h:outputText id="outputText4" value="反応セーブランク"/>
                                     <h:outputText id="outputText5" value="意思セーブランク"/>
-                                    <h:selectOneMenu id="dropdown1" required="true" requiredMessage="頑健セーブランクを選択してください" value="#{editClassPageContents.classEditSelectedFortituteRank}">
+                                    <h:selectOneMenu id="dropdown1" required="true" requiredMessage="頑健セーブランクを選択してください" value="#{editClassPage.classEditSelectedFortituteRank}">
                                         <f:selectItems id="dropdown2SelectItems1" value="#{applicationBean.rankArray}"/>
                                     </h:selectOneMenu>
-                                    <h:selectOneMenu id="dropdown2" required="true" requiredMessage="反応セーブランクを選択してください" value="#{editClassPageContents.classEditSelectedReflexRank}">
+                                    <h:selectOneMenu id="dropdown2" required="true" requiredMessage="反応セーブランクを選択してください" value="#{editClassPage.classEditSelectedReflexRank}">
                                         <f:selectItems id="dropdown3SelectItems1" value="#{applicationBean.rankArray}"/>
                                     </h:selectOneMenu>
-                                    <h:selectOneMenu id="dropdown3" required="true" requiredMessage="意思セーブランクを選択してください" value="#{editClassPageContents.classEditSelectedWillRank}">
+                                    <h:selectOneMenu id="dropdown3" required="true" requiredMessage="意思セーブランクを選択してください" value="#{editClassPage.classEditSelectedWillRank}">
                                         <f:selectItems id="dropdown4SelectItems1" value="#{applicationBean.rankArray}"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
@@ -50,10 +50,10 @@
                                     <h:outputText id="outputText6" value="基本攻撃ボーナスランク"/>
                                     <h:outputText id="outputText7" value="HDの種類"/>
                                     <h:outputText id="outputText107" value="レベル毎の技能ポイント"/>
-                                    <h:selectOneMenu id="dropdown4" required="true" requiredMessage="基本攻撃ボーナスランクを選択してください" value="#{editClassPageContents.classEditSelectedBabRank}">
+                                    <h:selectOneMenu id="dropdown4" required="true" requiredMessage="基本攻撃ボーナスランクを選択してください" value="#{editClassPage.classEditSelectedBabRank}">
                                         <f:selectItems id="dropdown1SelectItems1" value="#{applicationBean.rankArray}"/>
                                     </h:selectOneMenu>
-                                    <h:selectOneMenu id="dropdown5" onchange="" required="true" requiredMessage="HDの種類を選択してください" value="#{editClassPageContents.classEditSelectedHitDiceType}">
+                                    <h:selectOneMenu id="dropdown5" onchange="" required="true" requiredMessage="HDの種類を選択してください" value="#{editClassPage.classEditSelectedHitDiceType}">
                                         <f:selectItems id="dropdown2SelectItems2" value="#{applicationBean.diceArray}"/>
                                     </h:selectOneMenu>
                                     <h:inputText id="textField109" required="true" requiredMessage="レベル毎の技能ポイントを指定してください" style="font-size: 14px; width: 30px" value="#{sessionBean.classMaster.skillPoint}"/>
@@ -66,22 +66,22 @@
                             <h:panelGrid id="rightGridPanel1" style="width: 200px; height: 100%;">
                                 <h:panelGrid id="gridPanel11" style="width: 250px" styleClass="tableGrid">
                                     <h:outputText id="outputText9" styleClass="tableTitleBlackMiddle" value="クラス技能"/>
-                                    <h:dataTable binding="#{editClassPageContents.classSkillTable}" id="classSkillTable" styleClass="w"
+                                    <h:dataTable binding="#{editClassPage.classSkillTable}" id="classSkillTable" styleClass="w"
                                                  value="#{applicationBean.skillList}" var="currentRow">
                                         <h:column id="column1">
-                                            <h:selectBooleanCheckbox id="checkbox1" value="#{editClassPageContents.selectedClassSkill}"/>
+                                            <h:selectBooleanCheckbox id="checkbox1" value="#{editClassPage.selectedClassSkill}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText10" value="クラス技能"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column2">
-                                            <h:outputText id="outputText11" value="#{editClassPageContents.skillNameBySkillId}"/>
+                                            <h:outputText id="outputText11" value="#{editClassPage.skillNameBySkillId}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText12" value="技能名"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column3">
-                                            <h:outputText id="outputText13" value="#{editClassPageContents.abilityNameBySkillId}"/>
+                                            <h:outputText id="outputText13" value="#{editClassPage.abilityNameBySkillId}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText14" value="対応能力"/>
                                             </f:facet>
@@ -91,8 +91,8 @@
                             </h:panelGrid>
                         </h:panelGrid>
                         <h:panelGrid id="deleteCharaGridPanel1" style="height: 100%; text-align: right; width: 100%">
-                            <h:commandButton action="#{editClassPageContents.deleteButton_action}"
-                                             disabled="#{editClassPageContents.deleteButtonDisabled}" id="deleteButton1" style="color: rgb(255, 51, 51)" value="クラスの削除"/>
+                            <h:commandButton action="#{editClassPage.deleteButton_action}"
+                                             disabled="#{editClassPage.deleteButtonDisabled}" id="deleteButton1" style="color: rgb(255, 51, 51)" value="クラスの削除"/>
                         </h:panelGrid>
                     </h:panelGrid>
                 </h:panelGrid>

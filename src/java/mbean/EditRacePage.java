@@ -1,5 +1,5 @@
 /*
- * EditClassPageContents.java
+ * EditClassPage.java
  *
  * Created on 2009/01/06, 0:04:02
  */
@@ -36,7 +36,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean
 @RequestScoped
-public class EditRacePageContents extends BaseBean {
+public class EditRacePage extends BaseBean {
 
     @EJB
     private SizeMasterFacade sizeMasterFacade;
@@ -53,7 +53,7 @@ public class EditRacePageContents extends BaseBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public EditRacePageContents() {
+    public EditRacePage() {
     }
   
     @PostConstruct
@@ -283,7 +283,7 @@ public class EditRacePageContents extends BaseBean {
             context.addMessage("contents:contentGrid:label1", new FacesMessage(("種族の削除に失敗しました。利用中の可能性があります。")));
             return null;
         }
-        return "RaceListPageContents";
+        return "RaceListPage";
     }
 
     // 削除ボタンの表示
@@ -292,7 +292,7 @@ public class EditRacePageContents extends BaseBean {
     }
 
     public String cancelButton_action() {
-        return "RaceListPageContents";
+        return "RaceListPage";
     }
 
     public Integer getCharismaModifier() {
