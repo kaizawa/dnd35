@@ -101,7 +101,7 @@ public class PrintableCharacterSummaryListPage extends BaseBean {
      * this.characterRecordList = charaList; }
      */
     public String charalist_action() {
-        return "CharacterListPageContents";
+        return "CharacterListPage";
     }
 
     public String editCharaLink_action() {
@@ -110,7 +110,7 @@ public class PrintableCharacterSummaryListPage extends BaseBean {
         
         //管理Beanへ反映
         getSessionBean().setCharacterRecord(characterRecord);
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }
 
     public Integer getSaveTotal() {

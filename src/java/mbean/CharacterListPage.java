@@ -29,7 +29,7 @@ import javax.faces.component.html.HtmlDataTable;
 
 @ManagedBean
 @RequestScoped
-public class CharacterListPageContents  extends BaseBean {
+public class CharacterListPage  extends BaseBean {
     @EJB
     private CharacterSkillGrowthRecordFacade characterSkillGrowthRecordFacade;
     @EJB
@@ -66,7 +66,7 @@ public class CharacterListPageContents  extends BaseBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public CharacterListPageContents() {
+    public CharacterListPage() {
     }
     
 
@@ -87,7 +87,7 @@ public class CharacterListPageContents  extends BaseBean {
         //管理Beanへ反映
          getSessionBean().setCharacterRecord(characterRecord);
 
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }
 
     public String charaViewButton_action() {
@@ -108,7 +108,7 @@ public class CharacterListPageContents  extends BaseBean {
     public String button1_action() {
         // TODO: ボタンクリックアクションを処理します。戻り値は、
         // ナビゲーションケース名で、null の場合は同じページに戻ります。
-        return "EditClassPageContents";
+        return "EditClassPage";
     }
 
     public String saveButton_action() {
@@ -268,7 +268,7 @@ public class CharacterListPageContents  extends BaseBean {
 
         //セッションBeanにキャラクターレコードをセット
          getSessionBean().setCharacterRecord(characterRecord);
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }   
     
    /*

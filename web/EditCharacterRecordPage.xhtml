@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     
-    <!-- TODO: editCharacterRecordPageContents.characterRecord は sessionBeans から取ってくるべき。-->
+    <!-- TODO: editCharacterRecordPage.characterRecord は sessionBeans から取ってくるべき。-->
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -17,16 +17,16 @@
                     <h:panelGrid columns="1" id="contentsGrid">
                         <h:panelGrid columns="4" id="charaIdGridPanel1" style="height: 100%; text-align: left; width: 100%">
                             <h:panelGrid id="gridPanel14" style="width: 100%; height: 100%;">
-                                <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="saveButton1" value="保存"/>
+                                <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="saveButton1" value="保存"/>
                             </h:panelGrid>
                             <h:panelGrid id="gridPanel15" style="width: 100%; height: 100%;">
-                                <h:commandLink action="#{editCharacterRecordPageContents.viewLink_action}" style="font-size: 12px" id="viewLink" value="印刷用画面へ"/>
+                                <h:commandLink action="#{editCharacterRecordPage.viewLink_action}" style="font-size: 12px" id="viewLink" value="印刷用画面へ"/>
                             </h:panelGrid>
                             <h:panelGrid id="gridPanel16" style="width: 100%; height: 100%;">
-                                <h:outputText id="characterId1" style="font-size: 8px; width: 10px" value="#{editCharacterRecordPageContents.characterRecord.id}"/>
+                                <h:outputText id="characterId1" style="font-size: 8px; width: 10px" value="#{editCharacterRecordPage.characterRecord.id}"/>
                             </h:panelGrid>
                             <h:panelGrid id="gridPanel17" style="height: 100%; text-align: right; width: 100%">
-                                <h:commandButton action="#{editCharacterRecordPageContents.cancelButton_action}" id="cancelButton" value="キャンセル" immediate="true"/>
+                                <h:commandButton action="#{editCharacterRecordPage.cancelButton_action}" id="cancelButton" value="キャンセル" immediate="true"/>
                             </h:panelGrid>
                         </h:panelGrid>
                         <h:panelGrid columns="2" id="charaGridPanel1" style="height: 100%; width: 100%">
@@ -39,7 +39,7 @@
                                 </h:panelGrid>
                                 <h:panelGrid columns="4" id="gridPanel6" style="text-align: center; width: 100%" styleClass="g">
                                     <h:inputText id="textField1" onchange="" requiredMessage="キャラクター名を入力して下さい" style="width: 180px" value="#{sessionBean.characterRecord.characterName}"/>
-                                    <h:inputText id="textField2" onchange="" requiredMessage="プレイヤー名を入力して下さい" style="width: 181px" value="#{editCharacterRecordPageContents.characterRecord.playerName}"/>
+                                    <h:inputText id="textField2" onchange="" requiredMessage="プレイヤー名を入力して下さい" style="width: 181px" value="#{editCharacterRecordPage.characterRecord.playerName}"/>
                                     <h:selectOneMenu id="dropdown1" onchange="" requiredMessage="キャンペーンを選択して下さい" value="#{sessionBean.selectedCampaign}">
                                         <f:selectItems id="dropdown1SelectItems1" value="#{applicationBean.campaignArray}"/>
                                     </h:selectOneMenu>
@@ -53,16 +53,16 @@
                                 <h:panelGrid columns="4" id="gridPanel8" style="color: rgb(51,51,51); text-align: center" styleClass="g">
                                     <h:outputText id="outputText5"
                                                   style="font-size: 18px; font-weight: bold; left: 55px; position: relative; text-align: right; width: 100px" value="#{sessionBean.characterLevel}"/>
-                                    <h:inputText id="textField3" onchange="" style="left: 40px; position: relative; text-align: right; width: 100px" value="#{editCharacterRecordPageContents.characterRecord.experience}"/>
+                                    <h:inputText id="textField3" onchange="" style="left: 40px; position: relative; text-align: right; width: 100px" value="#{editCharacterRecordPage.characterRecord.experience}"/>
                                     <h:outputText id="outputText6" style="left: 10px; position: relative; text-align: right; width: 100px" value="#{sessionBean.nextExperience}"/>
-                                    <h:outputText id="outputText7" value="#{editCharacterRecordPageContents.lastChange}"/>
+                                    <h:outputText id="outputText7" value="#{editCharacterRecordPage.lastChange}"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" id="gridPanel9" style="height: 100%; text-align: center; width: 100%">
                                     <h:outputText id="outputText8" value="属性"/>
                                     <h:outputText id="outputText9" value="信仰する神格"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" id="aligngridPanel1" style="text-align: left" styleClass="g">
-                                    <h:selectOneMenu id="dropdown2" onchange="" style="" value="#{sessionBean.selectedAlignment}" valueChangeListener="#{editCharacterRecordPageContents.dropdown2_processValueChange(vce)}">
+                                    <h:selectOneMenu id="dropdown2" onchange="" style="" value="#{sessionBean.selectedAlignment}" valueChangeListener="#{editCharacterRecordPage.dropdown2_processValueChange(vce)}">
                                         <f:selectItems id="dropdown2SelectItems1" value="#{applicationBean.alignmentArray}"/>
                                     </h:selectOneMenu>
                                     <h:selectOneMenu id="dropdown3" onchange="" value="#{sessionBean.selectedReligion}">
@@ -80,13 +80,13 @@
                                     <h:selectOneMenu id="dropdown4" onchange="" value="#{sessionBean.selectedRace}">
                                         <f:selectItems id="dropdown4SelectItems1" value="#{applicationBean.raceArray}"/>
                                     </h:selectOneMenu>
-                                    <h:inputText id="textField4" onchange="" style="left: 10px; position: relative; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.age}"/>
+                                    <h:inputText id="textField4" onchange="" style="left: 10px; position: relative; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.age}"/>
                                     <h:selectOneMenu id="dropdown5" onchange="" value="#{sessionBean.selectedGender}">
                                         <f:selectItems id="dropdown5SelectItems1" value="#{applicationBean.genderArray}"/>
                                     </h:selectOneMenu>
-                                    <h:inputText id="textField5" onchange="" style="text-align: right; width: 40px" value="#{editCharacterRecordPageContents.characterRecord.height}"/>
+                                    <h:inputText id="textField5" onchange="" style="text-align: right; width: 40px" value="#{editCharacterRecordPage.characterRecord.height}"/>
                                     <h:outputText id="outputText15" style="color: #000000; font-size: 10px; text-align: left" value="cm"/>
-                                    <h:inputText id="textField6" onchange="" style="width: 40px; text-align: right;" value="#{editCharacterRecordPageContents.characterRecord.weight}"/>
+                                    <h:inputText id="textField6" onchange="" style="width: 40px; text-align: right;" value="#{editCharacterRecordPage.characterRecord.weight}"/>
                                     <h:outputText id="outputText16" style="color: #000000; font-size: 10px; text-align: left" value="kg"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="3" id="gridPanel11" style="height: 100%; width: 100%">
@@ -95,28 +95,28 @@
                                     <h:outputText id="outputText19" value="髪の色"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="3" id="colorgridPanel1" styleClass="g">
-                                    <h:inputText id="textField7" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.eyeColor}"/>
-                                    <h:inputText id="textField8" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.skinColor}"/>
-                                    <h:inputText id="textField9" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.hairColor}"/>
+                                    <h:inputText id="textField7" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.eyeColor}"/>
+                                    <h:inputText id="textField8" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.skinColor}"/>
+                                    <h:inputText id="textField9" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.hairColor}"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="descgridPanel1" style="height: 100%; width: 100%">
                                     <h:outputText id="outputText20" value="キャラ設定"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="gridPanel12" styleClass="g">
-                                    <h:inputTextarea id="textArea1" style="font-size: 12px; height: 150px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.description}"/>
+                                    <h:inputTextarea id="textArea1" style="font-size: 12px; height: 150px; width: 100%" value="#{editCharacterRecordPage.characterRecord.description}"/>
                                 </h:panelGrid>
                             </h:panelGrid>
                             <h:panelGrid id="gridPanel13" style="height: 431px; width: 100%" styleClass="middle"/>
                         </h:panelGrid>
                         <h:panelGrid id="klassGridPanel1" style="width: 100%; height: 100%;">
                             <h:panelGrid id="buttonGridPanel1" style="height: 100%; text-align: left; width: 100%">
-                                <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button2" value="保存"/>
+                                <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button2" value="保存"/>
                             </h:panelGrid>
                             <h:panelGrid id="klassTableGridPanel1" styleClass="tableGrid">
                                 <h:outputText id="outputText21" styleClass="tableTitleBlack" value="クラスとレベル"/>
-                                <h:dataTable binding="#{editCharacterRecordPageContents.growthTable}" cellpadding="1" cellspacing="0"
+                                <h:dataTable binding="#{editCharacterRecordPage.growthTable}" cellpadding="1" cellspacing="0"
                                              id="growthTable" rowClasses="list-row-even,list-row-odd" styleClass="w"
-                                             value="#{editCharacterRecordPageContents.characterRecord.characterGrowthRecordList}" var="currentRow">
+                                             value="#{editCharacterRecordPage.characterRecord.characterGrowthRecordList}" var="currentRow">
                                     <h:column id="column1">
                                         <h:outputText id="outputText22" value="#{currentRow.characterGrowthRecordPK['characterLevel']}"/>
                                         <f:facet name="header">
@@ -124,7 +124,7 @@
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column2">
-                                        <h:selectOneMenu id="classDropDown1" value="#{editCharacterRecordPageContents.selectedClassByRow}">
+                                        <h:selectOneMenu id="classDropDown1" value="#{editCharacterRecordPage.selectedClassByRow}">
                                             <f:selectItems id="dropdown6SelectItems1" value="#{applicationBean.classArray}"/>
                                         </h:selectOneMenu>
                                         <f:facet name="header">
@@ -138,8 +138,8 @@
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column4">
-                                        <h:selectOneMenu disabled="#{editCharacterRecordPageContents.abilityEnhancementDisabled}" id="dropdown6"
-                                                         onchange="" value="#{editCharacterRecordPageContents.selectedAbilityEnhancementByRow}">
+                                        <h:selectOneMenu disabled="#{editCharacterRecordPage.abilityEnhancementDisabled}" id="dropdown6"
+                                                         onchange="" value="#{editCharacterRecordPage.selectedAbilityEnhancementByRow}">
                                             <f:selectItems id="dropdown6SelectItems2" value="#{applicationBean.abilityArray}"/>
                                         </h:selectOneMenu>
                                         <f:facet name="header">
@@ -147,7 +147,7 @@
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column5">
-                                        <h:commandButton action="#{editCharacterRecordPageContents.editSkillButton_action}" id="editSkillButton1" value="技能を編集"/>
+                                        <h:commandButton action="#{editCharacterRecordPage.editSkillButton_action}" id="editSkillButton1" value="技能を編集"/>
                                         <f:facet name="header">
                                             <h:outputText id="outputText27"/>
                                         </f:facet>
@@ -158,11 +158,11 @@
                         <h:panelGrid columns="2" id="abilityAndSkillGridPanel1" style="width: 100%; height: 100%;">
                             <h:panelGrid columns="1" id="leftGridPanel1" style="height: 100%; width: 390px">
                                 <h:panelGrid id="buttonGridPanel2" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button3" style="width: 48px" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button3" style="width: 48px" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="abilityGridPanel1" style="" styleClass="tableGrid">
                                     <h:outputText id="outputText28" styleClass="tableTitleBlack" value="能力値"/>
-                                    <h:dataTable binding="#{editCharacterRecordPageContents.abilityTable}" id="abilityTable" styleClass="w"
+                                    <h:dataTable binding="#{editCharacterRecordPage.abilityTable}" id="abilityTable" styleClass="w"
                                                  value="#{applicationBean.abilityList}" var="currentRow">
                                         <h:column id="column6">
                                             <h:outputText id="outputText29" style="font-size: 12px; font-weight: bold" value="#{currentRow.abilityName}"/>
@@ -171,43 +171,43 @@
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column7">
-                                            <h:outputText id="outputText31" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.abilityTotal}"/>
+                                            <h:outputText id="outputText31" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.abilityTotal}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText32" value="現在値"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column8">
-                                            <h:outputText id="outputText33" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.abilityModifier}"/>
+                                            <h:outputText id="outputText33" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.abilityModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText34" value="修正"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column9">
-                                            <h:inputText id="textField11" style="width: 25px; text-align: right;" value="#{editCharacterRecordPageContents.abilityBase}"/>
+                                            <h:inputText id="textField11" style="width: 25px; text-align: right;" value="#{editCharacterRecordPage.abilityBase}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText35" style="" value="初期値"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column10">
-                                            <h:outputText id="outputText36" value="#{editCharacterRecordPageContents.abilityRaceModifier}"/>
+                                            <h:outputText id="outputText36" value="#{editCharacterRecordPage.abilityRaceModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText37" value="種族"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column11">
-                                            <h:inputText id="textField12" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.abilityFeatModifier}"/>
+                                            <h:inputText id="textField12" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.abilityFeatModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText38" value="特技"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column12">
-                                            <h:outputText id="outputText39" value="#{editCharacterRecordPageContents.abilityLevelModifier}"/>
+                                            <h:outputText id="outputText39" value="#{editCharacterRecordPage.abilityLevelModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText40" value="レベル"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column13">
-                                            <h:inputText id="textField13" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.abilityMiscModifier}"/>
+                                            <h:inputText id="textField13" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.abilityMiscModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText41" value="その他"/>
                                             </f:facet>
@@ -215,11 +215,11 @@
                                     </h:dataTable>
                                 </h:panelGrid>
                                 <h:panelGrid id="buttonGridPanel3" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button4" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button4" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="saveGridPanel1" style="" styleClass="tableGrid">
                                     <h:outputText id="outputText42" styleClass="tableTitleBlack" value="セーヴィングスロー"/>
-                                    <h:dataTable binding="#{editCharacterRecordPageContents.saveTable}" cellpadding="1" cellspacing="0"
+                                    <h:dataTable binding="#{editCharacterRecordPage.saveTable}" cellpadding="1" cellspacing="0"
                                                  id="saveTable" style="" styleClass="w" value="#{applicationBean.saveList}" var="currentRow">
                                         <h:column id="column14">
                                             <h:outputText id="outputText43" style="font-size: 12px; font-weight: bold" value="#{currentRow.saveName}"/>
@@ -228,31 +228,31 @@
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column15">
-                                            <h:outputText id="outputText45" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.saveTotal}"/>
+                                            <h:outputText id="outputText45" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.saveTotal}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText46" value="判定値"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column16">
-                                            <h:outputText id="outputText47" value="#{editCharacterRecordPageContents.saveClassBonus}"/>
+                                            <h:outputText id="outputText47" value="#{editCharacterRecordPage.saveClassBonus}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText48" value="基本"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column17">
-                                            <h:outputText id="outputText49" value="#{editCharacterRecordPageContents.saveAbilityModifier}"/>
+                                            <h:outputText id="outputText49" value="#{editCharacterRecordPage.saveAbilityModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText50" value="能力"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column28">
-                                            <h:outputText id="outputText55" value="#{editCharacterRecordPageContents.saveRaceModifier}"/>
+                                            <h:outputText id="outputText55" value="#{editCharacterRecordPage.saveRaceModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText56" value="種族"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column18">
-                                            <h:inputText id="textField14" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.saveMiscModifier}"/>
+                                            <h:inputText id="textField14" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.saveMiscModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText51" value="その他修正"/>
                                             </f:facet>
@@ -260,7 +260,7 @@
                                     </h:dataTable>
                                 </h:panelGrid>
                                 <h:panelGrid id="buttonGridPanel4" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button5" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button5" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="battleDataGridPanel" style="" styleClass="tableGrid">
                                     <h:outputText id="outputText1" styleClass="tableTitleBlack" value="戦闘データ"/>
@@ -269,16 +269,16 @@
                                             <h:outputText id="outputText57" style="font-size: 8px" value="イニシアチブ"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel25" style="width: 30px" styleClass="p">
-                                            <h:outputText id="outputText60" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.initiativeTotal}"/>
+                                            <h:outputText id="outputText60" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.initiativeTotal}"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="10" id="gridPanel26" style="font-size: 10px; height: 100%; width: 100%" styleClass="w">
-                                            <h:outputText id="outputText80" style="text-align: right;" value="#{editCharacterRecordPageContents.initiativeAbilityModifier}"/>
+                                            <h:outputText id="outputText80" style="text-align: right;" value="#{editCharacterRecordPage.initiativeAbilityModifier}"/>
                                             <h:outputText id="outputText75" style="font-size: 10px" value="【敏】"/>
                                             <h:outputText id="outputText79" style="font-size: 8px" value="+"/>
-                                            <h:inputText id="textField17" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.initiativeFeatModifier}"/>
+                                            <h:inputText id="textField17" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.initiativeFeatModifier}"/>
                                             <h:outputText id="outputText76" style="font-size: 10px" value="特技"/>
                                             <h:outputText id="outputText77" style="font-size: 8px" value="+"/>
-                                            <h:inputText id="textField18" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.initiativeMiscModifier}"/>
+                                            <h:inputText id="textField18" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.initiativeMiscModifier}"/>
                                             <h:outputText id="outputText78" style="font-size: 10px" value="その他"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel1" style="height: 100%; width: 50px" styleClass="tableTitleBlackMiddle">
@@ -288,46 +288,46 @@
                                             <h:outputText id="outputText165" style="font-size: 18px; font-weight: bold" value="#{sessionBean.hitPointTotal}"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="10" id="gridPanel3" style="height: 100%;  width: 100%" styleClass="w">
-                                            <h:commandButton action="#{editCharacterRecordPageContents.editSkillNomalButton_action}"
+                                            <h:commandButton action="#{editCharacterRecordPage.editSkillNomalButton_action}"
                                                              id="editSkillNomalButton3" value="レベル別HPを編集"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel4" style=" height: 100%; width: 50px" styleClass="tableTitleBlackMiddle">
                                             <h:outputText id="outputText166" style="font-size: 10px" value="移動速度"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel55" style="width: 30px" styleClass="p">
-                                            <h:outputText id="outputText167" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.speed}"/>
+                                            <h:outputText id="outputText167" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.speed}"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="10" id="gridPanel56" style="height: 100%;  width: 100%" styleClass="w">
-                                            <h:outputText id="outputText168" value="#{editCharacterRecordPageContents.speedRaceBasse}"/>
+                                            <h:outputText id="outputText168" value="#{editCharacterRecordPage.speedRaceBasse}"/>
                                             <h:outputText id="outputText169" style="font-size: 10px" value="種族"/>
                                             <h:outputText id="outputText170" style="font-size: 8px" value="+"/>
-                                            <h:inputText id="textField46" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.speedFeatModifier}"/>
+                                            <h:inputText id="textField46" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.speedFeatModifier}"/>
                                             <h:outputText id="outputText171" style="font-size: 10px" value="特技"/>
                                             <h:outputText id="outputText172" style="font-size: 8px" value="+"/>
-                                            <h:inputText id="textField47" style="width: 30px; text-align: right;" value="#{editCharacterRecordPageContents.speedMiscModifier}"/>
+                                            <h:inputText id="textField47" style="width: 30px; text-align: right;" value="#{editCharacterRecordPage.speedMiscModifier}"/>
                                             <h:outputText id="outputText173" style="font-size: 10px" value="その他"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel57" style="height: 85px; width: 50px" styleClass="tableTitleBlackMiddle">
                                             <h:outputText id="outputText174" style="font-size: 14px" value="AC"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel58" style="height: 100px; width: 30px" styleClass="p">
-                                            <h:outputText id="outputText175" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.acNormal}"/>
+                                            <h:outputText id="outputText175" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.acNormal}"/>
                                         </h:panelGrid>
                                         <h:panelGrid id="gridPanel59" style="border-width: 0px; border-style: solid; margin: 0px; height: 100%; width: 100%">
                                             <h:panelGrid columns="14" id="gridPanel60" style="margin: 0px; height: 100%; width: 100%" styleClass="w">
-                                                <h:outputText id="outputText176" style="width: 30px" value="#{editCharacterRecordPageContents.acAbilityModifier}"/>
+                                                <h:outputText id="outputText176" style="width: 30px" value="#{editCharacterRecordPage.acAbilityModifier}"/>
                                                 <h:outputText id="outputText177" style="font-size: 10px" value="【敏】"/>
                                                 <h:outputText id="outputText178" value="+"/>
-                                                <h:outputText id="outputText179" style="width: 30px" value="#{editCharacterRecordPageContents.acArmor}"/>
+                                                <h:outputText id="outputText179" style="width: 30px" value="#{editCharacterRecordPage.acArmor}"/>
                                                 <h:outputText id="outputText180" style="font-size: 10px" value="鎧"/>
                                                 <h:outputText id="outputText181" value="+"/>
-                                                <h:outputText id="outputText182" style="width: 30px" value="#{editCharacterRecordPageContents.acShield}"/>
+                                                <h:outputText id="outputText182" style="width: 30px" value="#{editCharacterRecordPage.acShield}"/>
                                                 <h:outputText id="outputText183" style="font-size: 10px" value="盾"/>
                                                 <h:outputText id="outputText52" value="+"/>
-                                                <h:outputText id="outputText53" style="width: 30px" value="#{editCharacterRecordPageContents.acRaceModifier}"/>
+                                                <h:outputText id="outputText53" style="width: 30px" value="#{editCharacterRecordPage.acRaceModifier}"/>
                                                 <h:outputText id="outputText54" style="font-size: 10px" value="種"/>
                                                 <h:outputText id="outputText184" value="+"/>
-                                                <h:inputText id="textField48" style="text-align: right; width: 20px" value="#{editCharacterRecordPageContents.characterRecord.acMiscMod}"/>
+                                                <h:inputText id="textField48" style="text-align: right; width: 20px" value="#{editCharacterRecordPage.characterRecord.acMiscMod}"/>
                                                 <h:outputText id="outputText185" style="font-size: 10px" value="他"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="2" id="gridPanel61" style="text-align: right">
@@ -336,14 +336,14 @@
                                                     <h:outputText id="outputText187" value="立ちすくみ"/>
                                                 </h:panelGrid>
                                                 <h:panelGrid id="gridPanel63" style="height: 100%; width: 50%" styleClass="p">
-                                                    <h:outputText id="outputText188" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.acTouch}"/>
-                                                    <h:outputText id="outputText189" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.acFlatFooted}"/>
+                                                    <h:outputText id="outputText188" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.acTouch}"/>
+                                                    <h:outputText id="outputText189" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.acFlatFooted}"/>
                                                 </h:panelGrid>
                                             </h:panelGrid>
                                         </h:panelGrid>
                                     </h:panelGrid>
                                     <h:panelGrid id="defenceGridPanel2" style="background-color: rgb(51,51,51); font-size: 12px; text-align: center; vertical-align: middle; width: 100%">
-                                        <h:inputTextarea id="textArea8" style="height: 200px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.defenceDescription}"/>
+                                        <h:inputTextarea id="textArea8" style="height: 200px; width: 100%" value="#{editCharacterRecordPage.characterRecord.defenceDescription}"/>
                                     </h:panelGrid>
                                     <h:panelGrid id="attackgridPanel2" style="background-color: #333333; font-size: 12px; text-align: center; vertical-align: middle; width: 100%">
                                         <h:outputText id="outputText190"
@@ -353,43 +353,43 @@
                                                 <h:outputText id="outputText191" value="近接攻撃"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel65" style="width: 30px" styleClass="p">
-                                                <h:outputText id="outputText192" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.meleeAttackBonus}"/>
+                                                <h:outputText id="outputText192" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.meleeAttackBonus}"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="10" id="gridPanel66" style="height: 100%; width: 260px" styleClass="w">
-                                                <h:outputText id="outputText193" value="#{editCharacterRecordPageContents.baseAttackTotal}"/>
+                                                <h:outputText id="outputText193" value="#{editCharacterRecordPage.baseAttackTotal}"/>
                                                 <h:outputText id="outputText194" style="font-size: 10px" value="基本"/>
                                                 <h:outputText id="outputText195" style="font-size: 8px" value="+"/>
-                                                <h:outputText id="outputText196" value="#{editCharacterRecordPageContents.attackBonusStrengthBonus}"/>
+                                                <h:outputText id="outputText196" value="#{editCharacterRecordPage.attackBonusStrengthBonus}"/>
                                                 <h:outputText id="outputText197" style="font-size: 10px" value="筋力"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel67" style="height: 100%; width: 70px" styleClass="tableTitleBlackMiddle">
                                                 <h:outputText id="outputText198" value="遠隔攻撃"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel68" style="width: 30px" styleClass="p">
-                                                <h:outputText id="outputText199" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.rangeAttackBonus}"/>
+                                                <h:outputText id="outputText199" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.rangeAttackBonus}"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="10" id="gridPanel69" style="height: 100%; width: 260px" styleClass="w">
-                                                <h:outputText id="outputText200" value="#{editCharacterRecordPageContents.baseAttackTotal}"/>
+                                                <h:outputText id="outputText200" value="#{editCharacterRecordPage.baseAttackTotal}"/>
                                                 <h:outputText id="outputText201" style="font-size: 10px" value="基本"/>
                                                 <h:outputText id="outputText202" style="font-size: 8px" value="+"/>
-                                                <h:outputText id="outputText203" value="#{editCharacterRecordPageContents.attackBonusDexBonus}"/>
+                                                <h:outputText id="outputText203" value="#{editCharacterRecordPage.attackBonusDexBonus}"/>
                                                 <h:outputText id="outputText204" style="font-size: 10px" value="敏捷"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel70" style="height: 100%; width: 70px" styleClass="tableTitleBlackMiddle">
                                                 <h:outputText id="outputText205" value="組み付き"/>
                                             </h:panelGrid>
                                             <h:panelGrid id="gridPanel71" style="width: 30px" styleClass="p">
-                                                <h:outputText id="outputText206" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.getGrappleBonus()}"/>
+                                                <h:outputText id="outputText206" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.getGrappleBonus()}"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="10" id="gridPanel72" style="height: 100%; width: 260px" styleClass="w">
-                                                <h:outputText id="outputText207" value="#{editCharacterRecordPageContents.baseAttackTotal}"/>
+                                                <h:outputText id="outputText207" value="#{editCharacterRecordPage.baseAttackTotal}"/>
                                                 <h:outputText id="outputText208" style="font-size: 10px" value="基本"/>
                                                 <h:outputText id="outputText209" style="font-size: 8px" value="+"/>
-                                                <h:outputText id="outputText210" value="#{editCharacterRecordPageContents.attackBonusStrengthBonus}"/>
+                                                <h:outputText id="outputText210" value="#{editCharacterRecordPage.attackBonusStrengthBonus}"/>
                                                 <h:outputText id="outputText211" style="font-size: 10px" value="筋力"/>
                                             </h:panelGrid>
                                         </h:panelGrid>
-                                        <h:inputTextarea id="textArea9" style="height: 200px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.attackDescription}"/>
+                                        <h:inputTextarea id="textArea9" style="height: 200px; width: 100%" value="#{editCharacterRecordPage.characterRecord.attackDescription}"/>
                                         <h:panelGrid columns="1" id="attackGridPanel2" rendered="false" style="height: 100%; width: 100%">
                                             <h:panelGrid id="armGrid1" style="width: 100%">
                                                 <h:panelGrid id="gridPanel18" rowClasses="tableTitleBlackMiddle" style="width: 100%" styleClass="tableGrid">
@@ -429,66 +429,66 @@
                                             <h:outputText id="outputText213" value="呪文抵抗"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" id="gridPanel75" style="width: 100%; height: 100%;" styleClass="p">
-                                            <h:inputText id="textField49" style="font-size: 10px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.damageReduction}"/>
-                                            <h:inputText id="textField50" style="font-size: 10px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.spellResistance}"/>
+                                            <h:inputText id="textField49" style="font-size: 10px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.damageReduction}"/>
+                                            <h:inputText id="textField50" style="font-size: 10px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.spellResistance}"/>
                                         </h:panelGrid>
                                     </h:panelGrid>
                                 </h:panelGrid>
                                 <h:panelGrid id="buttonGridPanel5" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button6" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button6" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="featgridPanel1" style="height: 100%; width: 100%" styleClass="tableGrid">
                                     <h:outputText id="outputText112" styleClass="tableTitleBlack" value="特技・特殊能力など"/>
-                                    <h:inputTextarea id="textArea4" style="height: 200px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.featDescription}"/>
+                                    <h:inputTextarea id="textArea4" style="height: 200px; width: 100%" value="#{editCharacterRecordPage.characterRecord.featDescription}"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="buttonGridPanel6" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button7" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button7" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="1" id="itemgridPanel1" style="width: 100%; height: 100%;" styleClass="tableGrid">
                                     <h:outputText id="outputText113" styleClass="tableTitleBlack" value="マジックアイテム/装備など"/>
                                     <h:panelGrid columns="3" id="pocketGridPanel1" style="width: 100%; height: 100%;">
                                         <h:outputText id="outputText114" styleClass="tableTitleBlackMiddle" value="所持金"/>
                                         <h:panelGrid columns="2" id="gridPanel42" style="text-align: left" styleClass="p">
-                                            <h:inputText id="textField22" style="text-align: right" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.pocket}"/>
+                                            <h:inputText id="textField22" style="text-align: right" value="#{editCharacterRecordPage.characterRecord.characterEquipment.pocket}"/>
                                             <h:outputText id="outputText115" style="font-size: 10px; text-align: left" value="gp"/>
                                         </h:panelGrid>
                                     </h:panelGrid>
                                     <h:panelGrid columns="2" id="gridPanel43" style="width: 100%; height: 100%;">
                                         <h:panelGrid columns="2" id="gridPanel44" style="height: 100%; width: 100%">
                                             <h:outputText id="outputText116" styleClass="tableTitleBlackMiddle" value="頭"/>
-                                            <h:inputText id="textField23" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.head}"/>
+                                            <h:inputText id="textField23" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.head}"/>
                                             <h:outputText id="outputText117" styleClass="tableTitleBlackMiddle" value="マント"/>
-                                            <h:inputText id="textField24" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.cloak}"/>
+                                            <h:inputText id="textField24" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.cloak}"/>
                                             <h:outputText id="outputText118" styleClass="tableTitleBlackMiddle" value="首輪"/>
-                                            <h:inputText id="textField25" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.necklace}"/>
+                                            <h:inputText id="textField25" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.necklace}"/>
                                             <h:outputText id="outputText119" styleClass="tableTitleBlackMiddle" value="腕輪"/>
-                                            <h:inputText id="textField26" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.armRing}"/>
+                                            <h:inputText id="textField26" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.armRing}"/>
                                             <h:outputText id="outputText120" styleClass="tableTitleBlackMiddle" value="指輪1"/>
-                                            <h:inputText id="textField27" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.ring1}"/>
+                                            <h:inputText id="textField27" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.ring1}"/>
                                             <h:outputText id="outputText121" styleClass="tableTitleBlackMiddle" value="ベルト"/>
-                                            <h:inputText id="textField28" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.belt}"/>
+                                            <h:inputText id="textField28" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.belt}"/>
                                             <h:outputText id="outputText122" styleClass="tableTitleBlackMiddle" value="鎧"/>
-                                            <h:inputText id="textField29" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.armor}"/>
+                                            <h:inputText id="textField29" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.armor}"/>
                                             <h:outputText id="outputText123" styleClass="tableTitleBlackMiddle" value="武器1"/>
-                                            <h:inputText id="textField129" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.arm1}"/>
+                                            <h:inputText id="textField129" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.arm1}"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" id="gridPanel45" style="height: 100%; width: 100%">
                                             <h:outputText id="outputText124" styleClass="tableTitleBlackMiddle" value="眼"/>
-                                            <h:inputText id="textField31" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.eye}"/>
+                                            <h:inputText id="textField31" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.eye}"/>
                                             <h:outputText id="outputText125" styleClass="tableTitleBlackMiddle" value="ローブ"/>
-                                            <h:inputText id="textField32" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.robe}"/>
+                                            <h:inputText id="textField32" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.robe}"/>
                                             <h:outputText id="outputText126" styleClass="tableTitleBlackMiddle" value="ベスト"/>
-                                            <h:inputText id="textField33" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.vest}"/>
+                                            <h:inputText id="textField33" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.vest}"/>
                                             <h:outputText id="outputText127" styleClass="tableTitleBlackMiddle" value="手袋"/>
-                                            <h:inputText id="textField34" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.glove}"/>
+                                            <h:inputText id="textField34" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.glove}"/>
                                             <h:outputText id="outputText128" styleClass="tableTitleBlackMiddle" value="指輪2"/>
-                                            <h:inputText id="textField35" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.ring2}"/>
+                                            <h:inputText id="textField35" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.ring2}"/>
                                             <h:outputText id="outputText129" styleClass="tableTitleBlackMiddle" value="靴"/>
-                                            <h:inputText id="textField36" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.boots}"/>
+                                            <h:inputText id="textField36" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.boots}"/>
                                             <h:outputText id="outputText130" styleClass="tableTitleBlackMiddle" value="盾"/>
-                                            <h:inputText id="textField37" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.shield}"/>
+                                            <h:inputText id="textField37" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.shield}"/>
                                             <h:outputText id="outputText131" styleClass="tableTitleBlackMiddle" value="武器2"/>
-                                            <h:inputText id="textField130" style="width: 100px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.arm2}"/>
+                                            <h:inputText id="textField130" style="width: 100px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.arm2}"/>
                                         </h:panelGrid>
                                     </h:panelGrid>
                                     <h:panelGrid columns="3" id="armorgridPanel1" style="height: 100%; width: 100%">
@@ -512,18 +512,18 @@
                                                 <h:outputText id="outputText137" style="font-size: 10px; width: 30px" value="敏捷力ボーナス上限"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="4" id="gridPanel52" style="font-size: 12px; height: 25px; width: 100%" styleClass="p">
-                                                <h:inputText id="textField39" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.acArmor}"/>
-                                                <h:inputText id="textField40" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.skillArmorMod}"/>
-                                                <h:inputText id="textField41" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.dexAcArmorLimit}"/>
+                                                <h:inputText id="textField39" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.acArmor}"/>
+                                                <h:inputText id="textField40" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.skillArmorMod}"/>
+                                                <h:inputText id="textField41" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.dexAcArmorLimit}"/>
                                             </h:panelGrid>
                                             <h:panelGrid columns="4" id="gridPanel53" style="font-size: 12px; height: 25px; width: 100%" styleClass="p">
-                                                <h:inputText id="textField42" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.acShield}"/>
-                                                <h:inputText id="textField43" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.skillShieldMod}"/>
-                                                <h:inputText id="textField44" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPageContents.characterRecord.characterEquipment.dexAcShieldLimit}"/>
+                                                <h:inputText id="textField42" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.acShield}"/>
+                                                <h:inputText id="textField43" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.skillShieldMod}"/>
+                                                <h:inputText id="textField44" style="font-size: 12px; text-align: right; width: 30px" value="#{editCharacterRecordPage.characterRecord.characterEquipment.dexAcShieldLimit}"/>
                                             </h:panelGrid>
                                         </h:panelGrid>
                                     </h:panelGrid>
-                                    <h:inputTextarea id="textArea5" style="height: 200px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.itemDescription}"/>
+                                    <h:inputTextarea id="textArea5" style="height: 200px; width: 100%" value="#{editCharacterRecordPage.characterRecord.itemDescription}"/>
                                     <h:panelGrid columns="3" id="loadGridPanel1" style="height: 100%; width: 100%">
                                         <h:outputText id="outputText138" styleClass="tableTitleBlackMiddle" value="軽荷重"/>
                                         <h:outputText id="outputText139" styleClass="tableTitleBlackMiddle" value="中荷重"/>
@@ -537,67 +537,67 @@
                             <h:panelGrid id="rightGridPanel1" style="height: 100%; width: 390px">
                                 <h:panelGrid columns="2" id="gridPanel54" style="width: 100%; height: 100%;">
                                     <h:panelGrid id="buttonGridPanel7" style="height: 100%; text-align: left; width: 100%">
-                                        <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button8" value="保存"/>
+                                        <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button8" value="保存"/>
                                     </h:panelGrid>
                                     <h:panelGrid id="buttonGridPanel8" style="height: 100%; text-align: right; width: 100%">
-                                        <h:commandButton action="#{editCharacterRecordPageContents.editSkillNomalButton_action}"
+                                        <h:commandButton action="#{editCharacterRecordPage.editSkillNomalButton_action}"
                                                          id="editSkillNomalButton2" value="技能を編集"/>
                                     </h:panelGrid>
                                 </h:panelGrid>
                                 <h:panelGrid id="skillGridPanel1" style="" styleClass="tableGrid">
                                     <h:outputText id="outputText144" style="" styleClass="tableTitleBlack" value="技能"/>
-                                    <h:dataTable binding="#{editCharacterRecordPageContents.skillTable}" id="skillTable" style="" styleClass="w"
+                                    <h:dataTable binding="#{editCharacterRecordPage.skillTable}" id="skillTable" style="" styleClass="w"
                                                  value="#{applicationBean.skillList}" var="currentRow">
                                         <h:column id="column19">
-                                            <h:outputText id="outputText145" value="#{editCharacterRecordPageContents.skillRankCheck}"/>
+                                            <h:outputText id="outputText145" value="#{editCharacterRecordPage.skillRankCheck}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText146" style="font-size: 10px" value="習得"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column20">
-                                            <h:outputText id="outputText147" style="font-size: 10px;" value="#{currentRow.skillName} #{editCharacterRecordPageContents.skillCheckAcceptNoRank}"/>
+                                            <h:outputText id="outputText147" style="font-size: 10px;" value="#{currentRow.skillName} #{editCharacterRecordPage.skillCheckAcceptNoRank}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText148" style="font-size: 10px" value="技能名"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column21">
-                                            <h:outputText id="outputText149" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPageContents.skillTotalCheckModifier}"/>
+                                            <h:outputText id="outputText149" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.skillTotalCheckModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText150" value="判定値"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column22">
-                                            <h:outputText id="outputText151" style="font-size: 10px; width: 40px" value="#{editCharacterRecordPageContents.skillAbilityModifier} 【#{editCharacterRecordPageContents.skillAbilityShortName}】"/>
+                                            <h:outputText id="outputText151" style="font-size: 10px; width: 40px" value="#{editCharacterRecordPage.skillAbilityModifier} 【#{editCharacterRecordPage.skillAbilityShortName}】"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText152" style="font-size: 10px" value="能力"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column23">
-                                            <h:outputText id="outputText153" value="#{editCharacterRecordPageContents.skillTotalRank}"/>
+                                            <h:outputText id="outputText153" value="#{editCharacterRecordPage.skillTotalRank}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText154" style="font-size: 10px" value="ランク"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column24">
-                                            <h:outputText id="outputText155" value="#{editCharacterRecordPageContents.skillTotalPoint}"/>
+                                            <h:outputText id="outputText155" value="#{editCharacterRecordPage.skillTotalPoint}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText156" style="font-size: 10px" value="ポイント"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column25">
-                                            <h:outputText id="outputText157" value="#{editCharacterRecordPageContents.skillSynergyModifier}"/>
+                                            <h:outputText id="outputText157" value="#{editCharacterRecordPage.skillSynergyModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText158" style="font-size: 10px" value="相乗"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column26">
-                                            <h:outputText id="outputText159" value="#{editCharacterRecordPageContents.skillArmorModifier}"/>
+                                            <h:outputText id="outputText159" value="#{editCharacterRecordPage.skillArmorModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText160" style="font-size: 10px" value="防具"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column27">
-                                            <h:inputText id="textField45" style="text-align: right; width: 20px" value="#{editCharacterRecordPageContents.skillMiscModifier}"/>
+                                            <h:inputText id="textField45" style="text-align: right; width: 20px" value="#{editCharacterRecordPage.skillMiscModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText161" style="font-size: 10px" value="その他"/>
                                             </f:facet>
@@ -605,25 +605,25 @@
                                     </h:dataTable>
                                 </h:panelGrid>
                                 <h:panelGrid id="buttonGridPanel9" style="height: 100%; text-align: left; width: 100%">
-                                    <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button9" value="保存"/>
+                                    <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button9" value="保存"/>
                                 </h:panelGrid>
                                 <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGrid">
                                     <h:outputText id="outputText162" styleClass="tableTitleBlack" value="呪文・メモなど"/>
-                                    <h:inputTextarea id="textArea6" style="height: 250px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.spellDescription}"/>
+                                    <h:inputTextarea id="textArea6" style="height: 250px; width: 100%" value="#{editCharacterRecordPage.characterRecord.spellDescription}"/>
                                 </h:panelGrid>
                             </h:panelGrid>                               
                         </h:panelGrid>
                         <h:panelGrid id="updateGridPanel1" style="height: 100%; width: 100%">
                             <h:panelGrid id="buttonGridPanel10" style="height: 100%; text-align: left; width: 100%">
-                                <h:commandButton action="#{editCharacterRecordPageContents.saveButton_action}" id="button10" value="保存"/>
+                                <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button10" value="保存"/>
                             </h:panelGrid>
                             <h:panelGrid id="updateGridPanel2" style="height: 100%;; width: 100%" styleClass="tableGrid">
                                 <h:outputText id="outputText163" styleClass="tableTitleBlack" value="セッションログ／更新履歴"/>
-                                <h:inputTextarea id="textArea7" style="height: 150px; width: 100%" value="#{editCharacterRecordPageContents.characterRecord.updateDescription}"/>
+                                <h:inputTextarea id="textArea7" style="height: 150px; width: 100%" value="#{editCharacterRecordPage.characterRecord.updateDescription}"/>
                             </h:panelGrid>
                         </h:panelGrid>
                         <h:panelGrid id="deleteCharaGridPanel1" style="height: 100%; text-align: right; width: 100%">
-                            <h:commandButton action="#{editCharacterRecordPageContents.deleteButton_action}"
+                            <h:commandButton action="#{editCharacterRecordPage.deleteButton_action}"
                                              disabled="#{sessionBean.deleteButtonDisabled}" id="deleteButton1" style="color: rgb(255, 51, 51)" value="キャラクタの削除"/>
                         </h:panelGrid>
                     </h:panelGrid>

@@ -42,13 +42,13 @@ import javax.faces.event.ValueChangeEvent;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version CharacterEditPageContents.java
+ * @version CharacterEditPage.java
  * @version Created on 2009/03/29, 22:47:51
  * @author ka78231
  */
 @ManagedBean
 @RequestScoped
-public class EditCharacterRecordPageContents  extends BaseBean {
+public class EditCharacterRecordPage  extends BaseBean {
 
     @EJB
     private SkillSynergyMasterFacade skillSynergyMasterFacade;
@@ -144,7 +144,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public EditCharacterRecordPageContents() {
+    public EditCharacterRecordPage() {
     }
 
     @PostConstruct
@@ -298,7 +298,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     public String charaListButton_action() {
-        return "CharacterListPageContents";
+        return "CharacterListPage";
     }
 
     public String saveButton_action() {
@@ -356,7 +356,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
             context.addMessage("contents:contentGrid:label1", new FacesMessage(("削除に失敗しました")));
             return null;
         }
-        return "CharacterListPageContents";
+        return "CharacterListPage";
     }
     public String arm1Select_action() {
          getSessionBean().setMainArm(true);
@@ -368,24 +368,27 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     *------------------ ベース能力値 ---------------------------------
+     * ベース能力値 
      */
     protected Integer abilityBase;
-    //能力値の表(dataTable2)の行番号から該当する能力の値を得る
 
+    /**
+     * 能力値の表(dataTable2)の行番号から該当する能力の値を得る
+     */
     public Integer getAbilityBase() {
         int abid = abilityTable.getRowIndex() + 1;
         return getAbilityBaseById(abid);
     }
 
-    //能力値のID(1～6）を指定してから能力値を得る
+    /**
+     * 能力値のID(1～6）を指定してから能力値を得る
+     */
     public Integer getAbilityBaseById(int id) {
         // 能力値 ID は 1-6 だが、List の ID は 0 から並んでいるので -1 する
         Integer result;
         List<CharacterAbilityRecord> abilityList = getCharacterRecord().getCharacterAbilityRecordList();
         CharacterAbilityRecord ability = abilityList.get(id - 1);
         result = ability.getBase();
-//        result = getCharacterRecord().getCharacterAbilityRecordList().get(id - 1).getBase();
         if (result == null) {
             return 0;
         } else {
@@ -401,18 +404,22 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     public void setAbilityBaseById(int id, Integer newVal) {
         getCharacterRecord().getCharacterAbilityRecordList().get(id - 1).setBase(newVal);
     }
-    /*
-     * ------------------ 能力値 その他修正 ---------------------------------
+    /**
+     *  能力値 その他修正
      */
     protected Integer abilityMiscModifier;
-    //能力値の表(dataTable2)の行番号から該当する能力の値を得る
 
+    /**
+     * 能力値の表(dataTable2)の行番号から該当する能力の値を得る
+     */ 
     public Integer getAbilityMiscModifier() {
         int abid = abilityTable.getRowIndex() + 1;
         return getAbilityMiscModifierById(abid);
     }
 
-    //能力値のID(1～6）を指定してから能力値を得る
+    /**
+     * 能力値のID(1～6）を指定してから能力値を得る
+     */
     public Integer getAbilityMiscModifierById(int id) {
         // 能力値 ID は 1-6 だが、List の ID は 0 から並んでいるので -1 する
         Integer result;
@@ -435,17 +442,21 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return;
     }
     /*
-     *------------------ 能力値 特技修正値 ---------------------------------
+     * 能力値 特技修正値
      */
     protected Integer abilityFeatModifier;
-    //能力値の表(dataTable2)の行番号から該当する能力の値を得る
 
+    /*
+     * 能力値の表(dataTable2)の行番号から該当する能力の値を得る
+     */
     public Integer getAbilityFeatModifier() {
         int abid = abilityTable.getRowIndex() + 1;
         return getAbilityFeatModifierById(abid);
     }
 
-    //能力値のID(1～6）を指定してから能力値を得る
+    /**
+     * 能力値のID(1～6）を指定してから能力値を得る
+     */
     public Integer getAbilityFeatModifierById(int id) {
         // 能力値 ID は 1-6 だが、List の ID は 0 から並んでいるので -1 する
         Integer result;
@@ -466,7 +477,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         getCharacterRecord().getCharacterAbilityRecordList().get(id - 1).setFeatModifier(newVal);
     }
     /*
-     *------------------ 能力値 種族 修正値  ---------------------------------
+     * 能力値 種族 修正値
      */
     protected Integer abilityRaceModifier;
 
@@ -497,7 +508,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return raceAbility.getModifier();
     }
     /*
-     * ------------------ 能力値 レベル修正値 (計算値）  ---------------------------------
+     * 能力値 レベル修正値 (計算値）
      */
     protected Integer abilityLevelModifier;
 
@@ -529,7 +540,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return modifier;
     }
     /*
-     * ------------------ 能力値 合計  ---------------------------------
+     * 能力値 合計
      */
     protected Integer abilityTotal;
 
@@ -547,7 +558,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 getAbilityLevelModifierById(id);
     }
     /*
-     * ------------------ 能力値 修正値  ---------------------------------
+     * 能力値 修正値
      */
     protected Integer abilityModifier;
 
@@ -561,7 +572,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return (getAbilityTotalById(ability) / 2) - 5;
     }
     /*
-     * ------------------ 技能 対応能力修正値  ---------------------------------
+     * 技能 対応能力修正値 
      */
     protected Integer skillAbilityModifier;
 
@@ -575,7 +586,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return getAbilityModifierById(skillMasterFacade.find(skill).getAbilityId().getId());
     }
     /*
-     * ------------------ 技能 対応能力値名 ---------------------------------
+     *  技能 対応能力値名 
      */
     protected String skillAbilityName;
 
@@ -589,7 +600,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return skillMasterFacade.find(skill).getAbilityId().getAbilityName();
     }
     /*
-     * ------------------ 技能 対応能力値名 省略名---------------------------------
+     *  技能 対応能力値名 省略名
      */
     protected String skillAbilityShortName;
 
@@ -605,7 +616,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return name.substring(0, 1);
     }
     /*
-     * ------------------ 技能 ポイント ---------------------------------
+     *  技能 ポイント 
      */
     protected Integer skillTotalPoint;
 
@@ -630,7 +641,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return point;
     }
     /*
-     * ------------------ 技能 判定値---------------------------------
+     *  技能 判定値
      */
     protected Integer skillTotalCheckModifier;
 
@@ -642,7 +653,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 getSkillSynergyModifier();
     }
     /*
-     * ------------------ 技能 その他修正 ---------------------------------
+     *  技能 その他修正 
      */
     protected Integer skillMiscModifier;
 
@@ -666,9 +677,9 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         skillRecord.get(index).setMiscModifier(skillMiscModifier);
     }
     /*
-     * ------------------ 技能 ランク（計算値）---------------------------------
+     * 技能 ランク（計算値)
+     * ポイントとクラスから計算する
      */
-    //  ポイントとクラスから計算する
     protected Integer skillRank;
     protected Integer skillRankByLevelAndSkill;
 
@@ -737,7 +748,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     *  -------------------- 技能がランク無しでも実施可能か ---------------------
+     * 技能がランク無しでも実施可能か
      */
     protected boolean skillAcceptNoRankBySkillId;
 
@@ -760,10 +771,9 @@ public class EditCharacterRecordPageContents  extends BaseBean {
             return "□";
         }
     }
-    /*
-     *  -------------------- クラス技能かどうか ---------------------
+    /**
+     * クラス技能かどうか
      */
-
     public boolean isClassSkillByClassAndSkill(ClassMaster klass, SkillMaster skill) {
         List<ClassSkillMaster> classSkillList = classSkillMasterFacade.findByClass(klass);
         for (ClassSkillMaster classSkill : classSkillList) {
@@ -801,7 +811,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return false;
     }
     /*
-     *  -------------------- 技能ランクを持っているかどうか ---------------------
+     * 技能ランクを持っているかどうか
      */
     public boolean hasSkillRankBySkill(SkillMaster skill) {
         List<CharacterSkillGrowthRecord> skillGrowthList = getCharacterRecord().getCharacterSkillGrowthRecordList();
@@ -821,7 +831,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     * ------------------ 技能 鎧、盾ペナルティ ---------------------------------
+     * 技能 鎧、盾ペナルティ
      */
     public Integer getSkillArmorModifier() {
         Integer result;
@@ -853,8 +863,8 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return result;
     }
 
-    /*
-     * ------------------ 技能 相乗効果 ---------------------------------
+    /**
+     *  技能 相乗効果 
      */
     public Integer getSkillSynergyModifier() {
         Integer result;
@@ -879,8 +889,8 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return result;
     }
 
-    /*
-     * ----- 技能  ランクもっているか？ --------------------------
+    /**
+     * 技能  ランクもっているか？ 
      */
     public String getSkillRankCheck() {
         int skillId = skillTable.getRowIndex() + 1;
@@ -909,7 +919,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
          */
     }
     /*
-     * ----- キャラクタレベル毎のクラスの選択 ----------------------------------------------
+     * キャラクタレベル毎のクラスの選択
      */
     protected Integer selectedClassByRow;
 
@@ -940,7 +950,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     * ----- キャラクタレベル 4 レベル毎の上昇能力値の設定------
+     * キャラクタレベル 4 レベル毎の上昇能力値の設定
      */
     public Integer getSelectedAbilityEnhancementByRow() {
         int index = growthTable.getRowIndex();
@@ -965,17 +975,17 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     *  ---- キャラクタレベル毎のスキルの変更ボタン ----------------------------------
+     *  キャラクタレベル毎のスキルの変更ボタン
      */
     public String editSkillButton_action() {
         int index = growthTable.getRowIndex();
         // Lv とキャラクターレコードを元に、キャラクター成長レコードを得、セッションBeanにセットする
          getSessionBean().setCharacterGrowthRecord(getCharacterRecord().getCharacterGrowthRecordList().get(index));
 
-        return "EditCharacterPerLevelPageContents";
+        return "EditCharacterPerLevelPage";
     }
     /*
-     * ------------------ セーヴ 対応能力修正値  ---------------------------------
+     * セーヴ 対応能力修正値  
      */
     protected Integer saveAbilityModifier;
 
@@ -989,7 +999,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return getAbilityModifierById(saveMasterFacade.find(saveId).getAbilityId().getId());
     }
     /*
-     * ------------------ セーヴボーナス クラス合計  ---------------------------------
+     *  セーヴボーナス クラス合計  
      */
     protected Integer saveClassBonus;
 
@@ -1052,7 +1062,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return bonus;
     }
     /*
-     * ------------------ セーヴ その他修正値  ---------------------------------
+     * セーヴ その他修正値 
      */
     protected Integer saveMiscModifier;
 
@@ -1078,7 +1088,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         saveRecord.setMiscModifier(miscModifier);
     }
     /*
-     * ------------------ セーヴ 種族修正値  ---------------------------------
+     * セーヴ 種族修正値
      */
     public Integer getSaveRaceModifierById(int saveId) {
         if(getCharacterRecord().getRaceId() != null){
@@ -1099,7 +1109,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     * ------------------ セーヴボーナス トータル計  ---------------------------------
+     * セーヴボーナス トータル計
      */
     protected Integer saveToal;
 
@@ -1115,7 +1125,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 + getSaveRaceModifierById(saveId);
     }
     /*
-     * ------------------ イニシアチブ その修正 -----------------------------------------
+     * イニシアチブ その修正
      */
     protected Integer initiativeMiscModifier;
 
@@ -1131,7 +1141,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         getCharacterRecord().setInitiativeMiscModifier(modifier);
     }
     /*
-     * ------------------- イニシアチブ 技能修正 ---------------------------------------------
+     * イニシアチブ 技能修正
      */
     protected Integer initiativeFeatModifier;
 
@@ -1148,14 +1158,14 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     * ------------------ イニシアチブ 能力値修正 -----------------------------------------
+     * イニシアチブ 能力値修正
      */
     public Integer getInitiativeAbilityModifier() {
         // 敏捷力の ID は 2
         return getAbilityModifierById(DnDUtil.DEX);
     }
     /*
-     * ------------------ イニシアチブ 合計 （計算値）-----------------------------------------
+     *  イニシアチブ 合計 （計算値)
      */
     protected Integer initiativeTotal;
 
@@ -1163,7 +1173,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return getInitiativeAbilityModifier() + getInitiativeFeatModifier() + getInitiativeMiscModifier();
     }
     /*
-     * ------------------ 移動速度 合計 （計算値）-----------------------------------------
+     * 移動速度 合計 （計算値)
      */
     protected Integer speed;
 
@@ -1175,7 +1185,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         this.speed = speed;
     }
     /*
-     * ------------------ 移動速度 種族基本速度 -----------------------------------------
+     * 移動速度 種族基本速度 
      */
     protected Integer speedRaceBasse;
 
@@ -1188,7 +1198,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return race.getSpeed();
     }
     /*
-     * ------------------ 移動速度 特技修正値 -----------------------------------------
+     * 移動速度 特技修正値
      */
     protected Integer speedFeatModifier;
 
@@ -1204,7 +1214,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         getCharacterRecord().setSpeedFeatModifier(speedFeatModifier);
     }
     /*
-     * ------------------ 移動 その他修正値 -----------------------------------------
+     * 移動 その他修正値
      */
     protected Integer speedMiscModifier;
 
@@ -1224,7 +1234,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /**
-     * ----------------AC アーマークラス(計算値) ----------------------------------
+     * AC アーマークラス(計算値) 
      */
     public Integer getAcNormal() {
         CharacterRecord chara = getCharacterRecord();
@@ -1259,7 +1269,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 (chara.getAcMiscMod() == null ? 0 : chara.getAcMiscMod());
     }
     /**
-     * ------------------ AC 能力値修正 -----------------------------------------
+     *  AC 能力値修正 
      */
     public Integer getAcAbilityModifier() {
         // 敏捷力の ID は 2. 防具によって、敏捷力ボーナスがどれだけ適用できるかがきまる。
@@ -1275,7 +1285,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return bonus;
     }
     /*
-     * ------------ AC 盾ボーナス -------------------
+     *  AC 盾ボーナス 
      */
     protected Integer acShield;
 
@@ -1289,7 +1299,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
     }
 
     /*
-     * ---------- AC 鎧ボーナス-------------
+     *  AC 鎧ボーナス
      */
     protected Integer acArmor;
 
@@ -1302,7 +1312,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return getCharacterRecord().getAcArmor();
     }
     /*
-     * ---------- AC 種族修正-------------
+     *  AC 種族修正
      */
     protected Integer acRace;
 
@@ -1315,24 +1325,27 @@ public class EditCharacterRecordPageContents  extends BaseBean {
 
         return race.getSizeId().getAcModifier();
     }
-    /*
-     * ---------- AC その他-------------
+
+    /**
+     *  AC その他
      */
     protected Integer acMiscMod;
 
     public Integer getAcMiscMod() {
         return getCharacterRecord().getAcMiscMod();
     }
-    /*
-     * -------------技能編集ボタン（レベル無し) --------------------------------
+
+    /**
+     * 技能編集ボタン（レベル無し) 
      */
     public String editSkillNomalButton_action() {
         // キャラクターレコードを元に、キャラクター成長レコードを得、セッションBeanにセットする。Lv は 1 固定
          getSessionBean().setCharacterGrowthRecord(getCharacterRecord().getCharacterGrowthRecordList().get(0));
-        return "EditCharacterPerLevelPageContents";
+        return "EditCharacterPerLevelPage";
     }
-    /*
-     * ------------ 能力値上昇の選択リストを非表示にするかどうかを決める -------------
+
+    /**
+     *  能力値上昇の選択リストを非表示にするかどうかを決める 
      */
     public boolean isAbilityEnhancementDisabled() {
         int level = growthTable.getRowIndex() + 1;
@@ -1340,23 +1353,23 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         return (level % 4 != 0);
     }
 
-    /*
-     * ------------------ ヒットポイント用能力値修正 -----------------------------------------
+    /**
+     *  ヒットポイント用能力値修正 
      */
     public Integer getHitPointAbilityModifier() {
         // 敏捷力の ID は 2
         return getAbilityModifierById(DnDUtil.CON);
     }
 
-    /*
-     * ---------  最終更新日 --------------------------------------
+    /**
+     * 最終更新日 
      */
     public String getLastChange() {
         return DnDUtil.getLastChange(getCharacterRecord());
     }
 
-    /*
-     * -------- 攻撃ボーナス 基本攻撃ボーナス ---------------------------
+    /**
+     *  攻撃ボーナス 基本攻撃ボーナス
      */
     public Integer getBaseAttackTotal() {
         int baseAttack = 0;
@@ -1408,36 +1421,37 @@ public class EditCharacterRecordPageContents  extends BaseBean {
                 return 0;
         }
     }
-    /*
-     * -------- 攻撃ボーナス 遠隔攻撃ボーナス ---------------------------
-     */
 
+    /**
+     * 攻撃ボーナス 遠隔攻撃ボーナス
+     */
     public Integer getRangeAttackBonus() {
         return getBaseAttackTotal() + getAbilityModifierById(DnDUtil.DEX);
     }
-    /*
-     * -------- 攻撃ボーナス 近接攻撃ボーナス ---------------------------
+    
+    /**
+     * 攻撃ボーナス 近接攻撃ボーナス
      */
 
     public Integer getMeleeAttackBonus() {
         return getBaseAttackTotal() + getAbilityModifierById(DnDUtil.STR);
     }
     /*
-     * -------- 攻撃ボーナス 組み付きボーナス ---------------------------
+     * 攻撃ボーナス 組み付きボーナス
      */
 
     public Integer getGrappleBonus() {
         return getMeleeAttackBonus();
     }
     /*
-     * --------- 攻撃ボーナス 近接筋力ボーナス----------------
+     * 攻撃ボーナス 近接筋力ボーナス
      */
 
     public Integer getAttackBonusStrengthBonus() {
         return getAbilityModifierById(DnDUtil.STR);
     }
     /*
-     * --------- 攻撃ボーナス 遠隔筋力ボーナス----------------
+     *  攻撃ボーナス 遠隔筋力ボーナス
      */
 
     public Integer getAttackBonusDexBonus() {
@@ -1451,7 +1465,7 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         if(getCharacterRecord().getSaveTime() == null){
            return deleteButton_action();
         } else {
-            return "CharacterListPageContents";
+            return "CharacterListPage";
         }
     }
 
@@ -1469,10 +1483,11 @@ public class EditCharacterRecordPageContents  extends BaseBean {
         this.characterRecord = characterRecord;
     }
 
-    /*
-     * ------------ アイテム 武器 -----------------------------------
+    /**
+     * アイテム 武器 
      * TODO: 未実装
-      
+     */ 
+    /* 
     public String getArm1 (){
         ArmMaster arm1 = getCharacterRecord().getCharacterEquipment().getArm1();
         if(arm1 != null) {

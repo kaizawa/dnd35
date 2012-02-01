@@ -30,7 +30,7 @@ import javax.faces.event.ValueChangeEvent;
  */
 @ManagedBean
 @RequestScoped
-public class PrintableCharacterRecordPage extends EditCharacterRecordPageContents {
+public class PrintableCharacterRecordPage extends EditCharacterRecordPage {
 
     @PostConstruct
     @Override
@@ -630,7 +630,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     public String editCharaLink_action() {
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }
 
     @Override
@@ -659,7 +659,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPageContent
     }
 
     public String charalist_action() {
-        return "CharacterListPageContents";
+        return "CharacterListPage";
     }
 
 

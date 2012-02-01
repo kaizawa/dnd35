@@ -1,5 +1,5 @@
 /*
- * EditCharacterPerLevelPageContents.java
+ * EditCharacterPerLevelPage.java
  *
  * Created on 2009/01/10, 13:26:57
  */
@@ -30,7 +30,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean
 @RequestScoped
-public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageContents {
+public class EditCharacterPerLevelPage extends EditCharacterRecordPage {
 
     @Override
     public HtmlDataTable getSkillTable() {
@@ -56,7 +56,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public EditCharacterPerLevelPageContents() {
+    public EditCharacterPerLevelPage() {
     }
 
     @PostConstruct
@@ -209,7 +209,7 @@ public class EditCharacterPerLevelPageContents extends EditCharacterRecordPageCo
     }
 
     public String returnCharacterRecordPageButton_action() {
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }
 
     public String previousLevelButton_action() {

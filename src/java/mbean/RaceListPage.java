@@ -1,5 +1,5 @@
 /*
- * ClassListPageContents.java
+ * ClassListPage.java
  *
  * Created on 2009/01/05, 23:14:53
  */
@@ -19,7 +19,7 @@ import javax.faces.component.html.HtmlDataTable;
 
 @ManagedBean
 @RequestScoped
-public class RaceListPageContents extends BaseBean{
+public class RaceListPage extends BaseBean{
     @EJB
     private RaceMasterFacade raceMasterFacade;
 
@@ -36,7 +36,7 @@ public class RaceListPageContents extends BaseBean{
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public RaceListPageContents() {
+    public RaceListPage() {
     }
 
 
@@ -52,16 +52,16 @@ public class RaceListPageContents extends BaseBean{
         RaceMaster racemaster = getApplicationBean().getRaceMasterList().get(raceid);
 
          getSessionBean().setRaceMaster(racemaster);
-        return "EditRacePageContents";
+        return "EditRacePage";
     }
 
     public String newRaceButton_action() {
         if( getSessionBean().loggedIn){
             RaceMaster raceMaster = new RaceMaster();
              getSessionBean().setRaceMaster(raceMaster);
-            return "EditRacePageContents";
+            return "EditRacePage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 }

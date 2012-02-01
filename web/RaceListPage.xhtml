@@ -17,11 +17,11 @@
                             <h:outputText id="outputText5" style="font-size: 18px; font-weight: bold" value="種族一覧"/>
                         </h:panelGrid>
                         <h:panelGrid id="gridPanel3" style="height: 100%; text-align: right; width: 100%">
-                            <h:commandButton action="#{raceListPageContents.newRaceButton_action}" id="newRaceButton" value="新しい種族作成"/>
+                            <h:commandButton action="#{raceListPage.newRaceButton_action}" id="newRaceButton" value="新しい種族作成"/>
                         </h:panelGrid>
                     </h:panelGrid>
                     <h:panelGrid id="contentsGrid" style="width: 400px; height: 100%;" styleClass="tableGrid">
-                        <h:dataTable binding="#{raceListPageContents.raceTable}" id="raceTable" styleClass="w"
+                        <h:dataTable binding="#{raceListPage.raceTable}" id="raceTable" styleClass="w"
                                      value="#{applicationBean.raceMasterList}" var="currentRow">
                             <h:column id="column1">
                                 <h:outputText id="outputText1" value="#{currentRow.raceName}"/>
@@ -30,7 +30,7 @@
                                 </f:facet>
                             </h:column>
                             <h:column id="column2">
-                                <h:commandLink action="#{raceListPageContents.editRaceLink_action}" id="editRaceLink">
+                                <h:commandLink action="#{raceListPage.editRaceLink_action}" id="editRaceLink">
                                     <h:outputText id="linkAction1Text" value="修正"/>
                                 </h:commandLink>
                                 <f:facet name="header">

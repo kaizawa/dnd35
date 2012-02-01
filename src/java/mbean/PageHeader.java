@@ -61,7 +61,7 @@ public class PageHeader extends BaseBean {
     }
 
     public String charaListLink_action() {
-        return "CharacterListPageContents";
+        return "CharacterListPage";
     }
 
     public String newCharaLink_action() {
@@ -164,35 +164,35 @@ public class PageHeader extends BaseBean {
         //他のリストは EditCharacterRecordPage の中で作成する
         getSessionBean().setCharacterRecord(characterRecord);
 
-        return "EditCharacterRecordPageContents";
+        return "EditCharacterRecordPage";
     }
 
     public String profileLink_action() {
         if (getSessionBean().loggedIn) {
             return "profile";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 
     public String adminLink_action() {
         if (getSessionBean().loggedIn) {
-            return "AdminPageContents";
+            return "AdminPage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 
     public String loginLink_action() {
         getSessionBean().setLoggedIn(false);
         getSessionBean().setPlayerMaster(null);
-        return "LoginContents";
+        return "LoginPage";
     }
 
     public String logoutLink_action() {
         getSessionBean().setLoggedIn(false);
         getSessionBean().setPlayerMaster(null);
-        return "LoginContents";
+        return "LoginPage";
     }
 
     public String helpLink_action() {
@@ -205,17 +205,17 @@ public class PageHeader extends BaseBean {
         if (getSessionBean().loggedIn) {
             ClassMaster classMaster = new ClassMaster();
             getSessionBean().setClassMaster(classMaster);
-            return "EditClassPageContents";
+            return "EditClassPage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 
     public String classListLink_action() {
         if (getSessionBean().loggedIn) {
-            return "ClassListPageContents";
+            return "ClassListPage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
     String selectedHandle;
@@ -234,17 +234,17 @@ public class PageHeader extends BaseBean {
         if (getSessionBean().loggedIn) {
             RaceMaster raceMaster = new RaceMaster();
             getSessionBean().setRaceMaster(raceMaster);
-            return "EditRacePageContents";
+            return "EditRacePage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 
     public String raceListLink_action() {
         if (getSessionBean().loggedIn) {
-            return "RaceListPageContents";
+            return "RaceListPage";
         } else {
-            return "LoginContents";
+            return "LoginPage";
         }
     }
 }
