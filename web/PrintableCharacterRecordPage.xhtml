@@ -74,7 +74,7 @@
                     </h:panelGrid>
                 </h:panelGrid>
                 <h:panelGrid columns="2" id="abilityAndSkillGridPanel" style="width: 100%; height: 100%;">
-                    <h:panelGrid columns="1" id="leftGridPanel" style="height: 100%; width: 400px">
+                    <h:panelGrid columns="1" id="leftGridPanel" style="height: 100%; width: 390px ; ">
                         <h:panelGrid id="abilityGridPanel" style="" styleClass="tableGridPrint">
                             <h:outputText id="outputText58" value="能力値"/>
                             <h:dataTable binding="#{printableCharacterRecordPage.abilityTable}" id="abilityTable" styleClass="gPrint"
@@ -325,12 +325,7 @@
                                 </h:panelGrid>
                             </h:panelGrid>
                         </h:panelGrid>
-                        <h:panelGrid id="featgridPanel" style="height: 100%; width: 100%" styleClass="tableGridPrint">
-                            <h:outputText id="outputText88" styleClass="tableTitleBlackPrint" value="特技・特殊能力など"/>
-                            <h:panelGrid id="gridPanel18" style="width: 100%; height: 100%;" styleClass="aPrint">
-                                <h:outputText escape="false" id="textArea2" style="height: 150px; width: 100%" styleClass="bPrint" value="#{printableCharacterRecordPage.featDescription}"/>
-                            </h:panelGrid>
-                        </h:panelGrid>
+
                         <h:panelGrid columns="1" id="itemgridPanel" style="width: 100%; height: 100%;" styleClass="tableGridPrint">
                             <h:panelGrid id="gridPanel16" style="height: 100%; " styleClass="gPrint">
                                 <h:outputText id="outputText107" value="マジックアイテム/装備など"/>
@@ -405,7 +400,7 @@
                             </h:panelGrid>
                         </h:panelGrid>
                     </h:panelGrid>
-                    <h:panelGrid id="rightGridPanel" style="height: 100%; width: 400px">
+                    <h:panelGrid id="rightGridPanel" style="height: 100%; width: 390px " >
                         <h:panelGrid id="skillGridPanel" style="" styleClass="tableGridPrint">
                             <h:outputText id="outputText56" style="" styleClass="tableTitleBlackPrint" value="技能"/>
                             <h:dataTable binding="#{printableCharacterRecordPage.skillTable}" id="skillTable" style="" styleClass="gPrint"
@@ -466,17 +461,25 @@
                                 </h:column>
                             </h:dataTable>
                         </h:panelGrid>
-                        <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGridPrint">
-                            <h:outputText id="outputText12" styleClass="tableTitleBlackPrint" value="呪文・メモなど"/>
-                        </h:panelGrid>
-                        <h:panelGrid id="spellgridPanel" styleClass="aPrint">
-                            <h:outputText escape="false" id="textArea4" style="height: 200px; width: 100%" styleClass="bPrint" value="#{printableCharacterRecordPage.spellDescription}"/>
-                        </h:panelGrid>
+                    </h:panelGrid>                     
+                </h:panelGrid>
+
+                <h:panelGrid id="featgridPanel" style="height: 100%; width: 100%" styleClass="tableGridPrint">
+                    <h:outputText id="outputText88" styleClass="tableTitleBlackPrint" value="特技・特殊能力など"/>
+                    <h:panelGrid id="gridPanel18" style="width: 100%; height: 100%;" styleClass="aPrint">
+                        <h:outputText escape="false" id="textArea2" style="height: 150px; width: 100%" styleClass="bPrint" value="#{printableCharacterRecordPage.featDescription}"/>
                     </h:panelGrid>
                 </h:panelGrid>
+
+                <h:panelGrid style="height: 100%; width: 100%" >
+                    <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGridPrint">
+                        <h:outputText id="outputText12" styleClass="tableTitleBlackPrint" value="呪文・メモなど"/>
+                    </h:panelGrid>
+                    <h:panelGrid id="spellgridPanel" styleClass="aPrint">
+                        <h:outputText escape="false" id="textArea4" style="height: 200px; width: 100%" styleClass="bPrint" value="#{printableCharacterRecordPage.spellDescription}"/>
+                    </h:panelGrid>
+                </h:panelGrid>   
             </h:panelGrid>
-
-
         </h:form>
     </h:body>
 </html> 
