@@ -124,6 +124,14 @@ public class EditCharacterPerLevelPage extends EditCharacterRecordPage {
         int skill = index + 1;
         return getskillPointById(skill);
     }
+    
+    public String getSkillTotalPointColor(){
+        if(getSkillTotalPoint() == 0){
+            return "text-align: right; ";
+        } else {
+            return "text-align: right; font-weight: bold;  font-size: 15px; ";
+        }
+    }
 
     //特定レベルのスキルポイント
     public Integer getskillPointById(int skill) {
@@ -412,6 +420,14 @@ public class EditCharacterPerLevelPage extends EditCharacterRecordPage {
      */
     public Integer getSkillPointUnused(){
         return getSkillPointsAvailable() - getSkillPointUsed();
+    }
+    
+    public boolean isSkillPointRemaind(){
+        if (getSkillPointUnused() == 0){
+            return false; 
+        } else {
+            return true;
+        }
     }
 
     /**

@@ -86,24 +86,20 @@
                                         <h:outputText id="outputText31" style=" font-size: 20px" value="#{editCharacterPerLevelPage.skillPointUsedTotal}"/>
                                     </h:panelGrid>
                                 </h:panelGrid>
-                                <h:panelGrid columns="20" id="gridPanel20"
+                                <h:panelGrid columns="10" id="gridPanel20"
                                              style="border: 1px solid #cccccc; height: 100%; vertical-align: middle; width: 100%" styleClass="tableTitleBlackMiddle">
-                                    <h:outputText id="outputText32" value="増分技能ポイント(未使用）"/>
-                                    <h:panelGrid id="gridPanel21" style="border: 1px solid #cccccc; ">
-                                        <h:outputText id="outputText33" style=" font-size: 18px" value="#{editCharacterPerLevelPage.skillPointsAvailable}"/>
+                                    <h:outputText id="outputText33"  value="増分技能ポイント"/>
+                                    <h:panelGrid columns="1" style="border: 1px solid #cccccc; ">
+                                        <h:outputText style=" font-size: 18px" value="#{editCharacterPerLevelPage.skillPointsAvailable}"/>
                                     </h:panelGrid>
-                                    <h:outputText id="outputText43" value="("/>
-                                    <h:outputText id="outputText44" value="#{editCharacterPerLevelPage.skillPointUnused}"/>
-                                    <h:outputText id="outputText47" value=")"/>
-                                    <h:outputText id="outputText34" value="="/>
-                                    <h:outputText id="outputText35" value="#{editCharacterPerLevelPage.skillPointAbilityModifier}"/>
-                                    <h:outputText id="outputText36" style="font-size: 10px" value="【知】"/>
+                                    <h:outputText id="outputText44" style="text-align: left; color: red" rendered="#{editCharacterPerLevelPage.isSkillPointRemaind()}" value="未使用: #{editCharacterPerLevelPage.skillPointUnused}"/>
+                                    <h:outputLabel value="(内訳:" style="font-size: 13px"/>
+                                    <h:outputText id="outputText35" value="#{editCharacterPerLevelPage.skillPointAbilityModifier} (知)"/>
                                     <h:outputText id="outputText37" value="+"/>
-                                    <h:outputText id="outputText39" value="#{editCharacterPerLevelPage.skillPointPerLevel}"/>
-                                    <h:outputText id="outputText38" style="font-size: 10px" value="クラス"/>
+                                    <h:outputText id="outputText39" value="#{editCharacterPerLevelPage.skillPointPerLevel} (クラス)"/>
                                     <h:outputText id="outputText42" value="+"/>
-                                    <h:outputText id="outputText40" value="#{editCharacterPerLevelPage.skillPointRaceBonus}"/>
-                                    <h:outputText id="outputText41" style="font-size: 10px" value="種族"/>
+                                    <h:outputText id="outputText40" value="#{editCharacterPerLevelPage.skillPointRaceBonus} (種族)"/>
+                                    <h:outputLabel value=")" style="font-size: 13px"/>
                                 </h:panelGrid>
                             </h:panelGrid>
                             <h:panelGrid id="skillTableGridPanel1" style="background-color: #000000; height: 100%; width: 100%">
@@ -135,9 +131,9 @@
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column5">
-                                        <h:outputText id="outputText24" style="text-align: right" value="#{editCharacterPerLevelPage.skillTotalPoint}"/>
+                                        <h:outputText style="#{editCharacterPerLevel.skillTotalPointColor}" value="#{editCharacterPerLevelPage.skillTotalPoint}"/>
                                         <f:facet name="header">
-                                            <h:outputText id="outputText25" value="合計ポイント"/>
+                                            <h:outputText value="合計ポイント"/>
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column6">
