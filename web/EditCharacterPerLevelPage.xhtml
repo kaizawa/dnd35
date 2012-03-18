@@ -68,12 +68,11 @@
                                 <h:panelGrid columns="9" id="gridPanel15"
                                              style="border: 1px solid #cccccc; height: 100%; vertical-align: middle; width: 100%" styleClass="tableTitleBlackMiddle">
                                     <h:outputText id="outputText9" value="増分HP"/>
-                                    <h:outputLabel value="(内訳:" style="font-size: 13px"/>
                                     <h:panelGrid id="gridPanel16" style="border: 1px solid #cccccc; ">
                                         <h:outputText id="outputText10" style=" font-size: 18px" value="#{editCharacterPerLevelPage.totalHpThisLevel}"/>
                                     </h:panelGrid>
-                                    <h:outputText id="outputText11" value="="/>
-                                    <h:outputText id="outputText12" value="#{editCharacterPerLevelPage.hitPointAbilityModifier}"/>
+                                    <h:outputLabel value="(内訳:" style="font-size: 13px"/>                                                                            
+                                    <h:outputText id="outputText12" value="#{editCharacterPerLevelPage.hitPointAbilityModifier} (耐)"/>
                                     <h:outputText id="outputText14" value="+"/>
                                     <h:inputText id="textField1" style="text-align: right; width: 30px" value="#{sessionBean.characterGrowthRecord.hitPoint}"/>
                                     <h:outputLabel value="(ダイス出目)"/>
