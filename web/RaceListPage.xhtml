@@ -12,6 +12,9 @@
         <ui:define name="body">
             <h:form>
                 <h:panelGrid id="contents" style="width: 100%" styleClass="contents">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup> 
                     <h:panelGrid columns="2" id="gridPanel1" style="height: 100%; width: 100%">
                         <h:panelGrid id="gridPanel2" style="width: 100%; height: 100%;">
                             <h:outputText id="outputText5" style="font-size: 18px; font-weight: bold" value="種族一覧"/>

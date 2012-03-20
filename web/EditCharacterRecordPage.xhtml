@@ -14,6 +14,9 @@
         <ui:define name="body">
             <h:form>
                 <h:panelGrid id="contents" style="width: 100%" styleClass="contents">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup> 
                     <h:panelGrid columns="1" id="contentsGrid" style="width: 100%">
                         <h:panelGrid columns="4" id="charaIdGridPanel1" style="height: 100%; text-align: left; width: 100%">
                             <h:panelGrid id="gridPanel14" style="width: 100%; height: 100%;">
@@ -615,12 +618,12 @@
                             <h:panelGrid style="height: 100%; text-align: left; width: 100%">
                                 <h:commandButton action="#{editCharacterRecordPage.saveButton_action}"  value="保存"/>
                             </h:panelGrid>
-                                <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGrid">
-                                    <h:outputText id="outputText162" styleClass="tableTitleBlack" value="呪文・メモなど"/>
-                                    <h:inputTextarea id="textArea6" style="height: 250px; width: 100%" value="#{editCharacterRecordPage.characterRecord.spellDescription}"/>
-                                </h:panelGrid>                                                        
+                            <h:panelGrid id="spellgridPanel1" style="height: 100%; width: 100%" styleClass="tableGrid">
+                                <h:outputText id="outputText162" styleClass="tableTitleBlack" value="呪文・メモなど"/>
+                                <h:inputTextarea id="textArea6" style="height: 250px; width: 100%" value="#{editCharacterRecordPage.characterRecord.spellDescription}"/>
+                            </h:panelGrid>                                                        
                         </h:panelGrid>   
-                            
+
                         <h:panelGrid id="updateGridPanel1" style="height: 100%; width: 100%">
                             <h:panelGrid id="buttonGridPanel10" style="height: 100%; text-align: left; width: 100%">
                                 <h:commandButton action="#{editCharacterRecordPage.saveButton_action}" id="button10" value="保存"/>

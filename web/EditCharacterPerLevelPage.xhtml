@@ -13,6 +13,9 @@
             <h:form>
 
                 <h:panelGrid id="contents" style="width: 100%" styleClass="contents">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup> 
                     <h:panelGrid columns="1" id="gridPanel1" style="width: 100%">
                         <h:panelGrid columns="1" id="gridPanel6" style="height: 100%; width: 100%">
                             <h:panelGrid id="naviGationGridPanel1" style="height: 100%; width: 100%">
@@ -102,8 +105,8 @@
                                     <h:outputLabel value=")" style="font-size: 13px"/>
                                 </h:panelGrid>
                             </h:panelGrid>
-                            
-                            
+
+
                             <h:panelGrid id="skillTableGridPanel1" style="background-color: #000000; height: 100%; width: 100%">
                                 <h:dataTable binding="#{editCharacterPerLevelPage.skillTable}" headerClass="tableTitleBlackNopad"
                                              id="skillTable" rowClasses="skill-row-even,skill-row-odd" styleClass="waku"

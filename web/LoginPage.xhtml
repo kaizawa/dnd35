@@ -13,6 +13,9 @@
         <ui:define name="body">
             <h:form>
                 <h:panelGrid id="contents" style="width: 100%" styleClass="contents">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup> 
                     <h:panelGrid id="contentGrid" style="height: 100%; width: 100%">
                         <h:panelGrid id="paddingPanel1" style="height: 20px; width: 100%">
 
