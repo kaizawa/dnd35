@@ -635,7 +635,7 @@
                         </h:panelGrid>
                         <h:panelGrid id="deleteCharaGridPanel1" style="height: 100%; text-align: right; width: 100%">
                             <h:commandButton action="#{editCharacterRecordPage.deleteButton_action}"
-                                             disabled="#{sessionBean.deleteButtonDisabled}" id="deleteButton1" style="color: rgb(255, 51, 51)" value="キャラクタの削除"/>
+                                             disabled="#{sessionBean.deleteButtonDisabled}" id="deleteButton1" style="color: rgb(255, 51, 51)" onclick="return confirm('削除しますか?')" value="キャラクタの削除"/>
                         </h:panelGrid>
                     </h:panelGrid>
                 </h:panelGrid>
