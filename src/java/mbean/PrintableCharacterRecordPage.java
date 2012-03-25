@@ -151,7 +151,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPage {
     public String getClassList() {
         return classList;
     }
-
+/*
 
 // 以下 親からの継承
     @Override
@@ -661,8 +661,7 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPage {
     public String charalist_action() {
         return "CharacterListPage";
     }
-
+// 以上 親からの継承
+*/ 
 
 }
-
-// 以上 親からの継承
