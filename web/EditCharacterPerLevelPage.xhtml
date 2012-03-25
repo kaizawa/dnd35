@@ -124,31 +124,31 @@
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column3">
-                                        <h:outputText id="outputText20" value="#{editCharacterPerLevelPage.skillAbilityModifier} 【#{editCharacterPerLevelPage.skillAbilityShortName}】"/>
+                                        <h:outputText id="outputText20" rendered="#{editCharacterPerLevelPage.isTriableSkill()}"  value="#{editCharacterPerLevelPage.skillAbilityModifier} 【#{editCharacterPerLevelPage.skillAbilityShortName}】"/>
                                         <f:facet name="header">
                                             <h:outputText id="outputText21" value="能力"/>
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column7">
-                                        <h:inputText id="textField2" style="font-size: 18px; text-align: right; width: 30px" value="#{editCharacterPerLevelPage.skillPoint}"/>
+                                        <h:inputText id="textField2" rendered="#{editCharacterPerLevelPage.isTriableSkill()}" style="font-size: 18px; text-align: right; width: 30px" value="#{editCharacterPerLevelPage.skillPoint}"/>
                                         <f:facet name="header">
                                             <h:outputText id="outputText28" value="使用ポイント"/>
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column5">
-                                        <h:outputText style="#{editCharacterPerLevel.skillTotalPointColor}" value="#{editCharacterPerLevelPage.skillTotalPoint}"/>
+                                        <h:outputText style="#{editCharacterPerLevel.skillTotalPointColor}" rendered="#{editCharacterPerLevelPage.isTriableSkill()}" value="#{editCharacterPerLevelPage.skillTotalPoint}"/>
                                         <f:facet name="header">
                                             <h:outputText value="合計ポイント"/>
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column6">
-                                        <h:outputText id="outputText26" style="text-align: right" value="#{editCharacterPerLevelPage.skillRank}"/>
+                                        <h:outputText id="outputText26" style="text-align: right" rendered="#{editCharacterPerLevelPage.isTriableSkill()}" value="#{editCharacterPerLevelPage.skillRank}"/>
                                         <f:facet name="header">
                                             <h:outputText id="outputText27" value="ランク"/>
                                         </f:facet>
                                     </h:column>
                                     <h:column id="column4">
-                                        <h:outputText escape="false" id="outputText22" style="font-size: 18px; font-weight: bolder" value="#{editCharacterPerLevelPage.skillTotalRank}"/>
+                                        <h:outputText escape="false" id="outputText22" rendered="#{editCharacterPerLevelPage.isTriableSkill()}" style="font-size: 18px; font-weight: bolder" value="#{editCharacterPerLevelPage.skillTotalRank}"/>
                                         <f:facet name="header">
                                             <h:outputText id="outputText23" value="合計ランク"/>
                                         </f:facet>

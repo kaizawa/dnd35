@@ -489,5 +489,10 @@ public class EditCharacterPerLevelPage extends EditCharacterRecordPage {
         }
         return 0;
     }
+    
+    public Boolean isTriableSkill(){
+        SkillMaster skill = (SkillMaster)skillTable.getRowData();
+        return isSkillAcceptoRankBySkillId(skill.getId()) || hasSkillRankBySkill(skill) ;
+    }
 }
 

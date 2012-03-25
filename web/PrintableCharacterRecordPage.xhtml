@@ -418,43 +418,43 @@
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column18">
-                                    <h:outputText id="outputText43" styleClass="bPrint" value="#{printableCharacterRecordPage.skillTotalCheckModifier}"/>
+                                    <h:outputText id="outputText43" rendered="#{printableCharacterRecordPage.isTriableSkill()}" styleClass="bPrint" value="#{printableCharacterRecordPage.skillTotalCheckModifier}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText46" value="判定値"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column13">
-                                    <h:outputText id="outputText37" value="#{printableCharacterRecordPage.skillAbilityModifier} 【#{printableCharacterRecordPage.skillAbilityShortName}】"/>
+                                    <h:outputText id="outputText37" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillAbilityModifier} 【#{printableCharacterRecordPage.skillAbilityShortName}】"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText38" value="能力"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column17">
-                                    <h:outputText id="outputText44" value="#{printableCharacterRecordPage.skillTotalRank}"/>
+                                    <h:outputText id="outputText44" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillTotalRank}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText45" value="ランク"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column14">
-                                    <h:outputText id="outputText39" value="#{printableCharacterRecordPage.skillTotalPoint}"/>
+                                    <h:outputText id="outputText39" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillTotalPoint}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText40" value="ポイント"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column25">
-                                    <h:outputText id="outputText132" value="#{printableCharacterRecordPage.skillSynergyModifier}"/>
+                                    <h:outputText id="outputText132" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillSynergyModifier}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText133" value="相乗"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column24">
-                                    <h:outputText id="outputText120" value="#{printableCharacterRecordPage.skillArmorModifier}"/>
+                                    <h:outputText id="outputText120" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillArmorModifier}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText123" value="防具"/>
                                     </f:facet>
                                 </h:column>
                                 <h:column id="column15">
-                                    <h:outputText id="textField10" value="#{printableCharacterRecordPage.skillMiscModifier}"/>
+                                    <h:outputText id="textField10" rendered="#{printableCharacterRecordPage.isTriableSkill()}" value="#{printableCharacterRecordPage.skillMiscModifier}"/>
                                     <f:facet name="header">
                                         <h:outputText id="outputText42" value="その他"/>
                                     </f:facet>

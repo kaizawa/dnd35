@@ -1503,6 +1503,10 @@ public class EditCharacterRecordPage  extends BaseBean {
         return "未装備";
     }
      */
-
+    
+    public Boolean isTriableSkill(){
+        SkillMaster skill = (SkillMaster)skillTable.getRowData();
+        return isSkillAcceptoRankBySkillId(skill.getId()) || hasSkillRankBySkill(skill) ;
+    }
 }
 

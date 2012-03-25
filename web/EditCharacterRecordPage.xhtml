@@ -558,43 +558,43 @@
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column21">
-                                            <h:outputText id="outputText149" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.skillTotalCheckModifier}"/>
+                                            <h:outputText id="outputText149" rendered="#{editCharacterRecordPage.isTriableSkill()}" style="font-size: 18px; font-weight: bold" value="#{editCharacterRecordPage.skillTotalCheckModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText150" value="判定値"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column22">
-                                            <h:outputText id="outputText151" style="font-size: 10px; width: 40px" value="#{editCharacterRecordPage.skillAbilityModifier} 【#{editCharacterRecordPage.skillAbilityShortName}】"/>
+                                            <h:outputText id="outputText151" rendered="#{editCharacterRecordPage.isTriableSkill()}" style="font-size: 10px; width: 40px" value="#{editCharacterRecordPage.skillAbilityModifier} 【#{editCharacterRecordPage.skillAbilityShortName}】"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText152" style="font-size: 10px" value="能力"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column23">
-                                            <h:outputText id="outputText153" value="#{editCharacterRecordPage.skillTotalRank}"/>
+                                            <h:outputText id="outputText153" rendered="#{editCharacterRecordPage.isTriableSkill()}" value="#{editCharacterRecordPage.skillTotalRank}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText154" style="font-size: 10px" value="ランク"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column24">
-                                            <h:outputText id="outputText155" value="#{editCharacterRecordPage.skillTotalPoint}"/>
+                                            <h:outputText id="outputText155" rendered="#{editCharacterRecordPage.isTriableSkill()}" value="#{editCharacterRecordPage.skillTotalPoint}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText156" style="font-size: 10px" value="ポイント"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column25">
-                                            <h:outputText id="outputText157" value="#{editCharacterRecordPage.skillSynergyModifier}"/>
+                                            <h:outputText id="outputText157" rendered="#{editCharacterRecordPage.isTriableSkill()}" value="#{editCharacterRecordPage.skillSynergyModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText158" style="font-size: 10px" value="相乗"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column26">
-                                            <h:outputText id="outputText159" value="#{editCharacterRecordPage.skillArmorModifier}"/>
+                                            <h:outputText id="outputText159" rendered="#{editCharacterRecordPage.isTriableSkill()}" value="#{editCharacterRecordPage.skillArmorModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText160" style="font-size: 10px" value="防具"/>
                                             </f:facet>
                                         </h:column>
                                         <h:column id="column27">
-                                            <h:inputText id="textField45" style="text-align: right; width: 20px" value="#{editCharacterRecordPage.skillMiscModifier}"/>
+                                            <h:inputText id="textField45" rendered="#{editCharacterRecordPage.isTriableSkill()}" style="text-align: right; width: 20px" value="#{editCharacterRecordPage.skillMiscModifier}"/>
                                             <f:facet name="header">
                                                 <h:outputText id="outputText161" style="font-size: 10px" value="その他"/>
                                             </f:facet>
