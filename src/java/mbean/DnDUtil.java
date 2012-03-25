@@ -79,9 +79,9 @@ public class DnDUtil {
     }
 
     /**
-     * 改行を<br>に変換
+     * 改行を<br>に変換し、半角スペースを &nbsp に変換
      */
-    public static String newLineToBr(String str) {
+    public static String textToHtml(String str) {
         if (str == null) {
             return null;
         }
@@ -90,7 +90,9 @@ public class DnDUtil {
         for (char c = sci.current(); c != StringCharacterIterator.DONE; c = sci.next()) {
             if (c == '\n') {
                 sb.append("<br>");
-            } else {
+            } else if(c == ' ') {
+                sb.append("&nbsp;");
+            } else {                
                 sb.append(c);
             }
         }
@@ -616,7 +618,7 @@ public class DnDUtil {
     
     public String getAttackDescriptionWithBR()
     {
-        return newLineToBr(charaRecord.getAttackDescription());
+        return textToHtml(charaRecord.getAttackDescription());
     }
 
     public void setAttackDescriptionWithBR(String attackDescriptionWithBR) {

@@ -102,42 +102,42 @@ public class PrintableCharacterRecordPage extends EditCharacterRecordPage {
      * ---------------- キャラクタ記述 ----------------------------------
      */
     public String getCharacterDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getDescription());
     }
     /*
      * ---------------- スペル記述 ----------------------------------
      */
 
     public String getSpellDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getSpellDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getSpellDescription());
     }
     /*
      * ---------------- 防御記述 ----------------------------------
      */
 
     public String getDefenceDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getDefenceDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getDefenceDescription());
     }
     /*
      * ---------------- 攻撃記述 ----------------------------------
      */
 
     public String getAttackDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getAttackDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getAttackDescription());
     }
     /*
      * ---------------- アイテム記述 ----------------------------------
      */
 
     public String getItemDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getItemDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getItemDescription());
     }
     /*
      * ---------------- 特技記述 ----------------------------------
      */
 
     public String getFeatDescription() {
-        return DnDUtil.newLineToBr(getCharacterRecord().getFeatDescription());
+        return DnDUtil.textToHtml(getCharacterRecord().getFeatDescription());
     }
     /*
      * ---------------- クラスリスト -------------------------------
